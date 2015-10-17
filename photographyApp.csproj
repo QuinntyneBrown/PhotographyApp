@@ -76,14 +76,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <TypeScriptCompile Include="src\photography\photography.module.ts" />
     <TypeScriptCompile Include="typings\angularjs\angular.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\tsd.d.ts" />
     <TypeScriptCompile Include="typings\typeScriptApp.d.ts" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="src\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
