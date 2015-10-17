@@ -1,0 +1,15 @@
+{
+  "name": "photographyApp",
+  "version": "0.0.1",
+  "description": "Personal photography application using modern web technologies",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "quinntynebrown <quinntynebrown@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "angular": "^1.4.7",
+    "angular-ui-router": "^0.2.15"
+  }
+}
