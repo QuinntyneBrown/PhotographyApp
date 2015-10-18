@@ -4,7 +4,9 @@ module App.UI {
 
     export class AppFooter {
 
-        public static createInstance = () => { }
+        public static createInstance = () => {
+            return new AppFooter();
+        }
 
         public templateUrl: string = "src/app/ui/components/appFooter/appFooter.html";
 

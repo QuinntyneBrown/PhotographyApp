@@ -5,7 +5,8 @@ angular.module("app.photography", [
     "app.common",
     "app.configuration",
     "app.data",
-    "app.security"
+    "app.security",
+    "app.ui"
 ]);
 
 angular.module("photographyApp", [

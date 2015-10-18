@@ -72,6 +72,7 @@
     <Content Include="src\app\photography\components\featureCarousel\featureCarousel.min.css">
       <DependentUpon>featureCarousel.css</DependentUpon>
     </Content>
+    <Content Include="src\app\photography\components\rateCalculator\rateCalculator.html" />
     <Content Include="src\app\photography\photography.css">
       <DependentUpon>photography.scss</DependentUpon>
     </Content>
@@ -107,6 +108,7 @@
     <Content Include="node_modules\angular-ui-router\release\angular-ui-router.js" />
     <Content Include="node_modules\angular\angular.js" />
     <Content Include="src\app\photography\views\featureCarousel.html" />
+    <Content Include="src\app\security\views\login.html" />
     <Content Include="src\app\ui\components\appFooter\appFooter.html" />
     <Content Include="src\app\ui\components\appHeader\appHeader.html" />
     <Content Include="src\reset.css" />
@@ -119,14 +121,21 @@
     <TypeScriptCompile Include="src\app\common\common.d.ts" />
     <TypeScriptCompile Include="src\app\common\common.module.ts" />
     <TypeScriptCompile Include="src\app\common\services\canActivatePromise.ts" />
+    <TypeScriptCompile Include="src\app\common\services\requestCounter.ts" />
     <TypeScriptCompile Include="src\app\common\services\routeResolver.ts" />
+    <TypeScriptCompile Include="src\app\configuration\configuration.module.ts" />
+    <TypeScriptCompile Include="src\app\configuration\services\configurationManager.ts" />
     <TypeScriptCompile Include="src\app\data\data.d.ts" />
     <TypeScriptCompile Include="src\app\data\data.module.ts" />
     <TypeScriptCompile Include="src\app\photography\components\featureCarousel\featureCarousel.controller.ts" />
     <TypeScriptCompile Include="src\app\photography\components\featureCarousel\featureCarousel.directive.ts" />
+    <TypeScriptCompile Include="src\app\photography\components\rateCalculator\rateCalculator.controller.ts" />
+    <TypeScriptCompile Include="src\app\photography\components\rateCalculator\rateCalculator.directive.ts" />
     <TypeScriptCompile Include="src\app\photography\photography.d.ts" />
     <TypeScriptCompile Include="src\app\photography\photography.module.ts" />
     <TypeScriptCompile Include="src\app\photography\photography.routes.ts" />
+    <TypeScriptCompile Include="src\app\photography\services\photographyAppHeaderManager.ts" />
+    <TypeScriptCompile Include="src\app\photography\services\photographyDataService.ts" />
     <TypeScriptCompile Include="src\app\security\security.d.ts" />
     <TypeScriptCompile Include="src\app\security\security.module.ts" />
     <TypeScriptCompile Include="src\app\security\security.routes.ts" />
@@ -136,6 +145,8 @@
     <TypeScriptCompile Include="src\app\ui\components\appHeader\appHeader.directive.ts" />
     <TypeScriptCompile Include="src\app\ui\components\carousel\carousel.controller.ts" />
     <TypeScriptCompile Include="src\app\ui\components\carousel\carousel.directive.ts" />
+    <TypeScriptCompile Include="src\app\ui\components\virtualFor\virtualFor.controller.ts" />
+    <TypeScriptCompile Include="src\app\ui\components\virtualFor\virtualFor.directive.ts" />
     <TypeScriptCompile Include="src\app\ui\ui.d.ts" />
     <TypeScriptCompile Include="src\app\ui\ui.module.ts" />
     <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />
@@ -147,8 +158,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\images\" />
+    <Folder Include="src\app\common\components\" />
     <Folder Include="src\app\data\services\" />
-    <Folder Include="src\app\security\components\" />
+    <Folder Include="src\app\security\components\login\" />
     <Folder Include="src\app\security\services\" />
     <Folder Include="src\app\ui\components\callout\" />
     <Folder Include="src\app\ui\components\modal\" />
