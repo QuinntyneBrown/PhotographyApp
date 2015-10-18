@@ -4,6 +4,7 @@
 # Ignored files in TypeScriptApp
 *.js
 *.map
+*.css
 
 # User-specific files
 *.suo
