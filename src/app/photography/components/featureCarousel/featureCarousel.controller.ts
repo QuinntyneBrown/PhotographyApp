@@ -1,6 +1,6 @@
 ﻿/// <reference path="../../../../../typings/typescriptapp.d.ts" />
 
-module Photography {
+module App.Photography {
     
     export class FeatureCarouselController {
         constructor() {

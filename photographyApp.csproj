@@ -129,6 +129,7 @@
     <TypeScriptCompile Include="src\app\photography\photography.routes.ts" />
     <TypeScriptCompile Include="src\app\security\security.d.ts" />
     <TypeScriptCompile Include="src\app\security\security.module.ts" />
+    <TypeScriptCompile Include="src\app\security\security.routes.ts" />
     <TypeScriptCompile Include="src\app\ui\components\appFooter\appFooter.controller.ts" />
     <TypeScriptCompile Include="src\app\ui\components\appFooter\appFooter.directive.ts" />
     <TypeScriptCompile Include="src\app\ui\components\appHeader\appHeader.controller.ts" />

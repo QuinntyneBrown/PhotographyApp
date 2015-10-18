@@ -11,5 +11,6 @@ angular.module("photographyApp", [
     "app.photography"
 ]).config([
     "$routeProvider", ($routeProvider: ng.route.IRouteProvider) => {
-        Photography.Routes.Configure($routeProvider);
+        App.Photography.Routes.Configure($routeProvider);
+        App.Security.Routes.Configure($routeProvider);
 }]);
