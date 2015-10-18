@@ -3,6 +3,7 @@
 angular.module("app.photography", [
     "ngRoute",
     "app.common",
+    "app.configuration",
     "app.data",
     "app.security"
 ]);
