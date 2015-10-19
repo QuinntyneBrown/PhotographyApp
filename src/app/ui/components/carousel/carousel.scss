@@ -1,3 +1,25 @@
-﻿.carousel {
-
+﻿.carousel .slide {
+    transition: transform .500s cubic-bezier(.10, .10, .25, .90);
 }
+
+.carousel .notransistion.slide {
+    transition: none !important;
+}
+
+.carousel .view-port {
+    position:relative;
+    max-width:100%;
+    overflow-x:hidden;
+}
+
+.carousel .view-port .previous-arrow img, 
+.carousel .view-port .next-arrow img {
+        position: absolute;
+        top: calc(50% - 40px);
+        cursor: pointer;
+        left: 0;
+    }
+
+.carousel .view-port .next-arrow {        
+        left: calc(100% - 80px);
+    }

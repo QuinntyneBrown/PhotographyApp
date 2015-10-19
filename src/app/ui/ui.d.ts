@@ -5,6 +5,6 @@
     }
 
     export interface ICarouselScope extends  ng.IScope {
-        slideTemplateUrl:string;
+        slideTemplate:string;
     }
 } 
