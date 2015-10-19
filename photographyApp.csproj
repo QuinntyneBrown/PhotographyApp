@@ -141,6 +141,7 @@
     <TypeScriptCompile Include="src\app\photography\photography.routes.ts" />
     <TypeScriptCompile Include="src\app\photography\services\photographyAppHeaderManager.ts" />
     <TypeScriptCompile Include="src\app\photography\services\photographyDataService.ts" />
+    <TypeScriptCompile Include="src\app\photography\services\photographyManager.ts" />
     <TypeScriptCompile Include="src\app\security\security.d.ts" />
     <TypeScriptCompile Include="src\app\security\security.module.ts" />
     <TypeScriptCompile Include="src\app\security\security.routes.ts" />

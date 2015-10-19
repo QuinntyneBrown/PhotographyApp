@@ -24,7 +24,8 @@ module App.UI {
         public controller: string = "carouselController";
 
         public scope:any = {
-            slideTemplateUrl: "@",                        
+            slideTemplateUrl: "@",
+            slideTemplate:"@"                        
         };
 
         public link = () => { }
