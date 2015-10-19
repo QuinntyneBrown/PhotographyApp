@@ -7,15 +7,15 @@ module App.UI {
      */
     export class Carousel {
 
-        constructor(private $compile: ng.ICompileService) { }
+        constructor() { }
 
-        public static createInstance = ($compile: ng.ICompileService) => {
-            return new Carousel($compile);
+        public static createInstance = () => {
+            return new Carousel();
         }
 
         public templateUrl: string = "src/app/ui/components/carousel/carousel.html";
 
-        public restrict: string = "E";
+        public restrict: string = "A";
 
         public replace: boolean = true;
 
@@ -25,37 +25,10 @@ module App.UI {
 
         public scope:any = {
             slideTemplateUrl: "@",                        
-        }
+        };
 
-        public link = (scope: ng.IScope, element: ng.IAugmentedJQuery, attributes: ng.IAttributes) => {
-
-
-            var items: Array<any> = parseItems(scope, attributes);
-
-            for (var i = 0; i < items.length; i++) {
-                
-            }
-
-            function parseItemName(attributes: ng.IAttributes): string {
-                var match = attributes["carousel"].match(/^\s*(.+)\s+in\s+(.*?)\s*(\s+track\s+by\s+(.+)\s*)?$/);
-                return match[1];
-            }
-
-            function parseItems(scope: ng.IScope, attributes: ng.IAttributes): Array<any> {
-                var match = attributes["carousel"].match(/^\s*(.+)\s+in\s+(.*?)\s*(\s+track\s+by\s+(.+)\s*)?$/);
-                if (match) {
-                    var collectionStringArray = match[2].split(".");
-                    var items: any = scope;
-                    for (var i = 0; i < collectionStringArray.length; i++) {
-                        items = items[collectionStringArray[i]];
-                    }
-                    return items;
-                } else {
-                    return JSON.parse(attributes["carousel"]);
-                }
-            }
-        }
+        public link = () => { }
     }
 
-    angular.module("app.ui").directive("carousel", ["$compile",Carousel.createInstance]);
+    angular.module("app.ui").directive("carousel", [Carousel.createInstance]);
 }

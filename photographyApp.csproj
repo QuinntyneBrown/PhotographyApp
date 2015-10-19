@@ -110,7 +110,8 @@
     <Content Include="karma.conf.js" />
     <Content Include="node_modules\angular-ui-router\release\angular-ui-router.js" />
     <Content Include="node_modules\angular\angular.js" />
-    <Content Include="src\app\photography\views\featureCarousel.html" />
+    <Content Include="src\app\photography\views\home.html" />
+    <Content Include="src\app\photography\views\partials\photoSlide.html" />
     <Content Include="src\app\security\views\login.html" />
     <Content Include="src\app\ui\components\appFooter\appFooter.html" />
     <Content Include="src\app\ui\components\appHeader\appHeader.html" />
