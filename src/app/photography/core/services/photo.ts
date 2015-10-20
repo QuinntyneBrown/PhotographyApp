@@ -4,7 +4,6 @@
         
         constructor() { }
 
-
         private _base64String: string;
 
         public get base64String() { return this._base64String; }

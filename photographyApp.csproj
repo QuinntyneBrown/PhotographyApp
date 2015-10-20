@@ -59,23 +59,28 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\images\carousel_button_next.png" />
+    <Content Include="assets\images\carousel_button_prev.png" />
     <Content Include="assets\images\DSC_1245.JPG" />
     <Content Include="assets\images\DSC_1256.JPG" />
     <Content Include="assets\images\DSC_1287.JPG" />
     <Content Include="dist\photographyApp.js" />
+    <Content Include="node_modules\angular-animate\angular-animate.js" />
+    <Content Include="node_modules\angular-material\angular-material.css" />
+    <Content Include="node_modules\angular-material\angular-material.js" />
     <Content Include="node_modules\angular-route\angular-route.js" />
     <Content Include="node_modules\fastclick\lib\fastclick.js" />
     <Content Include="node_modules\font-awesome\css\font-awesome.css" />
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="node_modules\jquery\dist\jquery.js" />
     <Content Include="node_modules\lovefield\dist\lovefield.js" />
-    <Content Include="src\app\photography\components\featureCarousel\featureCarousel.css">
-      <DependentUpon>featureCarousel.scss</DependentUpon>
-    </Content>
-    <Content Include="src\app\photography\components\featureCarousel\featureCarousel.min.css">
-      <DependentUpon>featureCarousel.css</DependentUpon>
+    <Content Include="src\app\photography\components\rateCalculator\rateCalculator.css">
+      <DependentUpon>rateCalculator.scss</DependentUpon>
     </Content>
     <Content Include="src\app\photography\components\rateCalculator\rateCalculator.html" />
+    <Content Include="src\app\photography\components\rateCalculator\rateCalculator.min.css">
+      <DependentUpon>rateCalculator.css</DependentUpon>
+    </Content>
     <Content Include="src\app\photography\photography.css">
       <DependentUpon>photography.scss</DependentUpon>
     </Content>
@@ -83,10 +88,6 @@
       <DependentUpon>photography.css</DependentUpon>
     </Content>
     <Content Include="src\app\photography\photography.scss" />
-    <Content Include="src\app\photography\components\featureCarousel\featureCarousel.scss" />
-    <Content Include="src\app\photography\components\featureCarousel\featureCarousel.css.map">
-      <DependentUpon>featureCarousel.css</DependentUpon>
-    </Content>
     <Content Include="src\app\photography\photography.css.map">
       <DependentUpon>photography.css</DependentUpon>
     </Content>
@@ -96,6 +97,34 @@
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="node_modules\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="src\app\ui\components\appFooter\appFooter.css.map">
+      <DependentUpon>appFooter.css</DependentUpon>
+    </Content>
+    <Content Include="src\app\photography\components\rateCalculator\rateCalculator.scss" />
+    <Content Include="src\app\photography\components\rateCalculator\rateCalculator.css.map">
+      <DependentUpon>rateCalculator.css</DependentUpon>
+    </Content>
+    <None Include="src\app\ui\components\appFooter\appFooter.scss" />
+    <Content Include="src\app\ui\components\appHeader\appHeader.css">
+      <DependentUpon>appHeader.scss</DependentUpon>
+    </Content>
+    <Content Include="src\app\ui\components\appHeader\appHeader.min.css">
+      <DependentUpon>appHeader.css</DependentUpon>
+    </Content>
+    <Content Include="src\app\ui\components\appHeader\appHeader.scss" />
+    <Content Include="src\app\ui\components\appHeader\appHeader.css.map">
+      <DependentUpon>appHeader.css</DependentUpon>
+    </Content>
+    <Content Include="src\app\ui\components\carousel\carousel.css">
+      <DependentUpon>carousel.scss</DependentUpon>
+    </Content>
+    <Content Include="src\app\ui\components\carousel\carousel.min.css">
+      <DependentUpon>carousel.css</DependentUpon>
+    </Content>
+    <Content Include="src\app\ui\components\carousel\carousel.scss" />
+    <Content Include="src\app\ui\components\carousel\carousel.css.map">
+      <DependentUpon>carousel.css</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -110,13 +139,19 @@
     <Content Include="karma.conf.js" />
     <Content Include="node_modules\angular-ui-router\release\angular-ui-router.js" />
     <Content Include="node_modules\angular\angular.js" />
-    <Content Include="src\app\photography\views\home.html" />
-    <Content Include="src\app\photography\views\partials\photoSlide.html" />
-    <Content Include="src\app\security\views\login.html" />
+    <Content Include="src\app\photography\components\home\home.html" />
+    <Content Include="src\app\photography\components\home\photoSlide.html" />
+    <Content Include="src\app\ui\components\appFooter\appFooter.css">
+      <DependentUpon>appFooter.scss</DependentUpon>
+    </Content>
     <Content Include="src\app\ui\components\appFooter\appFooter.html" />
+    <Content Include="src\app\ui\components\appFooter\appFooter.min.css">
+      <DependentUpon>appFooter.css</DependentUpon>
+    </Content>
     <Content Include="src\app\ui\components\appHeader\appHeader.html" />
     <Content Include="src\app\ui\components\carousel\carousel.html" />
     <Content Include="src\reset.css" />
+    <Content Include="src\styles.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -125,28 +160,28 @@
   <ItemGroup>
     <TypeScriptCompile Include="src\app\common\common.d.ts" />
     <TypeScriptCompile Include="src\app\common\common.module.ts" />
-    <TypeScriptCompile Include="src\app\common\services\canActivatePromise.ts" />
-    <TypeScriptCompile Include="src\app\common\services\requestCounter.ts" />
-    <TypeScriptCompile Include="src\app\common\services\routeResolver.ts" />
+    <TypeScriptCompile Include="src\app\common\core\services\canActivatePromise.ts" />
+    <TypeScriptCompile Include="src\app\common\core\services\requestCounter.ts" />
+    <TypeScriptCompile Include="src\app\common\core\services\routeResolver.ts" />
     <TypeScriptCompile Include="src\app\configuration\configuration.module.ts" />
-    <TypeScriptCompile Include="src\app\configuration\services\configurationManager.ts" />
+    <TypeScriptCompile Include="src\app\configuration\core\services\configurationManager.ts" />
     <TypeScriptCompile Include="src\app\data\data.d.ts" />
     <TypeScriptCompile Include="src\app\data\data.module.ts" />
-    <TypeScriptCompile Include="src\app\photography\components\featureCarousel\featureCarousel.controller.ts" />
-    <TypeScriptCompile Include="src\app\photography\components\featureCarousel\featureCarousel.directive.ts" />
+    <TypeScriptCompile Include="src\app\photography\components\home\home.controller.ts" />
     <TypeScriptCompile Include="src\app\photography\components\rateCalculator\rateCalculator.controller.ts" />
     <TypeScriptCompile Include="src\app\photography\components\rateCalculator\rateCalculator.directive.ts" />
     <TypeScriptCompile Include="src\app\photography\photography.d.ts" />
     <TypeScriptCompile Include="src\app\photography\photography.module.ts" />
     <TypeScriptCompile Include="src\app\photography\photography.routes.ts" />
-    <TypeScriptCompile Include="src\app\photography\services\photographyAppHeaderManager.ts" />
-    <TypeScriptCompile Include="src\app\photography\services\photographyDataService.ts" />
-    <TypeScriptCompile Include="src\app\photography\services\photographyManager.ts" />
+    <TypeScriptCompile Include="src\app\photography\core\services\photo.ts" />
+    <TypeScriptCompile Include="src\app\photography\core\services\photographyAppHeaderManager.ts" />
+    <TypeScriptCompile Include="src\app\photography\core\services\photographyDataService.ts" />
+    <TypeScriptCompile Include="src\app\photography\core\services\photographyManager.ts" />
     <TypeScriptCompile Include="src\app\security\security.d.ts" />
     <TypeScriptCompile Include="src\app\security\security.module.ts" />
     <TypeScriptCompile Include="src\app\security\security.routes.ts" />
-    <TypeScriptCompile Include="src\app\security\services\securityDataService.ts" />
-    <TypeScriptCompile Include="src\app\security\services\securityManager.ts" />
+    <TypeScriptCompile Include="src\app\security\core\services\securityDataService.ts" />
+    <TypeScriptCompile Include="src\app\security\core\services\securityManager.ts" />
     <TypeScriptCompile Include="src\app\ui\components\appFooter\appFooter.controller.ts" />
     <TypeScriptCompile Include="src\app\ui\components\appFooter\appFooter.directive.ts" />
     <TypeScriptCompile Include="src\app\ui\components\appHeader\appHeader.controller.ts" />
@@ -159,18 +194,23 @@
     <TypeScriptCompile Include="src\app\ui\components\virtualFor\virtualFor.directive.ts" />
     <TypeScriptCompile Include="src\app\ui\ui.d.ts" />
     <TypeScriptCompile Include="src\app\ui\ui.module.ts" />
+    <TypeScriptCompile Include="typings\angular-material\angular-material.d.ts" />
     <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />
     <TypeScriptCompile Include="typings\angularjs\angular-route.d.ts" />
     <TypeScriptCompile Include="typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="typings\es6-promise\es6-promise.d.ts" />
+    <TypeScriptCompile Include="typings\fastclick\fastclick.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="typings\lovefield\lovefield.d.ts" />
     <TypeScriptCompile Include="typings\tsd.d.ts" />
     <TypeScriptCompile Include="typings\typeScriptApp.d.ts" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="src\app\common\components\" />
-    <Folder Include="src\app\data\services\" />
+    <Folder Include="src\app\data\core\services\" />
     <Folder Include="src\app\security\components\login\" />
     <Folder Include="src\app\ui\components\modal\" />
+    <Folder Include="src\app\ui\core\" />
     <Folder Include="test\" />
   </ItemGroup>
   <PropertyGroup>

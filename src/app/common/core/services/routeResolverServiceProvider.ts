@@ -1,7 +1,7 @@
 ﻿module App.Common {
 
     /**
-    * @name RouteResolver
+    * @name RouteResolverServiceProvider
     * @module App.Common
     * @description
     */    

@@ -3,7 +3,9 @@
 module App.UI {
 
     export class AppHeaderController {
-        constructor($injector: ng.auto.IInjectorService, $scope: any) {            
+        constructor($injector: ng.auto.IInjectorService, $scope: any) {        
+            
+            //TODO: use ng-app attribute on body to get the module-name and then append HeaderManager    
             this.appHeaderManager = $injector.get($scope.appHeaderManagerName);
         }
 

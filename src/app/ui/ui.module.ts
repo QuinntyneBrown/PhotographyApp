@@ -1,3 +1,5 @@
 ﻿/// <reference path="../../../typings/typescriptapp.d.ts" />
 
-angular.module("app.ui", []); 
+angular.module("app.ui", [
+    "ngAnimate"
+]); 
