@@ -5,7 +5,7 @@
     }
 
     export interface IRouteResolverServiceProvider extends ng.IServiceProvider {
-        
+        configure(routePromise: IRoutePromise);
     }
 
     export interface IRouteResolverService {
@@ -13,14 +13,19 @@
     }
 
     export interface IRoutePromise {
-        createInstance(options?: IRoutePromiseInstanceOptions): IRoutePromise;
-        priority: number;
+        priority?: number;
+        route?:string;
         promise: any;
-        key:string;
+        key?:string;
     }
 
     export interface IRoutePromiseInstanceOptions {
         
+    }
+
+    export interface ILocalStorageService {
+        get(options: any): any;
+        set(options:any): void;
     }
 
     export interface IApiEndpointConfig {

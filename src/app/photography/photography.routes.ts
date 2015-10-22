@@ -8,12 +8,12 @@ module App.Photography {
             $routeProvider.when("/", {
                 templateUrl: "src/app/photography/components/home/home.html",
                 controller: "homeController",
-                controllerAs: "vm",
-                resolve: {
-                    routeData: ["routeResolver", (routeResolverService:App.Common.IRouteResolverService) => {
-                        return routeResolverService.resolve("/");
-                    }]
-                }
+                controllerAs: "vm"
+                //resolve: {
+                //    routeData: ["routeResolverService", (routeResolverService:App.Common.IRouteResolverService) => {
+                //        return routeResolverService.resolve("/");
+                //    }]
+                //}
             });
         }
     }

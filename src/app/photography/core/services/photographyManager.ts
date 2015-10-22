@@ -2,6 +2,10 @@
 
 module App.Photography {
 
+    /**
+     * @name PhotographyManager
+     * @module App.Photography
+     */
     export class PhotographyManager {
 
         constructor() { }

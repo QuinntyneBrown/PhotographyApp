@@ -35,6 +35,7 @@
     "gulp-typedoc": "^1.2.1",
     "gulp-typescript": "^2.5.0",
     "gulp-uglify": "^1.4.1",
+    "html2canvas": "^0.5.0-alpha2",
     "jquery": "^2.1.4",
     "karma": "^0.12.36",
     "karma-chrome-launcher": "^0.2.0",
@@ -42,6 +43,8 @@
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^0.2.1",
     "karma-spec-reporter": "0.0.19",
-    "lovefield": "^2.0.66"
+    "lovefield": "^2.0.66",
+    "rx": "^4.0.6",
+    "rx-angular": "^1.0.4"
   }
 }

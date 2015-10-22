@@ -6,10 +6,19 @@
 
     export interface IHomeController {
         slideTemplate: string;
-        photos:Array<IPhoto>;
+        photos: Array<IPhoto>;
     }
 
-    export interface IPhotographyDataService {
+    export interface IPhotoDataService {
         getAllFeaturedPhotos():ng.IPromise<any>;
     }
+
+    export interface IGallery {
+        
+    }
+
+    export interface IGalleryDataService {
+        
+    }
+
 } 

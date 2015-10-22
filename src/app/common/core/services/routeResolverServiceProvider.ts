@@ -50,8 +50,13 @@
             });
         }
 
-        private getRoutePromisesByRouteName = (roueName: string) => {
-            return this._routePromises;
+        private getRoutePromisesByRouteName = (route: string) => {
+            return this._routePromises.filter((routePromise: IRoutePromise) => {
+                if (routePromise.route)
+                    return routePromise.route === route;
+
+                return true;
+            });
         }
 
         private get routePromiseGroups() {
@@ -114,5 +119,5 @@
         }
     }
 
-    angular.module("app.common").provider("routeResolver", [RouteResolverServiceProvider]);
+    angular.module("app.common").provider("routeResolverService", [RouteResolverServiceProvider]);
 } 

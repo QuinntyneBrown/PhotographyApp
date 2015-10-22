@@ -1,7 +1,7 @@
-﻿module App.Photography {
+﻿    module App.Photography {
     
     export class HomeController implements IHomeController {
-        constructor(routeData: any, photo: IPhoto) { }
+        constructor(photoModel: IPhoto) { }
 
         private _slideTemplate: string;
 
@@ -16,29 +16,30 @@
         public set photos(value: Array<IPhoto>) { this._photos = value; }
 
         public static canActivate = () => {
-            return ["$http", "$q", "photographyDataService", ($http: ng.IHttpService, $q: ng.IQService, photographyDataService: IPhotographyDataService) => {
-
+            return ["$http", "$q", "photoDataService", ($http: ng.IHttpService, $q: ng.IQService, photoDataService: IPhotoDataService) => {
                 var deferred = $q.defer();
-
                 $q.all([
                     $http.get("src/app/photography/views/partials/slideTemplate.html"),
-                    photographyDataService.getAllFeaturedPhotos()
+                    photoDataService.getAllFeaturedPhotos()
                 ]).then((results: any) => {
                     deferred.resolve({
                         slideTemplate: results[0],
                         photos: results[1]
                     });
                 });
-
                 return deferred.promise;
-
             }];
         }
     }
 
     angular.module("app.photography")
-        .controller("homeController", ["routeData", HomeController])
+        .controller("homeController", ["photo", HomeController])
         .config(["routeResolverServiceProvider", (routeResolverServiceProvider: App.Common.IRouteResolverServiceProvider) => {
-            
-        }]);
+
+        routeResolverServiceProvider.configure({
+            route:"/",
+            promise: HomeController.canActivate()
+        });
+
+    }]);
 } 

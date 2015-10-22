@@ -1,7 +1,13 @@
 ﻿ /// <reference path="../../../../../typings/typescriptapp.d.ts" />
 
 module App.Photography {
-    
+
+    "use strict";
+
+    /**
+    * @name PhotographyAppHeaderManager
+    * @module App.Photography
+    */
     export class PhotographyAppHeaderManager implements UI.IAppHeaderManager {
         
         constructor() { }

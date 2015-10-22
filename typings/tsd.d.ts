@@ -5,3 +5,7 @@
 /// <reference path="angularjs/angular-animate.d.ts" />
 /// <reference path="angular-material/angular-material.d.ts" />
 /// <reference path="fastclick/fastclick.d.ts" />
+/// <reference path="jasmine/jasmine.d.ts" />
+/// <reference path="angularjs/angular-mocks.d.ts" />
+/// <reference path="rx/rx-lite.d.ts" />
+/// <reference path="rx/rx.d.ts" />

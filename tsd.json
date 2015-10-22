@@ -25,6 +25,18 @@
     },
     "fastclick/fastclick.d.ts": {
       "commit": "85fb1aa205b1a113bdbaeb72199d1c8692b5f143"
+    },
+    "jasmine/jasmine.d.ts": {
+      "commit": "68548c2daab053869f323d475419c693478bbb73"
+    },
+    "angularjs/angular-mocks.d.ts": {
+      "commit": "68548c2daab053869f323d475419c693478bbb73"
+    },
+    "rx/rx.d.ts": {
+      "commit": "68548c2daab053869f323d475419c693478bbb73"
+    },
+    "rx/rx-lite.d.ts": {
+      "commit": "68548c2daab053869f323d475419c693478bbb73"
     }
   }
 }
