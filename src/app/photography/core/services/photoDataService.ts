@@ -23,5 +23,5 @@ module App.Photography {
         }
     }
 
-    angular.module("app.photography").service("photoDataService", ["dataService", PhotoDataService]);
+    angular.module("app.photography").service("photoDataService", ["apiEndpoint","dataService", PhotoDataService]);
 } 

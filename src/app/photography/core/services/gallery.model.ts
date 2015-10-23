@@ -26,5 +26,5 @@
         public set photos(value: Array<IPhoto>) { this._photos = value; }
     }
 
-    angular.module("app.photography").service("gallery", [Gallery]);
+    angular.module("app.photography").service("gallery", ["$q",Gallery]);
 }

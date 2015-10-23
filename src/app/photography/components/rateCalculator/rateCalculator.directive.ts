@@ -6,7 +6,7 @@
             return new RateCalculator();
         }
 
-        public templateUrl: string = "";
+        public templateUrl: string = "src/app/photography/components/rateCalculator/rateCalculator.html";
 
         public restrict: string = "E";
 

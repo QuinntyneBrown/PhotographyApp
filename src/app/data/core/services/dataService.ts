@@ -5,7 +5,7 @@
      */
     export class DataService implements IDataService {
 
-        constructor(private $http: ng.IHttpService, private $q: ng.IQService, private localStorage) { }
+        constructor(private $http: ng.IHttpService, private $q: ng.IQService, private localStorageService: Common.ILocalStorageService) { }
 
         public fromServiceOrCache = (options:any) => {
             var deferred = this.$q.defer();
@@ -24,5 +24,5 @@
         }
     }
 
-    angular.module("app.data").service("dataService", ["$http", "$q", "localStorage", DataService]);
+    angular.module("app.data").service("dataService", ["$http", "$q", "localStorageService", DataService]);
 } 

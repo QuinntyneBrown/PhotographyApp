@@ -2,7 +2,11 @@
 
     "use strict";
 
-    class RequestCounter implements IRequestCounter {
+    /**
+    * @name RequestCounter
+    * @module App.Common
+    */
+    export class RequestCounter implements IRequestCounter {
 
         constructor(private $q: ng.IQService) { }
 

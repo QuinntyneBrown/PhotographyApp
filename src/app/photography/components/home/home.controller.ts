@@ -1,5 +1,11 @@
-﻿    module App.Photography {
-    
+﻿module App.Photography {
+
+    "use strict";
+
+    /**
+     * @name HomeController
+     * @module App.Photography
+     */
     export class HomeController implements IHomeController {
         constructor(photoModel: IPhoto) { }
 

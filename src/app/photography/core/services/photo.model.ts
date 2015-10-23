@@ -28,5 +28,5 @@
         public set base64String(value: string) { this._base64String = value; }
     }
 
-    angular.module("app.photography").service("photo", [Photo]);
+    angular.module("app.photography").service("photo", ["$q",Photo]);
 }

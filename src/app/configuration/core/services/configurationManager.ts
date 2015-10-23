@@ -1,5 +1,9 @@
 ﻿module App.Configuration {
     
+    /**
+     * @name ConfigurationManager
+     * @module App.Configuration
+     */
     export class ConfigurationManager {
         
         constructor() { }
