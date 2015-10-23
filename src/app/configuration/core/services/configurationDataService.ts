@@ -8,12 +8,12 @@
      */
     export class ConfigurationDataService implements IConfigurationDataService {
         
-        constructor(private apiEndpointConfig:Common.IApiEndpointConfig, private dataService: Data.IDataService) {
+        constructor(private apiEndpoint:Common.IApiEndpointConfig, private dataService: Data.IDataService) {
             
         }
 
     }
 
-    angular.module("app.configuration").service("configurationDataService", ["apiEndpointConfig","dataService",ConfigurationDataService]);
+    angular.module("app.configuration").service("configurationDataService", ["apiEndpoint","dataService",ConfigurationDataService]);
 
 } 

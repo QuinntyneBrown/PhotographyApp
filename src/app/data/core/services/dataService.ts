@@ -2,6 +2,7 @@
     
     /**
      * @name DataService
+     * @module App.Data
      */
     export class DataService implements IDataService {
 
