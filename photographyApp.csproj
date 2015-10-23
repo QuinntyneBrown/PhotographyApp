@@ -76,6 +76,7 @@
     <Content Include="node_modules\lovefield\dist\lovefield.js" />
     <Content Include="node_modules\rx-angular\dist\rx.angular.js" />
     <Content Include="node_modules\rx\dist\rx.all.js" />
+    <Content Include="src\app\photography\components\photoUpload\photoUpload.html" />
     <Content Include="src\app\photography\components\rateCalculator\rateCalculator.css">
       <DependentUpon>rateCalculator.scss</DependentUpon>
     </Content>
@@ -99,6 +100,13 @@
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="node_modules\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="src\app\security\components\login\login.css">
+      <DependentUpon>login.scss</DependentUpon>
+    </Content>
+    <Content Include="src\app\security\components\login\login.html" />
+    <Content Include="src\app\security\components\login\login.min.css">
+      <DependentUpon>login.css</DependentUpon>
+    </Content>
     <Content Include="src\app\ui\components\appFooter\appFooter.css.map">
       <DependentUpon>appFooter.css</DependentUpon>
     </Content>
@@ -108,6 +116,10 @@
     </Content>
     <None Include="Properties\PublishProfiles\photographyapp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\photographyapp - Web Deploy.pubxml" />
+    <Content Include="src\app\security\components\login\login.scss" />
+    <Content Include="src\app\security\components\login\login.css.map">
+      <DependentUpon>login.css</DependentUpon>
+    </Content>
     <None Include="src\app\ui\components\appFooter\appFooter.scss" />
     <Content Include="src\app\ui\components\appHeader\appHeader.css">
       <DependentUpon>appHeader.scss</DependentUpon>
@@ -119,6 +131,12 @@
     <Content Include="src\app\ui\components\appHeader\appHeader.css.map">
       <DependentUpon>appHeader.css</DependentUpon>
     </Content>
+    <Content Include="src\app\ui\components\callout\callout.css">
+      <DependentUpon>callout.scss</DependentUpon>
+    </Content>
+    <Content Include="src\app\ui\components\callout\callout.min.css">
+      <DependentUpon>callout.css</DependentUpon>
+    </Content>
     <Content Include="src\app\ui\components\carousel\carousel.css">
       <DependentUpon>carousel.scss</DependentUpon>
     </Content>
@@ -129,7 +147,21 @@
     <Content Include="src\app\ui\components\carousel\carousel.css.map">
       <DependentUpon>carousel.css</DependentUpon>
     </Content>
+    <Content Include="src\app\ui\components\callout\callout.scss" />
+    <Content Include="src\app\ui\components\callout\callout.css.map">
+      <DependentUpon>callout.css</DependentUpon>
+    </Content>
     <None Include="src\app\ui\components\fileUpload\fileUpload.scss" />
+    <Content Include="src\app\ui\components\modal\modal.css">
+      <DependentUpon>modal.scss</DependentUpon>
+    </Content>
+    <Content Include="src\app\ui\components\modal\modal.min.css">
+      <DependentUpon>modal.css</DependentUpon>
+    </Content>
+    <Content Include="src\app\ui\components\modal\modal.scss" />
+    <Content Include="src\app\ui\components\modal\modal.css.map">
+      <DependentUpon>modal.css</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -166,10 +198,12 @@
     <TypeScriptCompile Include="src\app\common\common.d.ts" />
     <TypeScriptCompile Include="src\app\common\common.module.ts" />
     <TypeScriptCompile Include="src\app\common\core\services\apiEndpointProvider.ts" />
+    <TypeScriptCompile Include="src\app\common\core\services\componentStyleSheetMappings.ts" />
     <TypeScriptCompile Include="src\app\common\core\services\localStorage.ts" />
     <TypeScriptCompile Include="src\app\common\core\services\localStorageService.ts" />
     <TypeScriptCompile Include="src\app\common\core\services\requestCounter.ts" />
     <TypeScriptCompile Include="src\app\common\core\services\routeResolverServiceProvider.ts" />
+    <TypeScriptCompile Include="src\app\common\core\utilities\loadStyleSheet.ts" />
     <TypeScriptCompile Include="src\app\configuration\configuration.d.ts" />
     <TypeScriptCompile Include="src\app\configuration\configuration.module.ts" />
     <TypeScriptCompile Include="src\app\configuration\core\services\configuration.model.ts" />
@@ -179,6 +213,7 @@
     <TypeScriptCompile Include="src\app\data\data.d.ts" />
     <TypeScriptCompile Include="src\app\data\data.module.ts" />
     <TypeScriptCompile Include="src\app\photography\components\home\home.controller.ts" />
+    <TypeScriptCompile Include="src\app\photography\components\photoUpload\photoUpload.controller.ts" />
     <TypeScriptCompile Include="src\app\photography\components\rateCalculator\rateCalculator.controller.ts" />
     <TypeScriptCompile Include="src\app\photography\components\rateCalculator\rateCalculator.directive.ts" />
     <TypeScriptCompile Include="src\app\photography\core\services\gallery.model.ts" />
@@ -190,6 +225,8 @@
     <TypeScriptCompile Include="src\app\photography\core\services\photographyAppHeaderManager.ts" />
     <TypeScriptCompile Include="src\app\photography\core\services\photoDataService.ts" />
     <TypeScriptCompile Include="src\app\photography\core\services\photographyManager.ts" />
+    <TypeScriptCompile Include="src\app\security\components\login\login.controller.ts" />
+    <TypeScriptCompile Include="src\app\security\components\login\login.directive.ts" />
     <TypeScriptCompile Include="src\app\security\security.d.ts" />
     <TypeScriptCompile Include="src\app\security\security.module.ts" />
     <TypeScriptCompile Include="src\app\security\security.routes.ts" />
@@ -229,7 +266,6 @@
     <TypeScriptCompile Include="typings\typeScriptApp.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\app\security\components\login\" />
     <Folder Include="src\app\ui\core\" />
     <Folder Include="test\configuration\" />
     <Folder Include="test\photography\" />

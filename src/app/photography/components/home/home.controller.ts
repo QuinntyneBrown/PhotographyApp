@@ -7,7 +7,8 @@
      * @module App.Photography
      */
     export class HomeController implements IHomeController {
-        constructor(photoModel: IPhoto) { }
+        //constructor(photo: IPhoto, routeData: any) { }
+        constructor() { }
 
         private _slideTemplate: string;
 
@@ -25,7 +26,7 @@
             return ["$http", "$q", "photoDataService", ($http: ng.IHttpService, $q: ng.IQService, photoDataService: IPhotoDataService) => {
                 var deferred = $q.defer();
                 $q.all([
-                    $http.get("src/app/photography/views/partials/slideTemplate.html"),
+                    $http.get("src/app/photography/components/home/photoSlide.html"),
                     photoDataService.getAllFeaturedPhotos()
                 ]).then((results: any) => {
                     deferred.resolve({
@@ -39,7 +40,7 @@
     }
 
     angular.module("app.photography")
-        .controller("homeController", ["photo", HomeController])
+        .controller("homeController", [HomeController])
         .config(["routeResolverServiceProvider", (routeResolverServiceProvider: App.Common.IRouteResolverServiceProvider) => {
 
         routeResolverServiceProvider.configure({

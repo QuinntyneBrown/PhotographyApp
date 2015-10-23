@@ -16,6 +16,9 @@ angular.module("photographyApp", [
     "$routeProvider", ($routeProvider: ng.route.IRouteProvider) => {
         App.Photography.Routes.Configure($routeProvider);
         App.Security.Routes.Configure($routeProvider);
-}]).run([() => {
-    FastClick.attach(document.body);
-}]);
+    }
+]).run([
+    () => {
+        FastClick.attach(document.body);
+    }
+]);

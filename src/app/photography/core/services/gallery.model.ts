@@ -24,6 +24,18 @@
         public get photos() { return this._photos; }
 
         public set photos(value: Array<IPhoto>) { this._photos = value; }
+
+        private _description: string;
+
+        public get description() { return this._description; }
+
+        public set description(value: string) { this._description = value; }
+
+        private _title: string;
+
+        public get title() { return this._title; }
+
+        public set title(value: string) { this._title = value; }
     }
 
     angular.module("app.photography").service("gallery", ["$q",Gallery]);

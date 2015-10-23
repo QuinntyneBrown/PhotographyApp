@@ -1,5 +1,7 @@
 ﻿module App.Common {
 
+    "use strict";
+
     /**
     * @name RouteResolverServiceProvider
     * @module App.Common
@@ -44,7 +46,7 @@
 
         private routeParams: any;
 
-        private get routePromises() {
+        public get routePromises() {
             return this._routePromises.sort((a: IRoutePromise, b: IRoutePromise) => {
                 return a.priority - b.priority;
             });
@@ -59,14 +61,10 @@
             });
         }
 
-        private get routePromiseGroups() {
-            return null;
-        }
-
         /**
-         * Group StatePromises by Priority
+         * Group RoutePromises by Priority
          */
-        private groupRoutePromisesByPriority = (routePromises: IRoutePromise[]) => {
+        public groupRoutePromisesByPriority = (routePromises: IRoutePromise[]) => {
 
             var priorities: any = [];
 

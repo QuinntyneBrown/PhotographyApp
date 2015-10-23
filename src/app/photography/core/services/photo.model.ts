@@ -26,6 +26,13 @@
         public get base64String() { return this._base64String; }
 
         public set base64String(value: string) { this._base64String = value; }
+
+        private _description: string;
+
+        public get description() { return this._description; }
+
+        public set description(value:string) { this._description = value; }
+
     }
 
     angular.module("app.photography").service("photo", ["$q",Photo]);

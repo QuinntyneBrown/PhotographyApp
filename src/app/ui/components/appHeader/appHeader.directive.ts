@@ -22,10 +22,13 @@ module App.UI {
 
         public controller: string = "appHeaderController";
 
+        public styles: string;
+
         public link = (scope:ng.IScope, element: ng.IAugmentedJQuery, attributes:ng.IAttributes) => {
             
         }
     }
 
     angular.module("app.ui").directive("appHeader", [AppHeader.createInstance]);
+
 }

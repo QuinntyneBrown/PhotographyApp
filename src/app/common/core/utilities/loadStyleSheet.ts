@@ -18,17 +18,17 @@ module App.Common {
         var loaded = false;
 
         for (var i = 0, max = styleSheets.length; i < max; i++) {
-            if (styleSheets[i].href == options.styleSheetHref) {
+            if (styleSheets[i].href == options.styleSheetUrl) {
                 loaded = true;
                 deferred.resolve();                
             }
         }
 
         if (!loaded) {
-            $http({ method: "GET", url: options.styleSheetHref, cache: true }).then(() => {
+            $http({ method: "GET", url: options.styleSheetUrl, cache: true }).then(() => {
                 var link = document.createElement("link");
                 link.rel = "stylesheet";
-                link.href = options.styleSheetHref;
+                link.href = options.styleSheetUrl;
                 document.getElementsByTagName("head")[0].appendChild(link);
                 deferred.resolve();
             });

@@ -1,7 +1,9 @@
 ﻿/// <reference path="../../../typings/typescriptapp.d.ts" />
 
 module App.Photography {
-    
+
+    "use strict";
+
     export class Routes {
         
         public static Configure = ($routeProvider: ng.route.IRouteProvider) => {
@@ -15,6 +17,13 @@ module App.Photography {
                 //    }]
                 //}
             });
+
+            $routeProvider.when("/upload", {
+                templateUrl: "src/app/photography/components/photoUpload/photoUpload.html",
+                controller: "photoUploadController",
+                controllerAs: "vm"
+            });
         }
     }
+
 } 

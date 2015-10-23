@@ -1,5 +1,16 @@
 ﻿declare module App.Common {
     
+    export interface IComponentStyleSheetsMappingsProvider {
+        configure(options:any):void;
+    }
+
+    export interface IComponentStyleSheetMapping {
+        
+    }
+
+    export interface IComponentStyleSheetsMappings {
+        getStyleSheetsForComponent(options:any):Array<string>;
+    }
 
     /**
      * @name ILoadCss
@@ -23,6 +34,8 @@
     */
     export interface IRouteResolverServiceProvider extends ng.IServiceProvider {
         configure(routePromise: IRoutePromise);
+        routePromises: Array<IRoutePromise>;
+        groupRoutePromisesByPriority(routePromises: IRoutePromise[]): Array<IRoutePromisesPrioritizedGroup>;
     }
 
     /**
@@ -88,7 +101,6 @@
         priority: number;
         isLast: boolean;
     }
-
 
     /**
     * @name IApiEndpointProvider
