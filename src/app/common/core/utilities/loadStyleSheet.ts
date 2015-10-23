@@ -4,7 +4,12 @@ module App.Common {
 
     "use strict";
 
-    var loadCss = (options: any) => {
+    /**
+    * @name ILoadStyleSheet
+    * @module App.Common
+    * @description load styleSheet if not already loaded
+    */
+    var loadStyleSheet: ILoadStyleSheet = (options: any) => {
 
         var $q: ng.IQService = <ng.IQService>angular.injector(['ng']).get("$q");
         var $http: ng.IHttpService = <ng.IHttpService>angular.injector(['ng']).get("$http");
@@ -32,5 +37,5 @@ module App.Common {
         return deferred.promise;
     }
 
-    angular.module("app.common").value("loadCss", loadCss);
+    angular.module("app.common").value("loadStyleSheet", loadStyleSheet);
 } 

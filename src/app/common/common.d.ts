@@ -1,5 +1,14 @@
 ﻿declare module App.Common {
     
+
+    /**
+     * @name ILoadCss
+     * @module App.Common
+     * @description load styleSheet if not already loaded
+     */
+    export interface ILoadStyleSheet {
+        (options:any):ng.IPromise<any>
+    }
     /**
     * @name IRequestCounter
     * @module App.Common
