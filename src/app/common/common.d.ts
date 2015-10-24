@@ -81,6 +81,7 @@
     export interface IApiEndpointConfig {
         baseUrls: IEndpointDefinition[];
         getBaseUrl(name?: string): string;
+        configure(baseUrl: string, name?: string):void;
     }
 
     /**

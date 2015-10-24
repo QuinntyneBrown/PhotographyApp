@@ -29,7 +29,11 @@ module App.Common {
                  }
                  return baseUrl;
              },
-             baseUrls: []
+             baseUrls: [],
+             configure: function (baseUrl: string, name?: string) {
+                 var self = this;
+                 self.baseUrls.push({ url: baseUrl, name: name });    
+             }
          };
 
          configure(baseUrl: string, name?: string): void {

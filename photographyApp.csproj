@@ -249,6 +249,7 @@
     <TypeScriptCompile Include="src\app\ui\ui.d.ts" />
     <TypeScriptCompile Include="src\app\ui\ui.module.ts" />
     <TypeScriptCompile Include="test\common\routeResolverServiceProvider.spec.ts" />
+    <TypeScriptCompile Include="test\ui\callout.controller.spec.ts" />
     <TypeScriptCompile Include="typings\angular-material\angular-material.d.ts" />
     <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />
     <TypeScriptCompile Include="typings\angularjs\angular-animate.d.ts" />
@@ -270,7 +271,6 @@
     <Folder Include="test\configuration\" />
     <Folder Include="test\photography\" />
     <Folder Include="test\security\" />
-    <Folder Include="test\ui\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

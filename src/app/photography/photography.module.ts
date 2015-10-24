@@ -13,9 +13,11 @@ angular.module("app.photography", [
 angular.module("photographyApp", [
     "app.photography"
 ]).config([
-    "$routeProvider", ($routeProvider: ng.route.IRouteProvider) => {
+    "$routeProvider", "apiEndpointProvider", ($routeProvider: ng.route.IRouteProvider, apiEndpointProvider: App.Common.IApiEndpointProvider) => {        
         App.Photography.Routes.Configure($routeProvider);
         App.Security.Routes.Configure($routeProvider);
+
+        apiEndpointProvider.configure("http://configurationapi.azurewebsites.net/api", "configuration");
     }
 ]).run([
     () => {
