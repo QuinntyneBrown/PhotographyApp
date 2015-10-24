@@ -11,12 +11,14 @@
             private $attrs: ng.IAttributes,
             private $compile: ng.ICompileService,
             private $element: ng.IAugmentedJQuery,
+            private $http: ng.IHttpService,
+            private $q:ng.IQService,
             private $scope: any) {
 
             this.bootstrap($element);
 
             $scope.$on("$destroy", () => {
-                // clean up
+                
             });
         }
 
@@ -27,7 +29,9 @@
         public bootstrap = ($element: ng.IAugmentedJQuery) => {
             var nativeElement = $element[0];
             nativeElement.addEventListener(this.$attrs["triggerEvent"] || "click", () => {
-
+                if (!this.isAnimating) {
+                    
+                }
             });
         }
 
@@ -37,14 +41,42 @@
 
         public isAnimating: boolean = false;
 
-        public open = () => {
+
+        public get openPromises() {
+            return [
+
+            ];
+        }
+
+        public closeSequenceAsync = () => {
+            
+        }
+
+        public openAsync = () => {
+            var deferred = this.$q.defer();
+            this.isAnimating = true;
+            
+            if (this.$attrs["calloutTemplateUrl"]) {
+                this.$http({ method: "GET", url: this.$attrs["calloutTemplateUrl"]}).then((results) => {
+
+                });
+            } else {
+                
+            }
+
+            return deferred.promise;
 
         }
 
-        public close = () => {
+        public defaultCalloutTemplate: string = ["<div>", "<h1>Callout</h1>", "</div>"].join(" ");
 
+        public closeAsync = () => {
+            var deferred = this.$q.defer();
+            this.isAnimating = true;
+
+            return deferred.promise;
         }
     }
 
-    angular.module("app.ui").controller("calloutController", ["$attrs","$compile", "$element", "$scope", CalloutController]);
+    angular.module("app.ui").controller("calloutController", ["$attrs", "$compile", "$element", "$http", "$q", "$scope", CalloutController]);
 } 

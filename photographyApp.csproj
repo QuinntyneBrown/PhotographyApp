@@ -246,6 +246,10 @@
     <TypeScriptCompile Include="src\app\ui\components\modal\modal.service.ts" />
     <TypeScriptCompile Include="src\app\ui\components\virtualFor\virtualFor.controller.ts" />
     <TypeScriptCompile Include="src\app\ui\components\virtualFor\virtualFor.directive.ts" />
+    <TypeScriptCompile Include="src\app\ui\core\services\position.ts" />
+    <TypeScriptCompile Include="src\app\ui\core\services\rectangle.ts" />
+    <TypeScriptCompile Include="src\app\ui\core\services\ruler.ts" />
+    <TypeScriptCompile Include="src\app\ui\core\utilities\translateXY.ts" />
     <TypeScriptCompile Include="src\app\ui\ui.d.ts" />
     <TypeScriptCompile Include="src\app\ui\ui.module.ts" />
     <TypeScriptCompile Include="test\common\routeResolverServiceProvider.spec.ts" />
@@ -267,7 +271,6 @@
     <TypeScriptCompile Include="typings\typeScriptApp.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\app\ui\core\" />
     <Folder Include="test\configuration\" />
     <Folder Include="test\photography\" />
     <Folder Include="test\security\" />

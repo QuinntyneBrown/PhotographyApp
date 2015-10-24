@@ -14,7 +14,7 @@ module App.UI {
 
         public static createInstance = () => { return new Callout(); }
 
-        public static styleUrls: Array<string> = ["/src/app/ui/compoonents/callout/callout.css"];
+        public static styleUrls: Array<string> = ["/src/app/ui/components/callout/callout.css"];
 
         public restrict: string = "A";
 
