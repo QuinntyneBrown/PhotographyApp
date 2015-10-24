@@ -11,7 +11,6 @@ module App.UI {
             private $compile: ng.ICompileService,
             private $element: ng.IAugmentedJQuery,
             private $scope: ICarouselScope) {
-            this.initialRender();
         }
 
         public onNext = () => {
@@ -22,41 +21,34 @@ module App.UI {
 
         }
 
-        private initialRender = () => {
-            var template = this.$scope.slideTemplate;
-            var items: Array<any> = this.parseItems(this.$scope, this.$attrs);
-            var itemName: string = this.parseItemName(this.$attrs);
+        private _templateRef: ng.IAugmentedJQuery;
+        
+        public get templateRef() { return this._templateRef; }
+        
+        public set templateRef(value: ng.IAugmentedJQuery) { this._templateRef = value; }
 
-            for (var i = 0; i < items.length; i++) {
+        private _items: Array<any>;
+
+        public get items() { return this._items; }
+
+        public set items(value: Array<any>) {
+             this._items = value;
+        }
+                 
+        private initialRender = () => {                        
+            for (var i = 0; i < this.items.length; i++) {
                 var fragment = document.createDocumentFragment();
                 var childScope: any = this.$scope.$new(true);
-                childScope[itemName] = items[i];
+                childScope["carouselItem"] = this.items[i];
                 childScope.$$index = i;
-                var itemContent = this.$compile(angular.element(template))(childScope);
+                var itemContent = this.$compile(this.templateRef)(childScope);
                 fragment.appendChild(itemContent[0]);
             }
-            this.$element[0].appendChild(fragment);
+            var viewPortRef = this.$element.find(".view-port");            
+            viewPortRef[0].appendChild(fragment);
         }
 
-        private parseItemName = ($attrs: ng.IAttributes): string => {
-            var match = $attrs["carousel"].match(/^\s*(.+)\s+in\s+(.*?)\s*(\s+track\s+by\s+(.+)\s*)?$/);
-            return match[1];
-        }
- 
-        private parseItems = ($scope: ng.IScope, $attrs: ng.IAttributes): Array<any> => {
-            var match = $attrs["carousel"].match(/^\s*(.+)\s+in\s+(.*?)\s*(\s+track\s+by\s+(.+)\s*)?$/);
-            if (match) {
-                var collectionStringArray = match[2].split(".");
-                var items: any = $scope;
-                for (var i = 0; i < collectionStringArray.length; i++) {
-                    items = items[collectionStringArray[i]];
-                }
-                return items;
-            } else {
-                return JSON.parse($attrs["carousel"]);
-            }
-        }
     }
 
-    angular.module("app.ui").controller("carouselControler", ["$attrs", "$compile", "$element", "$scope", CarouselController]);
+    angular.module("app.ui").controller("carouselController", ["$attrs", "$compile", "$element", "$scope", CarouselController]);
 } 

@@ -22,16 +22,22 @@ module App.UI {
         public template: string = [
             "<div>",
             "<button>Next Tab</button>",
-            "<div ng-transclude='titleSlot'></div>",
-            "<div ng-transclude='currenSlot'></div>",
             "</div>"
         ].join(" ");
 
-        public transclude = { tabTitle: 'titleSlot', tabContent: 'contentSlot' };
+        public transclude:string = "element";
 
         public controller: string = "tabsController";
 
         public controllerAs: string = "vm";
+
+        public compile = (template: ng.IAugmentedJQuery) => {
+            return (scope: ng.IScope, element: ng.IAugmentedJQuery, attributes: ng.IAttributes, controller: any, transclude: any) => {
+                transclude(scope.$new(), (clone: ng.IAugmentedJQuery) => {
+                    
+                });
+            }
+        };
 
     }
 

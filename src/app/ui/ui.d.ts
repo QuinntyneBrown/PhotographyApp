@@ -123,4 +123,8 @@
         position: string;
         elementRect: ClientRect;
     }
+
+    export interface IGetHtmlFn {
+        (who: HTMLElement, deep: boolean): string
+    }
 } 

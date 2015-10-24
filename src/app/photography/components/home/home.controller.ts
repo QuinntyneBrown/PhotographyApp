@@ -8,7 +8,11 @@
      */
     export class HomeController implements IHomeController {
         //constructor(photo: IPhoto, routeData: any) { }
-        constructor() { }
+        constructor() {
+
+            this.photos = [{ base64String: "" }];
+
+        }
 
         private _slideTemplate: string;
 

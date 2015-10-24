@@ -175,7 +175,6 @@
     <Content Include="index.html" />
     <Content Include="karma.conf.js" />
     <Content Include="node_modules\angular-ui-router\release\angular-ui-router.js" />
-    <Content Include="node_modules\angular\angular.js" />
     <Content Include="src\app\photography\components\home\home.html" />
     <Content Include="src\app\photography\components\home\photoSlide.html" />
     <Content Include="src\app\ui\components\appFooter\appFooter.css">
@@ -186,7 +185,6 @@
       <DependentUpon>appFooter.css</DependentUpon>
     </Content>
     <Content Include="src\app\ui\components\appHeader\appHeader.html" />
-    <Content Include="src\app\ui\components\carousel\carousel.html" />
     <Content Include="src\reset.css" />
     <Content Include="src\styles.css" />
     <Content Include="Web.config" />
@@ -244,11 +242,19 @@
     <TypeScriptCompile Include="src\app\ui\components\fileUpload\fileUpload.controller.ts" />
     <TypeScriptCompile Include="src\app\ui\components\fileUpload\uploadService.ts" />
     <TypeScriptCompile Include="src\app\ui\components\modal\modal.service.ts" />
+    <TypeScriptCompile Include="src\app\ui\components\tabs\tabContent.controller.ts" />
+    <TypeScriptCompile Include="src\app\ui\components\tabs\tabContent.directive.ts" />
+    <TypeScriptCompile Include="src\app\ui\components\tabs\tabs.directive.ts" />
+    <TypeScriptCompile Include="src\app\ui\components\tabs\tabs.controller.ts" />
+    <TypeScriptCompile Include="src\app\ui\components\tabs\tabTitle.controller.ts" />
+    <TypeScriptCompile Include="src\app\ui\components\tabs\tabTitle.directive.ts" />
     <TypeScriptCompile Include="src\app\ui\components\virtualFor\virtualFor.controller.ts" />
     <TypeScriptCompile Include="src\app\ui\components\virtualFor\virtualFor.directive.ts" />
     <TypeScriptCompile Include="src\app\ui\core\services\position.ts" />
     <TypeScriptCompile Include="src\app\ui\core\services\rectangle.ts" />
     <TypeScriptCompile Include="src\app\ui\core\services\ruler.ts" />
+    <TypeScriptCompile Include="src\app\ui\core\services\space.ts" />
+    <TypeScriptCompile Include="src\app\ui\core\utilities\getHTML.ts" />
     <TypeScriptCompile Include="src\app\ui\core\utilities\translateXY.ts" />
     <TypeScriptCompile Include="src\app\ui\ui.d.ts" />
     <TypeScriptCompile Include="src\app\ui\ui.module.ts" />
