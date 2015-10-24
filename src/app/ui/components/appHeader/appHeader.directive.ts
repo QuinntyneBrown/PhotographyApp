@@ -1,7 +1,13 @@
 ﻿/// <reference path="../../../../../typings/typescriptapp.d.ts" />
  
 module App.UI {
-    
+
+    "use strict";
+
+    /**
+     * @name AppHeader
+     * @module App.UI
+     */
     export class AppHeader {
         
         public static createInstance = () => { return new AppHeader(); }
