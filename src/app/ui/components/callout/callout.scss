@@ -3,17 +3,11 @@
     top:0;
     left:0;
     z-index:9999;
-    -webkit-transition: transform .500s;
-    -moz-transition: transform .500s;
-    -o-transition: transform .500s;
-    -ms-transition: transform .500s;
-    transition: transform .500s;
-}
-
-.callout.no-transition {
-    -webkit-transition: none !important;
-    -moz-transition: none !important;
-    -o-transition: none !important;
-    -ms-transition: none !important;
-  transition: none !important;
+    opacity:0;
+    display:block;
+    -webkit-transition: opacity  .500s;
+    -moz-transition: opacity  .500s;
+    -o-transition: opacity  .500s;
+    -ms-transition: opacity  .500s;
+    transition: opacity  .500s;
 }
