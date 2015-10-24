@@ -23,6 +23,10 @@
                 if (this.calloutScope)
                     this.calloutScope.$destroy();
 
+                if (this.nativeCalloutHTMLElement) {
+                    this.nativeCalloutHTMLElement.parentNode.removeChild(this.nativeCalloutHTMLElement);
+                }
+
                 this.calloutAugmentedJQuery = null;
                 this.calloutScope = null;
                 this.closeCalloutScheduledPromise = null;
@@ -144,7 +148,7 @@
 
         public closeCalloutScheduledPromise: any = null;
 
-        public defaultCalloutTemplate: string = ["<div>", "<h1>Callout</h1>", "</div>"].join(" ");
+        public defaultCalloutTemplate: string = ["<div class='callout'>", "<h1>Callout</h1>", "</div>"].join(" ");
 
         public calloutTemplate: string;
 

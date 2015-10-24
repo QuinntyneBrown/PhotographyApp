@@ -99,6 +99,10 @@
         radiusY: number;
     }
 
+    export interface IModalService {
+        
+    }
+
     export interface IPoint {
         x: number;
         y: number;

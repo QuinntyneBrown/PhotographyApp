@@ -10,9 +10,7 @@
 
         constructor(private $q: ng.IQService) { }
 
-        public static instance = ($q) => {
-            return new RequestCounter($q);
-        }
+        public static createInstance = ($q) => { return new RequestCounter($q); }
 
         private requests: number = 0;
 
@@ -41,7 +39,7 @@
         }
     }
 
-    angular.module("app.common").factory("requestCounter", ["$q", RequestCounter.instance])
+    angular.module("app.common").factory("requestCounter", ["$q", RequestCounter.createInstance])
         .config([
             "$httpProvider", ($httpProvider) => {
                 $httpProvider.interceptors.push("requestCounter");
