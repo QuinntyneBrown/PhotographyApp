@@ -8,8 +8,11 @@ module App.Photography {
         
         constructor() {}
 
+        public get photoUploadUrl() { return "http://localhost:65186/api/photo/upload"; }
+
     }
 
+    
     angular.module("app.photography").controller("photoUploadController", [PhotoUploadController]);
 }
  

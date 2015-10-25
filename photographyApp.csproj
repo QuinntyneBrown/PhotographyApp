@@ -184,7 +184,6 @@
     <Content Include="src\app\ui\components\appFooter\appFooter.min.css">
       <DependentUpon>appFooter.css</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\appHeader\appHeader.html" />
     <Content Include="src\reset.css" />
     <Content Include="src\styles.css" />
     <Content Include="Web.config" />
@@ -240,7 +239,6 @@
     <TypeScriptCompile Include="src\app\ui\components\carousel\carousel.directive.ts" />
     <TypeScriptCompile Include="src\app\ui\components\fileUpload\fileUpload.directive.ts" />
     <TypeScriptCompile Include="src\app\ui\components\fileUpload\fileUpload.controller.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\fileUpload\uploadService.ts" />
     <TypeScriptCompile Include="src\app\ui\components\modal\modal.service.ts" />
     <TypeScriptCompile Include="src\app\ui\components\tabs\tabContent.controller.ts" />
     <TypeScriptCompile Include="src\app\ui\components\tabs\tabContent.directive.ts" />

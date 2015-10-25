@@ -27,7 +27,11 @@ module App.UI {
 
         public scope: any = {};
 
+        public controller: string = "fileUploadController";
+
+        public controllerAs:string = "vm";
+
     }
 
-    angular.module("app.ui").directive("fileUpload", ["$rootScope", "uploadService", FileUpload.createInstance]);
+    angular.module("app.ui").directive("fileUpload", [FileUpload.createInstance]);
 } 

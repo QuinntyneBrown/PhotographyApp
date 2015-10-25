@@ -22,6 +22,11 @@ module App.Photography {
                 templateUrl: "src/app/photography/components/photoUpload/photoUpload.html",
                 controller: "photoUploadController",
                 controllerAs: "vm"
+                //resolve: {
+                //    routeData: ["routeResolverService", (routeResolverService:App.Common.IRouteResolverService) => {
+                //        return routeResolverService.resolve("/upload");
+                //    }]
+                //}
             });
         }
     }

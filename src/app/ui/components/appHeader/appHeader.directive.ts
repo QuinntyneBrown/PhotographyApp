@@ -12,15 +12,24 @@ module App.UI {
         
         public static createInstance = () => { return new AppHeader(); }
 
-        public styles: string;
+        public static styles: string;
 
-        public templateUrl: string = "/src/app/ui/components/appHeader/appHeader.html";
+        public template: string = [
+            "<div>",
+            "<div>",
+            "<a data-ng-repeat='link in vm.links'>",
+            "{{ ::link.caption }",
+            "}",
+            "</a>",
+            "</div>",
+            "</div>"
+        ].join(" ");
 
         public restrict: string = "E";
 
         public replace: boolean = true;
 
-        public scope:any = { appHeaderManagerName:"@" }
+        public scope:any = {};
 
         public controllerAs: string = "vm";
 

@@ -12,18 +12,19 @@
             private $element: ng.IAugmentedJQuery,
             private $http: ng.IHttpService,
             private $scope: ng.IScope) {
+
             this.bootstrap({ element: $element });
         }
 
-        public onDrop = (dragEvent: DragEvent) => {
+        private onDrop = (dragEvent: DragEvent) => {
             dragEvent.stopPropagation();
             dragEvent.preventDefault();
 
             if (dragEvent.dataTransfer && dragEvent.dataTransfer.files) {
                 this.$http({
                     method: "POST",
-                    url: this.$attrs["file-upload-url"],
-                    data: { formData: this.packageFiles(dragEvent.dataTransfer.files) },
+                    url: this.$attrs["fileUploadUrl"],
+                    data: this.packageFiles(dragEvent.dataTransfer.files),
                     headers: { 'Content-Type': undefined }
                 }).then((results) => {
                     this.$scope.$emit("fileUpload", {
@@ -33,7 +34,7 @@
             }
         }
 
-        public packageFiles = (fileList: FileList) => {
+        private packageFiles = (fileList: FileList) => {
             var formData = new FormData();
             for (var i = 0; i < fileList.length; i++) {
                 formData.append(fileList[i].name, fileList[i]);
@@ -41,7 +42,7 @@
             return formData;
         }
 
-        public bootstrap = (options:any) => {
+        private bootstrap = (options:any) => {
             var drop = options.element.find(".drop-zone")[0];
             
             drop.addEventListener("dragover", (dragEvent: DragEvent) => {
@@ -53,4 +54,12 @@
         }
         
     }
+
+    angular.module("app.ui").controller("fileUploadController", [
+        "$attrs",
+        "$element",
+        "$http",
+        "$scope",
+        FileUploadController
+    ]);
 }
