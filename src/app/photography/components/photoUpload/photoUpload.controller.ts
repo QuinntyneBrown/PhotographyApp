@@ -4,6 +4,10 @@ module App.Photography {
 
     "use strict";
 
+    /**
+     * @name photoUploadController
+     * @module App.Photography
+     */
     export class PhotoUploadController {
         
         constructor() {}
