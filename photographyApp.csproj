@@ -76,22 +76,22 @@
     <Content Include="node_modules\lovefield\dist\lovefield.js" />
     <Content Include="node_modules\rx-angular\dist\rx.angular.js" />
     <Content Include="node_modules\rx\dist\rx.all.js" />
-    <Content Include="src\app\photography\components\photoUpload\photoUpload.html" />
-    <Content Include="src\app\photography\components\rateCalculator\rateCalculator.css">
+    <Content Include="src\photography\components\photoUpload\photoUpload.html" />
+    <Content Include="src\photography\components\rateCalculator\rateCalculator.css">
       <DependentUpon>rateCalculator.scss</DependentUpon>
     </Content>
-    <Content Include="src\app\photography\components\rateCalculator\rateCalculator.html" />
-    <Content Include="src\app\photography\components\rateCalculator\rateCalculator.min.css">
+    <Content Include="src\photography\components\rateCalculator\rateCalculator.html" />
+    <Content Include="src\photography\components\rateCalculator\rateCalculator.min.css">
       <DependentUpon>rateCalculator.css</DependentUpon>
     </Content>
-    <Content Include="src\app\photography\photography.css">
+    <Content Include="src\photography\photography.css">
       <DependentUpon>photography.scss</DependentUpon>
     </Content>
-    <Content Include="src\app\photography\photography.min.css">
+    <Content Include="src\photography\photography.min.css">
       <DependentUpon>photography.css</DependentUpon>
     </Content>
-    <Content Include="src\app\photography\photography.scss" />
-    <Content Include="src\app\photography\photography.css.map">
+    <Content Include="src\photography\photography.scss" />
+    <Content Include="src\photography\photography.css.map">
       <DependentUpon>photography.css</DependentUpon>
     </Content>
     <Content Include="package.json" />
@@ -100,66 +100,66 @@
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="node_modules\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="src\app\security\components\login\login.css">
+    <Content Include="src\security\components\login\login.css">
       <DependentUpon>login.scss</DependentUpon>
     </Content>
-    <Content Include="src\app\security\components\login\login.html" />
-    <Content Include="src\app\security\components\login\login.min.css">
+    <Content Include="src\security\components\login\login.html" />
+    <Content Include="src\security\components\login\login.min.css">
       <DependentUpon>login.css</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\appFooter\appFooter.css.map">
+    <Content Include="src\ui\components\appFooter\appFooter.css.map">
       <DependentUpon>appFooter.css</DependentUpon>
     </Content>
-    <Content Include="src\app\photography\components\rateCalculator\rateCalculator.scss" />
-    <Content Include="src\app\photography\components\rateCalculator\rateCalculator.css.map">
+    <Content Include="src\photography\components\rateCalculator\rateCalculator.scss" />
+    <Content Include="src\photography\components\rateCalculator\rateCalculator.css.map">
       <DependentUpon>rateCalculator.css</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\photographyapp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\photographyapp - Web Deploy.pubxml" />
-    <Content Include="src\app\security\components\login\login.scss" />
-    <Content Include="src\app\security\components\login\login.css.map">
+    <Content Include="src\security\components\login\login.scss" />
+    <Content Include="src\security\components\login\login.css.map">
       <DependentUpon>login.css</DependentUpon>
     </Content>
-    <None Include="src\app\ui\components\appFooter\appFooter.scss" />
-    <Content Include="src\app\ui\components\appHeader\appHeader.css">
+    <None Include="src\ui\components\appFooter\appFooter.scss" />
+    <Content Include="src\ui\components\appHeader\appHeader.css">
       <DependentUpon>appHeader.scss</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\appHeader\appHeader.min.css">
+    <Content Include="src\ui\components\appHeader\appHeader.min.css">
       <DependentUpon>appHeader.css</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\appHeader\appHeader.scss" />
-    <Content Include="src\app\ui\components\appHeader\appHeader.css.map">
+    <Content Include="src\ui\components\appHeader\appHeader.scss" />
+    <Content Include="src\ui\components\appHeader\appHeader.css.map">
       <DependentUpon>appHeader.css</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\callout\callout.css">
+    <Content Include="src\ui\components\callout\callout.css">
       <DependentUpon>callout.scss</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\callout\callout.min.css">
+    <Content Include="src\ui\components\callout\callout.min.css">
       <DependentUpon>callout.css</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\carousel\carousel.css">
+    <Content Include="src\ui\components\carousel\carousel.css">
       <DependentUpon>carousel.scss</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\carousel\carousel.min.css">
+    <Content Include="src\ui\components\carousel\carousel.min.css">
       <DependentUpon>carousel.css</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\carousel\carousel.scss" />
-    <Content Include="src\app\ui\components\carousel\carousel.css.map">
+    <Content Include="src\ui\components\carousel\carousel.scss" />
+    <Content Include="src\ui\components\carousel\carousel.css.map">
       <DependentUpon>carousel.css</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\callout\callout.scss" />
-    <Content Include="src\app\ui\components\callout\callout.css.map">
+    <Content Include="src\ui\components\callout\callout.scss" />
+    <Content Include="src\ui\components\callout\callout.css.map">
       <DependentUpon>callout.css</DependentUpon>
     </Content>
-    <None Include="src\app\ui\components\fileUpload\fileUpload.scss" />
-    <Content Include="src\app\ui\components\modal\modal.css">
+    <None Include="src\ui\components\fileUpload\fileUpload.scss" />
+    <Content Include="src\ui\components\modal\modal.css">
       <DependentUpon>modal.scss</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\modal\modal.min.css">
+    <Content Include="src\ui\components\modal\modal.min.css">
       <DependentUpon>modal.css</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\modal\modal.scss" />
-    <Content Include="src\app\ui\components\modal\modal.css.map">
+    <Content Include="src\ui\components\modal\modal.scss" />
+    <Content Include="src\ui\components\modal\modal.css.map">
       <DependentUpon>modal.css</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
@@ -175,13 +175,12 @@
     <Content Include="index.html" />
     <Content Include="karma.conf.js" />
     <Content Include="node_modules\angular-ui-router\release\angular-ui-router.js" />
-    <Content Include="src\app\photography\components\home\home.html" />
-    <Content Include="src\app\photography\components\home\photoSlide.html" />
-    <Content Include="src\app\ui\components\appFooter\appFooter.css">
+    <Content Include="src\photography\components\home\home.html" />
+    <Content Include="src\photography\components\home\photoSlide.html" />
+    <Content Include="src\ui\components\appFooter\appFooter.css">
       <DependentUpon>appFooter.scss</DependentUpon>
     </Content>
-    <Content Include="src\app\ui\components\appFooter\appFooter.html" />
-    <Content Include="src\app\ui\components\appFooter\appFooter.min.css">
+    <Content Include="src\ui\components\appFooter\appFooter.min.css">
       <DependentUpon>appFooter.css</DependentUpon>
     </Content>
     <Content Include="src\reset.css" />
@@ -192,70 +191,73 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="src\app\common\common.d.ts" />
-    <TypeScriptCompile Include="src\app\common\common.module.ts" />
-    <TypeScriptCompile Include="src\app\common\core\services\apiEndpointProvider.ts" />
-    <TypeScriptCompile Include="src\app\common\core\services\componentStyleSheetMappings.ts" />
-    <TypeScriptCompile Include="src\app\common\core\services\localStorage.ts" />
-    <TypeScriptCompile Include="src\app\common\core\services\localStorageService.ts" />
-    <TypeScriptCompile Include="src\app\common\core\services\requestCounter.ts" />
-    <TypeScriptCompile Include="src\app\common\core\services\routeResolverServiceProvider.ts" />
-    <TypeScriptCompile Include="src\app\common\core\utilities\loadStyleSheet.ts" />
-    <TypeScriptCompile Include="src\app\configuration\configuration.d.ts" />
-    <TypeScriptCompile Include="src\app\configuration\configuration.module.ts" />
-    <TypeScriptCompile Include="src\app\configuration\core\services\configuration.model.ts" />
-    <TypeScriptCompile Include="src\app\configuration\core\services\configurationDataService.ts" />
-    <TypeScriptCompile Include="src\app\configuration\core\services\configurationManager.ts" />
-    <TypeScriptCompile Include="src\app\data\core\services\dataService.ts" />
-    <TypeScriptCompile Include="src\app\data\data.d.ts" />
-    <TypeScriptCompile Include="src\app\data\data.module.ts" />
-    <TypeScriptCompile Include="src\app\photography\components\home\home.controller.ts" />
-    <TypeScriptCompile Include="src\app\photography\components\photoUpload\photoUpload.controller.ts" />
-    <TypeScriptCompile Include="src\app\photography\components\rateCalculator\rateCalculator.controller.ts" />
-    <TypeScriptCompile Include="src\app\photography\components\rateCalculator\rateCalculator.directive.ts" />
-    <TypeScriptCompile Include="src\app\photography\core\services\gallery.model.ts" />
-    <TypeScriptCompile Include="src\app\photography\core\services\galleryDataService.ts" />
-    <TypeScriptCompile Include="src\app\photography\photography.d.ts" />
-    <TypeScriptCompile Include="src\app\photography\photography.module.ts" />
-    <TypeScriptCompile Include="src\app\photography\photography.routes.ts" />
-    <TypeScriptCompile Include="src\app\photography\core\services\photo.model.ts" />
-    <TypeScriptCompile Include="src\app\photography\core\services\photographyAppHeaderManager.ts" />
-    <TypeScriptCompile Include="src\app\photography\core\services\photoDataService.ts" />
-    <TypeScriptCompile Include="src\app\photography\core\services\photographyManager.ts" />
-    <TypeScriptCompile Include="src\app\security\components\login\login.controller.ts" />
-    <TypeScriptCompile Include="src\app\security\components\login\login.directive.ts" />
-    <TypeScriptCompile Include="src\app\security\security.d.ts" />
-    <TypeScriptCompile Include="src\app\security\security.module.ts" />
-    <TypeScriptCompile Include="src\app\security\security.routes.ts" />
-    <TypeScriptCompile Include="src\app\security\core\services\securityDataService.ts" />
-    <TypeScriptCompile Include="src\app\security\core\services\securityManager.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\appFooter\appFooter.controller.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\appFooter\appFooter.directive.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\appHeader\appHeader.controller.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\appHeader\appHeader.directive.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\callout\callout.controller.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\callout\callout.directive.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\carousel\carousel.controller.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\carousel\carousel.directive.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\fileUpload\fileUpload.directive.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\fileUpload\fileUpload.controller.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\modal\modal.service.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\tabs\tabContent.controller.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\tabs\tabContent.directive.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\tabs\tabs.directive.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\tabs\tabs.controller.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\tabs\tabTitle.controller.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\tabs\tabTitle.directive.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\virtualFor\virtualFor.controller.ts" />
-    <TypeScriptCompile Include="src\app\ui\components\virtualFor\virtualFor.directive.ts" />
-    <TypeScriptCompile Include="src\app\ui\core\services\position.ts" />
-    <TypeScriptCompile Include="src\app\ui\core\services\rectangle.ts" />
-    <TypeScriptCompile Include="src\app\ui\core\services\ruler.ts" />
-    <TypeScriptCompile Include="src\app\ui\core\services\space.ts" />
-    <TypeScriptCompile Include="src\app\ui\core\utilities\getHTML.ts" />
-    <TypeScriptCompile Include="src\app\ui\core\utilities\translateXY.ts" />
-    <TypeScriptCompile Include="src\app\ui\ui.d.ts" />
-    <TypeScriptCompile Include="src\app\ui\ui.module.ts" />
+    <TypeScriptCompile Include="src\common\common.d.ts" />
+    <TypeScriptCompile Include="src\common\common.module.ts" />
+    <TypeScriptCompile Include="src\common\providers\apiEndpointProvider.ts" />
+    <TypeScriptCompile Include="src\common\providers\componentStyleSheetMappings.ts" />
+    <TypeScriptCompile Include="src\common\providers\localStorage.ts" />
+    <TypeScriptCompile Include="src\common\providers\localStorageService.ts" />
+    <TypeScriptCompile Include="src\common\providers\requestCounter.ts" />
+    <TypeScriptCompile Include="src\common\providers\routeResolverServiceProvider.ts" />
+    <TypeScriptCompile Include="src\common\providers\loadStyleSheet.ts" />
+    <TypeScriptCompile Include="src\configuration\configuration.d.ts" />
+    <TypeScriptCompile Include="src\configuration\configuration.module.ts" />
+    <TypeScriptCompile Include="src\configuration\providers\configuration.model.ts" />
+    <TypeScriptCompile Include="src\configuration\providers\configurationDataService.ts" />
+    <TypeScriptCompile Include="src\configuration\providers\configurationManager.ts" />
+    <TypeScriptCompile Include="src\data\providers\dataService.ts" />
+    <TypeScriptCompile Include="src\data\data.d.ts" />
+    <TypeScriptCompile Include="src\data\data.module.ts" />
+    <TypeScriptCompile Include="src\photography\components\home\home.controller.ts" />
+    <TypeScriptCompile Include="src\photography\components\photoUpload\photoUpload.controller.ts" />
+    <TypeScriptCompile Include="src\photography\components\rateCalculator\rateCalculator.controller.ts" />
+    <TypeScriptCompile Include="src\photography\components\rateCalculator\rateCalculator.directive.ts" />
+    <TypeScriptCompile Include="src\photography\providers\gallery.model.ts" />
+    <TypeScriptCompile Include="src\photography\providers\galleryDataService.ts" />
+    <TypeScriptCompile Include="src\photography\photography.d.ts" />
+    <TypeScriptCompile Include="src\photography\photography.module.ts" />
+    <TypeScriptCompile Include="src\photography\photography.routes.ts" />
+    <TypeScriptCompile Include="src\photography\providers\photo.model.ts" />
+    <TypeScriptCompile Include="src\photography\providers\photographyAppHeaderManager.ts" />
+    <TypeScriptCompile Include="src\photography\providers\photoDataService.ts" />
+    <TypeScriptCompile Include="src\photography\providers\photographyManager.ts" />
+    <TypeScriptCompile Include="src\security\components\login\login.controller.ts" />
+    <TypeScriptCompile Include="src\security\components\login\login.directive.ts" />
+    <TypeScriptCompile Include="src\security\security.d.ts" />
+    <TypeScriptCompile Include="src\security\security.module.ts" />
+    <TypeScriptCompile Include="src\security\security.routes.ts" />
+    <TypeScriptCompile Include="src\security\providers\securityDataService.ts" />
+    <TypeScriptCompile Include="src\security\providers\securityManager.ts" />
+    <TypeScriptCompile Include="src\ui\components\appFooter\appFooter.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\appFooter\appFooter.directive.ts" />
+    <TypeScriptCompile Include="src\ui\components\appHeader\appHeader.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\appHeader\appHeader.directive.ts" />
+    <TypeScriptCompile Include="src\ui\components\callout\callout.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\callout\callout.directive.ts" />
+    <TypeScriptCompile Include="src\ui\components\carousel\carousel.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\carousel\carousel.directive.ts" />
+    <TypeScriptCompile Include="src\ui\components\fileUpload\fileUpload.directive.ts" />
+    <TypeScriptCompile Include="src\ui\components\fileUpload\fileUpload.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\modal\modal.service.ts" />
+    <TypeScriptCompile Include="src\ui\components\tabs\tabContent.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\tabs\tabContent.directive.ts" />
+    <TypeScriptCompile Include="src\ui\components\tabs\tabs.directive.ts" />
+    <TypeScriptCompile Include="src\ui\components\tabs\tabs.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\tabs\tabTitle.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\tabs\tabTitle.directive.ts" />
+    <TypeScriptCompile Include="src\ui\components\virtualFor\virtualFor.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\virtualFor\virtualFor.directive.ts" />
+    <TypeScriptCompile Include="src\ui\components\workSpinner\workSpinner.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\workSpinner\workSpinner.directive.ts" />
+    <TypeScriptCompile Include="src\ui\providers\position.ts" />
+    <TypeScriptCompile Include="src\ui\providers\rectangle.ts" />
+    <TypeScriptCompile Include="src\ui\providers\ruler.ts" />
+    <TypeScriptCompile Include="src\ui\providers\space.ts" />
+    <TypeScriptCompile Include="src\ui\providers\getHTML.ts" />
+    <TypeScriptCompile Include="src\ui\providers\translateXY.ts" />
+    <TypeScriptCompile Include="src\ui\providers\translateXYAsync.ts" />
+    <TypeScriptCompile Include="src\ui\ui.d.ts" />
+    <TypeScriptCompile Include="src\ui\ui.module.ts" />
     <TypeScriptCompile Include="test\common\routeResolverServiceProvider.spec.ts" />
     <TypeScriptCompile Include="test\ui\callout.controller.spec.ts" />
     <TypeScriptCompile Include="typings\angular-material\angular-material.d.ts" />
