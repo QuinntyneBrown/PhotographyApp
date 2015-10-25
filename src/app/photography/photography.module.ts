@@ -13,7 +13,10 @@ angular.module("app.photography", [
 angular.module("photographyApp", [
     "app.photography"
 ]).config([
-    "$routeProvider", "apiEndpointProvider", ($routeProvider: ng.route.IRouteProvider, apiEndpointProvider: App.Common.IApiEndpointProvider) => {        
+    "$routeProvider", "apiEndpointProvider", (
+        $routeProvider: ng.route.IRouteProvider,
+        apiEndpointProvider: App.Common.IApiEndpointProvider) => {        
+
         App.Photography.Routes.Configure($routeProvider);
         App.Security.Routes.Configure($routeProvider);
 

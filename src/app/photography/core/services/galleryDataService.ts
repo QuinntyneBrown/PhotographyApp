@@ -18,9 +18,7 @@ module App.Photography {
             return this.dataService.fromServiceOrCache({ url: this.baseUri + "/getByName", params: options.params });
         }
 
-        private get baseUri() {
-            return this.apiEndpoint.getBaseUrl("gallery");
-        }
+        private get baseUri() { return this.apiEndpoint.getBaseUrl("photography") + "/gallery"; }
     }
 
     angular.module("app.photography").service("galleryDataService", ["dataService", PhotoDataService]);

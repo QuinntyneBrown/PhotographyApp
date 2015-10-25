@@ -1,17 +1,17 @@
 ﻿/// <reference path="../../../../../typings/typescriptapp.d.ts" />
 
 module App.UI {
-    
+
+    "use strict";
+
     /**
-     * @name fileUpload
+     * @name FileUpload
      * @module App.UI
      */
     export class FileUpload {
-        constructor(private $rootScope: ng.IRootScopeService, private uploadService: IUploadService) {}
+        constructor() {}
 
-        public static createInstance = ($rootScope: ng.IRootScopeService, uploadService: IUploadService) => {
-            return new FileUpload($rootScope, uploadService);
-        }
+        public static createInstance = () => { return new FileUpload(); }
 
         public template: string = [
             "<div>",
@@ -19,43 +19,13 @@ module App.UI {
             "</div>"
         ].join("");
 
+        public static styleUrls: Array<string> = ["/src/app/ui/components/fileUpload/fileUpload.css"];
+
         public restrict: string = "E";
 
         public replace: boolean = true;
 
         public scope: any = {};
-
-        public link = (scope: any, element: ng.IAugmentedJQuery, attributes: ng.IAttributes, controller: any) => {
-            var drop = element.find(".drop-zone")[0];
-            var uploadService = this.uploadService;
-            drop.addEventListener("dragover",(dragEvent:DragEvent) => {
-                dragEvent.stopPropagation();
-                dragEvent.preventDefault();
-            }, false);
-
-            drop.addEventListener("drop", onDrop, false);
-
-            function onDrop(dragEvent: DragEvent) {
-                dragEvent.stopPropagation();
-                dragEvent.preventDefault();
-                
-                if (dragEvent.dataTransfer && dragEvent.dataTransfer.files) {                    
-                    uploadService.uploadFiles({ formData: packageFiles(dragEvent.dataTransfer.files), url: attributes["url"] }).then((results) => {
-                        scope.$emit("fileUpload", {
-                            files: results.data,
-                        });
-                    });                    
-                }
-            }
-
-            function packageFiles(fileList: FileList) {
-                var formData = new FormData();
-                for (var i = 0; i < fileList.length; i++) {
-                    formData.append(fileList[i].name, fileList[i]);
-                }
-                return formData;
-            }
-        }
 
     }
 
