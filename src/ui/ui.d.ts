@@ -1,5 +1,14 @@
 ﻿declare module App.UI {
 
+
+    /**
+     * @name ITranslateXAsync
+     * @module App.UI
+     */
+    export interface ITranslateXAsync {
+        (options:any): ng.IPromise<any>;
+    }
+
     /**
      * @name ITranslateXY
      * @module App.UI
