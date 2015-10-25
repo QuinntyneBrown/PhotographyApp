@@ -18,6 +18,9 @@ angular.module("photographyApp", [
         App.Security.Routes.Configure($routeProvider);
 
         apiEndpointProvider.configure("http://configurationapi.azurewebsites.net/api", "configuration");
+        apiEndpointProvider.configure("http://photographyapi.azurewebsites.net/api", "photography");
+        apiEndpointProvider.configure("http://qbsecurityapi.azurewebsites.net/api", "security");
+
     }
 ]).run([
     () => {

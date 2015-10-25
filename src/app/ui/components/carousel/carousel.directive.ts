@@ -41,7 +41,6 @@ module App.UI {
                 transclude(scope.$new(), (clone: ng.IAugmentedJQuery) => {
                     controller.items = scope["carouselFor"];
                     var template = this.getHtml(<HTMLElement>clone[0].children[0], true);
-                    alert(template);
                     controller.templateRef = angular.element(template);
                     controller.initialRender();
                 });

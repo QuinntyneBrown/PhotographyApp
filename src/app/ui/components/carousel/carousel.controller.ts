@@ -4,6 +4,7 @@ module App.UI {
     
     /**
      * @name CarouselController
+     * @module App.UI
      */
     export class CarouselController {
 
@@ -14,7 +15,7 @@ module App.UI {
         }
 
         public onNext = () => {
-
+            
         }
 
         public onPrevious = () => {
