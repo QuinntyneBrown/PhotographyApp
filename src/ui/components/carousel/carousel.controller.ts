@@ -11,16 +11,29 @@ module App.UI {
         constructor(private $attrs: ng.IAttributes,
             private $compile: ng.ICompileService,
             private $element: ng.IAugmentedJQuery,
-            private $scope: ICarouselScope) {
+            private $q: ng.IQService,
+            private $scope: ICarouselScope,
+            private translateXAsync: ITranslateXAsync) {
         }
 
         public onNext = () => {
-            
+            if (!this.isAnimating) {
+                var promises = [];
+                this.isAnimating = true;
+                for (var i = 0; i < this.slideNavtiveElements.length; i++) {
+                    promises.push(this.translateXAsync({ element: this.slideNavtiveElements[i], x: 100 }));
+                }
+                this.$q.all(promises).then(() => {
+                    this.isAnimating = false;
+                });
+            }
         }
 
         public onPrevious = () => {
 
         }
+
+        public isAnimating = false;
 
         private _templateRef: ng.IAugmentedJQuery;
         
@@ -43,13 +56,22 @@ module App.UI {
                 childScope["carouselItem"] = this.items[i];
                 childScope.$$index = i;
                 var itemContent = this.$compile(this.templateRef)(childScope);
+                itemContent.addClass("slide");
                 fragment.appendChild(itemContent[0]);
             }
-            var viewPortRef = this.$element.find(".view-port");            
-            viewPortRef[0].appendChild(fragment);
+                        
+            this.viewPortNavtiveElement.appendChild(fragment);
         }
+
+        public get viewPortRef() { return this.$element.find(".view-port"); }
+
+        public get viewPortNavtiveElement() { return this.viewPortRef[0]; }
+
+        public get slideNavtiveElements() { return this.viewPortNavtiveElement.children; }
+
+
 
     }
 
-    angular.module("app.ui").controller("carouselController", ["$attrs", "$compile", "$element", "$scope", CarouselController]);
+    angular.module("app.ui").controller("carouselController", ["$attrs", "$compile", "$element", "$q", "$scope","translateXAsync", CarouselController]);
 } 

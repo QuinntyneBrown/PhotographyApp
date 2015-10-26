@@ -131,12 +131,6 @@
     <Content Include="src\ui\components\appHeader\appHeader.css.map">
       <DependentUpon>appHeader.css</DependentUpon>
     </Content>
-    <Content Include="src\ui\components\callout\callout.css">
-      <DependentUpon>callout.scss</DependentUpon>
-    </Content>
-    <Content Include="src\ui\components\callout\callout.min.css">
-      <DependentUpon>callout.css</DependentUpon>
-    </Content>
     <Content Include="src\ui\components\carousel\carousel.css">
       <DependentUpon>carousel.scss</DependentUpon>
     </Content>
@@ -146,10 +140,6 @@
     <Content Include="src\ui\components\carousel\carousel.scss" />
     <Content Include="src\ui\components\carousel\carousel.css.map">
       <DependentUpon>carousel.css</DependentUpon>
-    </Content>
-    <Content Include="src\ui\components\callout\callout.scss" />
-    <Content Include="src\ui\components\callout\callout.css.map">
-      <DependentUpon>callout.css</DependentUpon>
     </Content>
     <None Include="src\ui\components\fileUpload\fileUpload.scss" />
     <Content Include="src\ui\components\modal\modal.css">
@@ -254,6 +244,7 @@
     <TypeScriptCompile Include="src\ui\providers\ruler.ts" />
     <TypeScriptCompile Include="src\ui\providers\space.ts" />
     <TypeScriptCompile Include="src\ui\providers\getHTML.ts" />
+    <TypeScriptCompile Include="src\ui\providers\translateXAsync.ts" />
     <TypeScriptCompile Include="src\ui\providers\translateXY.ts" />
     <TypeScriptCompile Include="src\ui\providers\translateXYAsync.ts" />
     <TypeScriptCompile Include="src\ui\ui.d.ts" />

@@ -42,7 +42,7 @@ module App.UI {
         public bootstrap = ($element: ng.IAugmentedJQuery) => {
             var nativeElement = $element[0];
             nativeElement.addEventListener(this.$attrs["triggerEvent"] || "click", () => {
-                if (!this.isAnimating)
+                if (this.isAnimating)
                     return;
 
                 if (this.isOpen) {
@@ -91,7 +91,8 @@ module App.UI {
 
         public appendToBodyAsync = () => {
             var deferred = this.$q.defer();
-            document.body.appendChild(this.nativeCalloutHTMLElement); 
+            document.body.appendChild(this.nativeCalloutHTMLElement);
+            setTimeout(() => { deferred.resolve(); }, 0);
             return deferred.promise; 
         }
 
@@ -103,12 +104,29 @@ module App.UI {
             return this.setOpacityAsync({ opacity: 0 });
         }
 
+        private setInitialCalloutCssAsync = () => {
+            var deferred = this.$q.defer();
+            this.nativeCalloutHTMLElement.setAttribute("style", "-webkit-transition: opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out;-o-transition: opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out;transition: opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out;");
+            this.nativeCalloutHTMLElement.style.opacity = "0";
+            this.nativeCalloutHTMLElement.style.position = "fixed";
+            this.nativeCalloutHTMLElement.style.top = "0";
+            this.nativeCalloutHTMLElement.style.left = "0";
+            this.nativeCalloutHTMLElement.style.display = "block";
+            deferred.resolve();
+            return deferred.promise;
+        }
+
+        public get transitionDurationInMilliseconds() { return 1000; }
+
         public setOpacityAsync = (options:any) => {
             var deferred = this.$q.defer();
-            this.calloutAugmentedJQuery.css("opacity", options.opacity);
-            this.nativeCalloutHTMLElement.addEventListener('transitionend', () => {
+            var self = this;
+            self.calloutAugmentedJQuery.css("opacity", options.opacity);
+            self.nativeCalloutHTMLElement.addEventListener('transitionend', resolve, false);
+            function resolve() {
+                self.nativeCalloutHTMLElement.removeEventListener('transitionend', resolve);
                 deferred.resolve();
-            }, false);
+            }
             return deferred.promise;             
         }
 
@@ -119,12 +137,14 @@ module App.UI {
 
             this.getCalloutTemplateAsync()
                 .then(this.compileCalloutTemplateAsync)
+                .then(this.setInitialCalloutCssAsync)
                 .then(this.positionCalloutAsync)
                 .then(this.appendToBodyAsync)
                 .then(this.showCalloutElementAsync)
                 .then(() => {
                 this.isAnimating = false;
-                this.closeCalloutScheduledPromise = this.$timeout(this.closeAsync, Number(this.$attrs["displayFor"] || 500));
+                this.isOpen = true;
+                this.closeCalloutScheduledPromise = this.$timeout(this.closeAsync, Number(this.$attrs["displayFor"] || 2000));
             });
 
             return deferred.promise;
@@ -134,13 +154,17 @@ module App.UI {
         public closeAsync = () => {
             var deferred = this.$q.defer();
             this.isAnimating = true;
+            this.$timeout.cancel(this.closeCalloutScheduledPromise);
             this.hideCalloutElementAsync().then(() => {
-                this.calloutScope().$destroy();
+                this.isOpen = false;
+                this.calloutScope.$destroy();
+
                 this.nativeCalloutHTMLElement.parentNode.removeChild(this.nativeCalloutHTMLElement);
 
                 this.calloutAugmentedJQuery = null;
                 this.calloutScope = null;
                 this.closeCalloutScheduledPromise = null;
+                this.calloutTemplate = null;
 
                 this.isAnimating = false;
                 deferred.resolve();
