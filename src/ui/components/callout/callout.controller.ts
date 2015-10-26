@@ -18,21 +18,8 @@ module App.UI {
             private $scope: any,
             private $timeout: ng.ITimeoutService,
             private position: IPosition) {
-
             this.bootstrap($element);
-
-            $scope.$on("$destroy", () => {
-                if (this.calloutScope)
-                    this.calloutScope.$destroy();
-
-                if (this.nativeCalloutHTMLElement) {
-                    this.nativeCalloutHTMLElement.parentNode.removeChild(this.nativeCalloutHTMLElement);
-                }
-
-                this.calloutAugmentedJQuery = null;
-                this.calloutScope = null;
-                this.closeCalloutScheduledPromise = null;
-            });
+            $scope.$on("$destroy", this.dispose);
         }
 
         public calloutAugmentedJQuery: ng.IAugmentedJQuery;
@@ -41,17 +28,19 @@ module App.UI {
 
         public bootstrap = ($element: ng.IAugmentedJQuery) => {
             var nativeElement = $element[0];
-            nativeElement.addEventListener(this.$attrs["triggerEvent"] || "click", () => {
-                if (this.isAnimating)
-                    return;
+            nativeElement.addEventListener(this.$attrs["triggerEvent"] || "click", this.onTrigger);
+        }
 
-                if (this.isOpen) {
-                    this.closeAsync();
-                } else {
-                    this.openAsync();
-                }
+        public onTrigger = () => {
+            if (this.isAnimating)
+                return;
 
-            });
+            if (this.isOpen) {
+                this.closeAsync();
+            } else {
+                this.openAsync();
+            }
+
         }
 
         public get nativeOriginalHTMLElement() { return this.$element[0]; } 
@@ -92,7 +81,7 @@ module App.UI {
         public appendToBodyAsync = () => {
             var deferred = this.$q.defer();
             document.body.appendChild(this.nativeCalloutHTMLElement);
-            setTimeout(() => { deferred.resolve(); }, 0);
+            setTimeout(() => { deferred.resolve(); }, 100);
             return deferred.promise; 
         }
 
@@ -116,7 +105,7 @@ module App.UI {
             return deferred.promise;
         }
 
-        public get transitionDurationInMilliseconds() { return 1000; }
+        public get transitionDurationInMilliseconds() { return this.$attrs["transitionDurationInMilliseconds"] || 1000; }
 
         public setOpacityAsync = (options:any) => {
             var deferred = this.$q.defer();
@@ -146,9 +135,7 @@ module App.UI {
                 this.isOpen = true;
                 this.closeCalloutScheduledPromise = this.$timeout(this.closeAsync, Number(this.$attrs["displayFor"] || 2000));
             });
-
             return deferred.promise;
-
         }
 
         public closeAsync = () => {
@@ -156,20 +143,32 @@ module App.UI {
             this.isAnimating = true;
             this.$timeout.cancel(this.closeCalloutScheduledPromise);
             this.hideCalloutElementAsync().then(() => {
+
+                this.dispose();
                 this.isOpen = false;
-                this.calloutScope.$destroy();
-
-                this.nativeCalloutHTMLElement.parentNode.removeChild(this.nativeCalloutHTMLElement);
-
-                this.calloutAugmentedJQuery = null;
-                this.calloutScope = null;
-                this.closeCalloutScheduledPromise = null;
-                this.calloutTemplate = null;
-
                 this.isAnimating = false;
                 deferred.resolve();
             });
             return deferred.promise;
+        }
+
+        public dispose = () => {
+            if (this.calloutScope) {
+                this.calloutScope.$destroy();
+                this.calloutScope = null;
+            }
+
+            if (this.calloutAugmentedJQuery) {
+                var $target = angular.element(this.nativeCalloutHTMLElement);
+                this.nativeCalloutHTMLElement.parentNode.removeChild(this.nativeCalloutHTMLElement);
+                this.calloutAugmentedJQuery = null; 
+                $target.remove();               
+            }
+
+            this.closeCalloutScheduledPromise = null;
+            this.calloutTemplate = null;
+
+            
         }
 
         public closeCalloutScheduledPromise: any = null;
