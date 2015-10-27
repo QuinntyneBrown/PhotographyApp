@@ -6,9 +6,11 @@ module App.Common {
 
     var getFormFactor: IGetFormFactor = (): formFactor => {
 
-        if (window.screen.availHeight <= 768) return formFactor.mobile;
+        var width = window.screen.availWidth;
 
-        if (window.screen.availHeight <= 1064) return formFactor.tablet;
+        if (width <= 768) return formFactor.mobile;
+
+        if (width <= 1064) return formFactor.tablet;
 
         return formFactor.desktop;
     }
