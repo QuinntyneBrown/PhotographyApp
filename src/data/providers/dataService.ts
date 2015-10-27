@@ -8,6 +8,8 @@
 
         constructor(private $http: ng.IHttpService, private $q: ng.IQService, private localStorageService: Common.ILocalStorageService) { }
 
+        private inMemoryCache = {};
+
         public fromServiceOrCache = (options:any) => {
             var deferred = this.$q.defer();
             this.$http({ method: options.method, url: options.url }).then((results) => {
@@ -22,6 +24,10 @@
                 deferred.resolve(results);
             });
             return deferred.promise;            
+        }
+
+        public invalidateCache = () => {
+            this.inMemoryCache = {};
         }
     }
 

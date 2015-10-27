@@ -15,12 +15,12 @@ module App.UI {
         public static styles: string;
 
         public template: string = [
-            "<div>",
-            "<div>",
-            "<a data-ng-repeat='link in vm.links'>",
-            "{{ ::link.caption }",
-            "}",
-            "</a>",
+            "<div class='app-header'>",
+            "<div data-ng-if='vm.isDeskTop()'>",
+            "<a data-ng-repeat='link in vm.links'>{{ ::link.caption }}</a>",
+            "</div>",
+            "<div data-ng-if='!vm.isDeskTop()'>",
+            "<hamburger-button on-click='vm.hamburgerButtonClick()'></hamburger-button>",
             "</div>",
             "</div>"
         ].join(" ");

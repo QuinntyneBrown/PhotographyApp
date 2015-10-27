@@ -3,7 +3,7 @@
 module App.UI {
 
     export class AppHeaderController {
-        constructor($injector: ng.auto.IInjectorService, $scope: any) {        
+        constructor($injector: ng.auto.IInjectorService, $scope: any, private getFormFactor:Function) {        
             
             var element = <HTMLElement>document.querySelectorAll('[data-ng-app]')[0];
             var appName = element.getAttribute("data-ng-app");
@@ -18,7 +18,13 @@ module App.UI {
 
         public get links() { return this.appHeaderManager.links; }
 
+        public hamburgerButtonClick = () => { }
+
+        public isDeskTop = () => {
+             return this.getFormFactor() === Common.formFactor.desktop;
+        }
+
     }
 
-    angular.module("app.ui").controller("appHeaderController", ["$injector","$scope",AppHeaderController]);
+    angular.module("app.ui").controller("appHeaderController", ["$injector","$scope", "getFormFactor", AppHeaderController]);
 } 

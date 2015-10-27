@@ -6,7 +6,7 @@ module App.Common {
 
     var getFormFactor: IGetFormFactor = (): formFactor => {
 
-        var width = window.screen.availWidth;
+        var width = window.innerWidth;
 
         if (width <= 768) return formFactor.mobile;
 

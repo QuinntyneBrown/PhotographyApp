@@ -9,5 +9,6 @@ declare module App.Data {
     export interface IDataService {
         fromServiceOrCache(options: any): ng.IPromise<any>;
         fromService(options: any): ng.IPromise<any>;
+        invalidateCache():void;
     }
 } 

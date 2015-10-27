@@ -79,7 +79,6 @@
     <Content Include="src\photography\components\rateCalculator\rateCalculator.css">
       <DependentUpon>rateCalculator.scss</DependentUpon>
     </Content>
-    <Content Include="src\photography\components\rateCalculator\rateCalculator.html" />
     <Content Include="src\photography\components\rateCalculator\rateCalculator.min.css">
       <DependentUpon>rateCalculator.css</DependentUpon>
     </Content>
@@ -174,7 +173,6 @@
     <Content Include="karma.conf.js" />
     <Content Include="node_modules\angular-ui-router\release\angular-ui-router.js" />
     <Content Include="src\photography\components\home\home.html" />
-    <Content Include="src\photography\components\home\photoSlide.html" />
     <Content Include="src\ui\components\appFooter\appFooter.css">
       <DependentUpon>appFooter.scss</DependentUpon>
     </Content>
@@ -200,6 +198,7 @@
     <TypeScriptCompile Include="src\common\providers\requestCounter.ts" />
     <TypeScriptCompile Include="src\common\providers\routeResolverServiceProvider.ts" />
     <TypeScriptCompile Include="src\common\providers\loadStyleSheet.ts" />
+    <TypeScriptCompile Include="src\common\providers\windowInnerWidthMonitor.ts" />
     <TypeScriptCompile Include="src\configuration\configuration.d.ts" />
     <TypeScriptCompile Include="src\configuration\configuration.module.ts" />
     <TypeScriptCompile Include="src\configuration\providers\configuration.model.ts" />
