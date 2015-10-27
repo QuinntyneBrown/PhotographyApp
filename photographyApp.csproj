@@ -141,6 +141,12 @@
       <DependentUpon>carousel.css</DependentUpon>
     </Content>
     <None Include="src\ui\components\fileUpload\fileUpload.scss" />
+    <Content Include="src\ui\components\hamburgerButton\hamburgerButton.css">
+      <DependentUpon>hamburgerButton.scss</DependentUpon>
+    </Content>
+    <Content Include="src\ui\components\hamburgerButton\hamburgerButton.min.css">
+      <DependentUpon>hamburgerButton.css</DependentUpon>
+    </Content>
     <Content Include="src\ui\components\modal\modal.css">
       <DependentUpon>modal.scss</DependentUpon>
     </Content>
@@ -150,6 +156,9 @@
     <Content Include="src\ui\components\modal\modal.scss" />
     <Content Include="src\ui\components\modal\modal.css.map">
       <DependentUpon>modal.css</DependentUpon>
+    </Content>
+    <Content Include="src\ui\components\hamburgerButton\hamburgerButton.css.map">
+      <DependentUpon>hamburgerButton.css</DependentUpon>
     </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -184,6 +193,8 @@
     <TypeScriptCompile Include="src\common\common.module.ts" />
     <TypeScriptCompile Include="src\common\providers\apiEndpointProvider.ts" />
     <TypeScriptCompile Include="src\common\providers\componentStyleSheetMappings.ts" />
+    <TypeScriptCompile Include="src\common\providers\formFactor.ts" />
+    <TypeScriptCompile Include="src\common\providers\getFormFactor.ts" />
     <TypeScriptCompile Include="src\common\providers\localStorage.ts" />
     <TypeScriptCompile Include="src\common\providers\localStorageService.ts" />
     <TypeScriptCompile Include="src\common\providers\requestCounter.ts" />
@@ -227,6 +238,8 @@
     <TypeScriptCompile Include="src\ui\components\carousel\carousel.directive.ts" />
     <TypeScriptCompile Include="src\ui\components\fileUpload\fileUpload.directive.ts" />
     <TypeScriptCompile Include="src\ui\components\fileUpload\fileUpload.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\hamburgerButton\hamburgerButton.directive.ts" />
+    <None Include="src\ui\components\hamburgerButton\hamburgerButton.scss" />
     <TypeScriptCompile Include="src\ui\components\modal\modal.service.ts" />
     <TypeScriptCompile Include="src\ui\components\searchBox\searchBox.controller.ts" />
     <TypeScriptCompile Include="src\ui\components\searchBox\searchBox.directive.ts" />

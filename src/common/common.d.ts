@@ -1,5 +1,10 @@
 ﻿declare module App.Common {
     
+    export interface IGetFormFactor {
+        (): formFactor;
+    }
+
+
     /**
      * @name IComponent
      * @module App.Common
