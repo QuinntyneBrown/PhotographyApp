@@ -4,7 +4,10 @@
 
         public static createInstance = () => { return new RateCalculator(); }
 
-        public templateUrl: string = "src/app/photography/components/rateCalculator/rateCalculator.html";
+        public template: string = [
+            "<div class='rate-calculator'>",
+            "</div>"
+        ].join(" ");
         
         public static styleUrls: Array<string> = ["src/app/photography/components/rateCalculator/rateCalculator.css"];
 
