@@ -10,15 +10,14 @@ module App.UI {
      */
     export class Carousel {
 
-        constructor(private getHtml: IGetHtmlFn) { }
-
-        public static createInstance = (getHtml: IGetHtmlFn) => { return new Carousel(getHtml); }
+        public static createInstance = () => { return new Carousel(); }
 
         public template: string = [
             "<div class='carousel'> ",
             "<div class='view-port'>",
-            "<div class='previous-arrow' data-ng-click='vm.onPrevious()'><img src='assets/images/carousel_button_prev.png' /></div>",
-            "<div class='next-arrow' data-ng-click='vm.onNext()'><img src='assets/images/carousel_button_next.png' /></div>",
+            "<div class='container'></div>",
+            "<div class='previous-arrow' data-ng-click='vm.onPreviousAsync()'><img src='assets/images/carousel_button_prev.png' /></div>",
+            "<div class='next-arrow' data-ng-click='vm.onNextAsync()'><img src='assets/images/carousel_button_next.png' /></div>",
             "</div>",
             "</div>"
         ].join(" ");
@@ -34,19 +33,7 @@ module App.UI {
         public controller: string = "carouselController";
 
         public scope:any = { carouselFor:"=" };
-
-        public compile = (template: ng.IAugmentedJQuery) => {
-
-            return (scope: ng.IScope, element: ng.IAugmentedJQuery, attributes: ng.IAttributes, controller: any, transclude: any) => {
-                transclude(scope.$new(), (clone: ng.IAugmentedJQuery) => {
-                    controller.items = scope["carouselFor"];
-                    var template = this.getHtml(<HTMLElement>clone[0].children[0], true);
-                    controller.templateRef = angular.element(template);
-                    controller.initialRender();
-                });
-            }
-        };
     }
 
-    angular.module("app.ui").directive("carousel", ["getHtml",Carousel.createInstance]);
+    angular.module("app.ui").directive("carousel", [Carousel.createInstance]);
 }

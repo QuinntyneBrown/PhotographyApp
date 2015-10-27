@@ -5,7 +5,7 @@
         public static createInstance = () => { return new RateCalculator(); }
 
         public templateUrl: string = "src/app/photography/components/rateCalculator/rateCalculator.html";
-
+        
         public static styleUrls: Array<string> = ["src/app/photography/components/rateCalculator/rateCalculator.css"];
 
         public restrict: string = "E";

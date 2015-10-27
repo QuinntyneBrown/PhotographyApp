@@ -10,8 +10,6 @@ module App.UI {
      */
     export class Callout {
 
-        constructor() { }
-
         public static createInstance = () => { return new Callout(); }
 
         public static styleUrls: Array<string> = ["/src/app/ui/components/callout/callout.css"];
@@ -23,6 +21,7 @@ module App.UI {
         public controller: string = "calloutController";
 
         public controllerAs: string = "vm";
+
     }
 
     angular.module("app.ui").directive("callout", [Callout.createInstance]);

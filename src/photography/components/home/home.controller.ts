@@ -9,7 +9,10 @@
     export class HomeController implements IHomeController {
         //constructor(photo: IPhoto, routeData: any) { }
         constructor() {
-            this.photos = [{ base64String: "" }];
+            this.photos = [
+                { url: "assets/images/DSC_1287.JPG" },
+                { url: "assets/images/DSC_1256.JPG" },
+                { url: "assets/images/DSC_1245.JPG" }];
         }
 
         private _slideTemplate: string;
@@ -23,6 +26,8 @@
         public get photos() { return this._photos; }
 
         public set photos(value: Array<IPhoto>) { this._photos = value; }
+
+        public static styleUrls: Array<string> = [];
 
         public static canActivate = () => {
             return ["$http", "$q", "photoDataService", ($http: ng.IHttpService, $q: ng.IQService, photoDataService: IPhotoDataService) => {

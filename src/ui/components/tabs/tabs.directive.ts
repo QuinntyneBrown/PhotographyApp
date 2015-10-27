@@ -9,7 +9,6 @@ module App.UI {
      * @module App.UI
      */
     export class Tabs {
-        constructor() { }
 
         public static createInstance = () => { return new Tabs(); }
 
@@ -30,14 +29,6 @@ module App.UI {
         public controller: string = "tabsController";
 
         public controllerAs: string = "vm";
-
-        public compile = (template: ng.IAugmentedJQuery) => {
-            return (scope: ng.IScope, element: ng.IAugmentedJQuery, attributes: ng.IAttributes, controller: any, transclude: any) => {
-                transclude(scope.$new(), (clone: ng.IAugmentedJQuery) => {
-                    
-                });
-            }
-        };
 
     }
 

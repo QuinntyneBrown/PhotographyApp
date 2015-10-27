@@ -1,5 +1,17 @@
 ﻿declare module App.Common {
     
+    /**
+     * @name IComponent
+     * @module App.Common
+     */
+    export interface IComponentInterfaceBoundary {
+        styleUrls?: Array<string>;
+        templateUrl?: string;
+        template?: string;
+        controller?: string;
+        contrllerAs?:string;
+    }
+
     export interface IComponentStyleSheetsMappingsProvider {
         configure(options:any):void;
     }

@@ -18,17 +18,16 @@ module App.UI {
             private $scope: any,
             private $timeout: ng.ITimeoutService,
             private position: IPosition) {
-            this.bootstrap($element);
-            $scope.$on("$destroy", this.dispose);
+            this.bootstrap();            
         }
 
         public calloutAugmentedJQuery: ng.IAugmentedJQuery;
 
         public get nativeCalloutHTMLElement() { return this.calloutAugmentedJQuery[0]; }
 
-        public bootstrap = ($element: ng.IAugmentedJQuery) => {
-            var nativeElement = $element[0];
-            nativeElement.addEventListener(this.$attrs["triggerEvent"] || "click", this.onTrigger);
+        public bootstrap = () => {            
+            this.nativeOriginalHTMLElement.addEventListener(this.$attrs["triggerEvent"] || "click", this.onTrigger);
+            this.$scope.$on("$destroy", this.dispose);
         }
 
         public onTrigger = () => {
@@ -143,7 +142,6 @@ module App.UI {
             this.isAnimating = true;
             this.$timeout.cancel(this.closeCalloutScheduledPromise);
             this.hideCalloutElementAsync().then(() => {
-
                 this.dispose();
                 this.isOpen = false;
                 this.isAnimating = false;
@@ -166,9 +164,7 @@ module App.UI {
             }
 
             this.closeCalloutScheduledPromise = null;
-            this.calloutTemplate = null;
-
-            
+            this.calloutTemplate = null;            
         }
 
         public closeCalloutScheduledPromise: any = null;

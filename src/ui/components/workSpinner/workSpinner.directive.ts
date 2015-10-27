@@ -4,6 +4,11 @@ module App.UI {
 
     "use strict";
 
+    /**
+     * @name WorkSpinner
+     * @module App.UI
+     * @description work-spinner component interface boundary
+     */
     export class WorkSpinner {
         
         constructor() { }
