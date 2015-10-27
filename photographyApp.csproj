@@ -191,6 +191,7 @@
     <TypeScriptCompile Include="src\common\common.module.ts" />
     <TypeScriptCompile Include="src\common\providers\apiEndpointProvider.ts" />
     <TypeScriptCompile Include="src\common\providers\componentStyleSheetMappings.ts" />
+    <TypeScriptCompile Include="src\common\providers\debounce.ts" />
     <TypeScriptCompile Include="src\common\providers\formFactor.ts" />
     <TypeScriptCompile Include="src\common\providers\getFormFactor.ts" />
     <TypeScriptCompile Include="src\common\providers\localStorage.ts" />
