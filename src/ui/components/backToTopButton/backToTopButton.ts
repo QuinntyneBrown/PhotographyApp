@@ -50,5 +50,5 @@
         public isAnimating: boolean = false;
     }
 
-    angular.module("app.ui").service("BackToTopButton", ["$q", "appendToBodyAsync", "debounce", "extendCssAsync", "removeElement","setOpacityAsync",BackToTopButton]);
+    angular.module("app.ui").service("backToTopButton", ["$q", "appendToBodyAsync", "debounce", "extendCssAsync", "removeElement","setOpacityAsync",BackToTopButton]);
 } 

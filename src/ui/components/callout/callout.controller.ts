@@ -177,13 +177,13 @@ module App.UI {
 
         public get defaultDirection() { return this.$attrs["defaultDirection"] || "bottom"; }
 
-        public get isFullHeight() { return this.parseBoolean(this.$attrs["isFullHeight"]); }
+        public get isFullHeight() { return this.parseBoolean({ value: this.$attrs["isFullHeight"] }); } 
 
-        public get isFullWidth() { return this.parseBoolean(this.$attrs["isFullWidth"]); }
+        public get isFullWidth() { return this.parseBoolean({ value: this.$attrs["isFullWidth"] }); }
 
-        public get isFullScreen() { return this.parseBoolean(this.$attrs["isFullScreen"]); }
+        public get isFullScreen() { return this.parseBoolean({ value: this.$attrs["isFullScreen"] }); }
 
-        public get displayBackDrop() { return this.parseBoolean(this.$attrs["displayBackDrop"]); }
+        public get displayBackDrop() { return this.parseBoolean({ value: this.$attrs["displayBackDrop"] }); }
 
         public defaultCalloutTemplate: string = ["<div class='callout'>", "<h1>Callout</h1>", "</div>"].join(" ");
 

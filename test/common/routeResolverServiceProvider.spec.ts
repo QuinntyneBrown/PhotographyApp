@@ -32,7 +32,7 @@ module App.Common {
 
             routeResolverServiceProvider.configure({
                 priority: 1,
-                state: "default",
+                route: "/",
                 promise: [
                     "$q", ($q: ng.IQService) => { return $q.when(true); }]
             });
@@ -44,7 +44,7 @@ module App.Common {
 
             routeResolverServiceProvider.configure({
                 priority: 1,
-                state: "default",
+                route: "/",
                 key: "testRouteData",
                 promise: [
                     "$q", ($q: ng.IQService) => {
@@ -61,7 +61,7 @@ module App.Common {
 
             expect(routeData).toBeFalsy();
 
-            routeResolverService.resolve("default");
+            routeResolverService.resolve("/");
 
             scope.$digest();
 
@@ -75,7 +75,7 @@ module App.Common {
 
             routePromises.push({
                 priority: 1,
-                state: "default",
+                route: "/",
                 key: "testRouteData",
                 promise: [
                     "$q", ($q: ng.IQService) => {
@@ -86,7 +86,7 @@ module App.Common {
 
             routePromises.push({
                 priority: 2,
-                state: "default",
+                route: "/",
                 key: "testRouteData",
                 promise: [
                     "$q", ($q: ng.IQService) => {
@@ -97,7 +97,7 @@ module App.Common {
 
             routePromises.push({
                 priority: 1,
-                state: "default",
+                route: "/",
                 key: "testRouteData",
                 promise: [
                     "$q", ($q: ng.IQService) => {
@@ -108,7 +108,7 @@ module App.Common {
 
             routePromises.push({
                 priority: 2,
-                state: "default",
+                route: "/",
                 key: "testRouteData",
                 promise: [
                     "$q", ($q: ng.IQService) => {
@@ -127,7 +127,7 @@ module App.Common {
 
             routeResolverServiceProvider.configure({
                 priority: 1,
-                state: "default",
+                route: "/",
                 key: "testRouteData",
                 promise: [
                     "$q", ($q: ng.IQService) => {
@@ -138,7 +138,7 @@ module App.Common {
 
             routeResolverServiceProvider.configure({
                 priority: 2,
-                state: "default",
+                route: "/",
                 key: "testRouteData",
                 promise: [
                     "$q", ($q: ng.IQService) => {
@@ -155,7 +155,7 @@ module App.Common {
 
             expect(routeData).toBeFalsy();
 
-            routeResolverService.resolve("default").then((results: any) => {
+            routeResolverService.resolve("/").then((results: any) => {
                 routeDataResult = results;
             });
 

@@ -240,6 +240,7 @@
     <TypeScriptCompile Include="src\ui\components\appHeader\appHeader.controller.ts" />
     <TypeScriptCompile Include="src\ui\components\appHeader\appHeader.directive.ts" />
     <TypeScriptCompile Include="src\ui\components\backDrop\backDrop.ts" />
+    <TypeScriptCompile Include="src\ui\components\backToTopButton\backToTopButton.ts" />
     <TypeScriptCompile Include="src\ui\components\callout\callout.controller.ts" />
     <TypeScriptCompile Include="src\ui\components\callout\callout.directive.ts" />
     <TypeScriptCompile Include="src\ui\components\carousel\carousel.controller.ts" />
