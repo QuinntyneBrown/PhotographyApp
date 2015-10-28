@@ -13,11 +13,19 @@ module App.Photography {
         
         constructor() { }
 
-        private _links: Array<any> = [];
+        private _links: Array<any> = [
+            { caption: "Home" },
+            { caption: "Photos" },
+            { caption: "Rates" }
+        ];
 
         public get links() { return this._links; }
 
-        public set links(value:any) { this._links = value; }
+        public set links(value: any) { this._links = value; }
+
+        public getMobileMenuTemplateUrl() {
+            return "/src/photography/components/mobileMenu/mobileMenu.html";
+        }
 
     }
 

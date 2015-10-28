@@ -75,6 +75,7 @@
     <Content Include="node_modules\lovefield\dist\lovefield.js" />
     <Content Include="node_modules\rx-angular\dist\rx.angular.js" />
     <Content Include="node_modules\rx\dist\rx.all.js" />
+    <Content Include="src\photography\components\mobileMenu\mobileMenu.html" />
     <Content Include="src\photography\components\photoUpload\photoUpload.html" />
     <Content Include="src\photography\components\rateCalculator\rateCalculator.css">
       <DependentUpon>rateCalculator.scss</DependentUpon>
@@ -190,6 +191,7 @@
     <TypeScriptCompile Include="src\common\common.d.ts" />
     <TypeScriptCompile Include="src\common\common.module.ts" />
     <TypeScriptCompile Include="src\common\providers\apiEndpointProvider.ts" />
+    <TypeScriptCompile Include="src\common\providers\appName.ts" />
     <TypeScriptCompile Include="src\common\providers\componentStyleSheetMappings.ts" />
     <TypeScriptCompile Include="src\common\providers\debounce.ts" />
     <TypeScriptCompile Include="src\common\providers\formFactor.ts" />
@@ -209,6 +211,7 @@
     <TypeScriptCompile Include="src\data\data.d.ts" />
     <TypeScriptCompile Include="src\data\data.module.ts" />
     <TypeScriptCompile Include="src\photography\components\home\home.controller.ts" />
+    <TypeScriptCompile Include="src\photography\components\mobileMenu\mobileMenu.controller.ts" />
     <TypeScriptCompile Include="src\photography\components\photoUpload\photoUpload.controller.ts" />
     <TypeScriptCompile Include="src\photography\components\rateCalculator\rateCalculator.controller.ts" />
     <TypeScriptCompile Include="src\photography\components\rateCalculator\rateCalculator.directive.ts" />

@@ -20,7 +20,7 @@ module App.UI {
             "<a data-ng-repeat='link in vm.links'>{{ ::link.caption }}</a>",
             "</div>",
             "<div data-ng-if='!vm.isDeskTop()'>",
-            "<hamburger-button on-click='vm.hamburgerButtonClick()'></hamburger-button>",
+            "<hamburger-button callout callout-templateUrl='vm.getMobileMenuTemplateUrl()'></hamburger-button>",
             "</div>",
             "</div>"
         ].join(" ");

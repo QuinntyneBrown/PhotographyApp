@@ -23,6 +23,7 @@
     */
     export interface IAppHeaderManager {
         links: Array<any>;
+        getMobileMenuTemplateUrl():string;
     }
 
     /**
