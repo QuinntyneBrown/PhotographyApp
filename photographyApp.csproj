@@ -193,6 +193,7 @@
     <TypeScriptCompile Include="src\common\providers\apiEndpointProvider.ts" />
     <TypeScriptCompile Include="src\common\providers\appName.ts" />
     <TypeScriptCompile Include="src\common\providers\componentStyleSheetMappings.ts" />
+    <TypeScriptCompile Include="src\common\providers\getCurrentControllerInstance.ts" />
     <TypeScriptCompile Include="src\common\providers\debounce.ts" />
     <TypeScriptCompile Include="src\common\providers\formFactor.ts" />
     <TypeScriptCompile Include="src\common\providers\getFormFactor.ts" />
@@ -202,7 +203,7 @@
     <TypeScriptCompile Include="src\common\providers\requestCounter.ts" />
     <TypeScriptCompile Include="src\common\providers\routeResolverServiceProvider.ts" />
     <TypeScriptCompile Include="src\common\providers\loadStyleSheet.ts" />
-    <TypeScriptCompile Include="src\common\providers\windowInnerWidthMonitor.ts" />
+    <TypeScriptCompile Include="src\common\providers\windowResizeEventEmitter.ts" />
     <TypeScriptCompile Include="src\configuration\configuration.d.ts" />
     <TypeScriptCompile Include="src\configuration\configuration.module.ts" />
     <TypeScriptCompile Include="src\configuration\providers\configuration.model.ts" />

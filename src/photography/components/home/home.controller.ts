@@ -8,11 +8,11 @@
      */
     export class HomeController implements IHomeController {
         //constructor(photo: IPhoto, routeData: any) { }
-        constructor() {
+        constructor(private getCurrentControllerInstance: any) {
             this.photos = [
                 { url: "assets/images/DSC_1287.JPG" },
                 { url: "assets/images/DSC_1256.JPG" },
-                { url: "assets/images/DSC_1245.JPG" }];
+                { url: "assets/images/DSC_1245.JPG" }];            
         }
 
         private _slideTemplate: string;
@@ -47,7 +47,7 @@
     }
 
     angular.module("app.photography")
-        .controller("homeController", [HomeController])
+        .controller("homeController", ["getCurrentControllerInstance",HomeController])
         .config(["routeResolverServiceProvider", (routeResolverServiceProvider: App.Common.IRouteResolverServiceProvider) => {
 
         routeResolverServiceProvider.configure({

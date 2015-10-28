@@ -7,8 +7,10 @@ module App.UI {
             private $injector: ng.auto.IInjectorService,
             private $scope: any,
             private appName:string,
-            private getFormFactor: Function) {        
- 
+            private getFormFactor: Function) {
+
+            $scope.$on("windowInnerWidthChanged", () => { $scope.$digest(); });
+
         }
 
         private _appHeaderManager: IAppHeaderManager;
