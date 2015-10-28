@@ -9,8 +9,6 @@
     */    
     export class RouteResolverServiceProvider implements IRouteResolverServiceProvider {
         
-        constructor() { }
-
         public configure = (routePromise: IRoutePromise) => {
             this._routePromises.push(routePromise);
         }

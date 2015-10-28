@@ -18,9 +18,12 @@ module App.UI {
             private $scope: any,
             private $timeout: ng.ITimeoutService,
             private appendToBodyAsync: any,
+            private backDrop:any,
+            private destroyScope:any,
             private extendCssAsync: Function,
             private parseBoolean:any,
             private position: IPosition,
+            private removeElement:any,
             private setOpacityAsync: any) {
             this.bootstrap();            
         }
@@ -39,14 +42,28 @@ module App.UI {
                 return;
 
             if (this.isOpen) {
-                this.closeAsync();
+                this.closeAsync().then(() => {
+                    if (this.backDropInstance) {
+                        this.backDropInstance.closeAsync().then(() => {
+                            this.backDropInstance = null;
+                        });
+                    }
+                });
             } else {
 
-                //if display backdrop, display the backdrop first, then open
-                this.openAsync();
+                if (this.displayBackDrop) {
+                    this.backDropInstance = this.backDrop.createInstance();
+                    this.backDropInstance.openAsync()
+                        .then(this.openAsync);
+                } else {
+                    this.openAsync();    
+                }
+                
             }
 
         }
+
+        public backDropInstance: any = null;
 
         public get nativeOriginalHTMLElement() { return this.$element[0]; } 
 
@@ -116,6 +133,9 @@ module App.UI {
         public get transitionDurationInMilliseconds() { return this.$attrs["transitionDurationInMilliseconds"] || 1000; }
 
         public openAsync = () => {
+
+            return this.backDrop.openAsync();
+
             var deferred = this.$q.defer();
             this.isAnimating = true;
             this.calloutScope = this.$scope.$new();
@@ -147,18 +167,9 @@ module App.UI {
         }
 
         public dispose = () => {
-            if (this.calloutScope) {
-                this.calloutScope.$destroy();
-                this.calloutScope = null;
-            }
-
-            if (this.calloutAugmentedJQuery) {
-                var $target = angular.element(this.nativeCalloutHTMLElement);
-                this.nativeCalloutHTMLElement.parentNode.removeChild(this.nativeCalloutHTMLElement);
-                this.calloutAugmentedJQuery = null; 
-                $target.remove();               
-            }
-
+            this.destroyScope({ scope: this.calloutScope });
+            this.removeElement({ nativeHTMLElement: this.nativeCalloutHTMLElement });
+            this.calloutAugmentedJQuery = null;
             this.closeCalloutScheduledPromise = null;
             this.calloutTemplate = null;            
         }
@@ -192,8 +203,11 @@ module App.UI {
         "$scope",
         "$timeout",
         "appendToBodyAsync",
+        "backDrop",
+        "destroyScope",
         "extendCssAsync",
         "parseBoolean",
         "position",
+        "removeElement",
         "setOpacityAsync", CalloutController]);
 } 
