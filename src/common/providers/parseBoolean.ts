@@ -8,7 +8,7 @@
      * @description convert string true or false to boolean value
      */
     export var parseBoolean = (options: any) => {
-        return options.valueOf && options.value.toUpperCase() === "TRUE";
+        return options.value && options.value.toUpperCase() === "TRUE";
     }
 
     angular.module("app.common").value("parseBoolean", parseBoolean);
