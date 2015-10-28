@@ -95,14 +95,16 @@ module App.UI {
 
         private setInitialCalloutCssAsync = () => {
             var deferred = this.$q.defer();
-            this.nativeCalloutHTMLElement.setAttribute("style", "-webkit-transition: opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out;-o-transition: opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out;transition: opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out;");
-            this.nativeCalloutHTMLElement.style.opacity = "0";
-            this.nativeCalloutHTMLElement.style.position = "fixed";
-            this.nativeCalloutHTMLElement.style.top = "0";
-            this.nativeCalloutHTMLElement.style.left = "0";
-            this.nativeCalloutHTMLElement.style.display = "block";
-
-
+            angular.extend(this.nativeCalloutHTMLElement.style, {
+                "-webkit-transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
+                "-o-transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
+                "transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
+                "opacity": "0",
+                "position": "fixed",
+                "top": "0",
+                "left": "0",
+                "display":"block"
+            });
             deferred.resolve();
             return deferred.promise;
         }
