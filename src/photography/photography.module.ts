@@ -11,22 +11,20 @@ angular.module("app.photography", [
 ]);
 
 angular.module("photographyApp", [
-    "app.photography"
-]).config([
-    "$routeProvider", "apiEndpointProvider", (
-        $routeProvider: ng.route.IRouteProvider,
-        apiEndpointProvider: App.Common.IApiEndpointProvider) => {        
+        "app.photography"
+    ]).config([
+        "$routeProvider", "apiEndpointProvider", (
+            $routeProvider: ng.route.IRouteProvider,
+            apiEndpointProvider: App.Common.IApiEndpointProvider) => {
 
-        App.Photography.Routes.Configure($routeProvider);
-        App.Security.Routes.Configure($routeProvider);
+            App.Photography.Routes.Configure($routeProvider);
+            App.Security.Routes.Configure($routeProvider);
 
-        apiEndpointProvider.configure("http://configurationapi.azurewebsites.net/api", "configuration");
-        apiEndpointProvider.configure("http://photographyapi.azurewebsites.net/api", "photography");
-        apiEndpointProvider.configure("http://qbsecurityapi.azurewebsites.net/api", "security");
+            apiEndpointProvider.configure("http://configurationapi.azurewebsites.net/api", "configuration");
+            apiEndpointProvider.configure("http://photographyapi.azurewebsites.net/api", "photography");
+            apiEndpointProvider.configure("http://qbsecurityapi.azurewebsites.net/api", "security");
 
-    }
-]).run([
-    () => {
-        FastClick.attach(document.body);
-    }
-]);
+        }
+    ])
+    .run([() => {FastClick.attach(document.body);} ])
+    .run(["backToTopButton", (backToTopButton: any) => { backToTopButton.bootstrap(); }]);

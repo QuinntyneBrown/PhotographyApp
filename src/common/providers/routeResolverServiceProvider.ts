@@ -5,13 +5,11 @@
     /**
     * @name RouteResolverServiceProvider
     * @module App.Common
-    * @description
+    * @description Collect and execute route promises that should be resolve before a route is loaded
     */    
     export class RouteResolverServiceProvider implements IRouteResolverServiceProvider {
         
-        public configure = (routePromise: IRoutePromise) => {
-            this._routePromises.push(routePromise);
-        }
+        public configure = (routePromise: IRoutePromise) => { this._routePromises.push(routePromise); }
 
         public $get = ["$injector", "$q", ($injector: ng.auto.IInjectorService, $q: ng.IQService) => {
                 return {
@@ -20,13 +18,7 @@
                         var deferred = $q.defer();
                         var resolvedRouteData: any = {};
                         var routePromises = this.getRoutePromisesByRouteName(routeName);
-                        var prioritizedGroups = this.groupRoutePromisesByPriority(routePromises);
-                        var priorities: any[] = [];
-
-                        routePromises.forEach((promise) => {
-                            if (priorities.indexOf(promise.priority) < 0)
-                                priorities.push(promise.priority);
-                        });
+                        var prioritizedGroups = this.reduceRoutePromisesByPriority(routePromises);
 
                         this.invoke($injector, $q, prioritizedGroups, 0, () => {
                             deferred.resolve(resolvedRouteData);
@@ -35,7 +27,6 @@
                         return deferred.promise;
                     }
                 }
-
             }
         ];
 
@@ -44,28 +35,39 @@
 
         private routeParams: any;
 
+        /**
+         * get route promises ordered by priority (ASC)
+         * priority 1 runs before priority 10
+         */
         public get routePromises() {
             return this._routePromises.sort((a: IRoutePromise, b: IRoutePromise) => {
                 return a.priority - b.priority;
             });
         }
 
+        /**
+        * @name getRoutePromisesByRouteName
+        * @description the route promises that will be resolved on an route
+        * if the value of the route key matches the route definition '/foo/{id}' or '/foos'
+        * include that routePromises
+        * if they is no specific route mention, it's assumed you want that promise to be resolved on
+        * every route
+        */
         private getRoutePromisesByRouteName = (route: string) => {
             return this._routePromises.filter((routePromise: IRoutePromise) => {
                 if (routePromise.route)
                     return routePromise.route === route;
-
                 return true;
             });
         }
 
         /**
-         * Group RoutePromises by Priority
+         * Reduce RoutePromises into prioritized groups
+         * Put the route promises with the same priority in the same group
+         * Eventually will be resolve together asynchronously with $q.all
          */
-        public groupRoutePromisesByPriority = (routePromises: IRoutePromise[]) => {
-
+        public reduceRoutePromisesByPriority = (routePromises: IRoutePromise[]) => {
             var priorities: any = [];
-
             var routePromisesPrioritizedGroups: any[] = [];
 
             routePromises.forEach((promise) => {
@@ -80,18 +82,18 @@
                     isLast: index == priorities.length - 1
                 });
             });
-
             return routePromisesPrioritizedGroups;
         }
 
         /**
-         * Invoke Group Promises Asynchrounosly.
-         * After you reach the last group, call the promise resolve callback
+         * Invoke the grouped promises. Reducing the results into the resolvedRouteData object
+         * If the route promise inside the group has a key defined, the result will be attached to the 
+         * resolved object (routeData) using that key
+         * After you reach the last group, call the callback that will resolve the object that 
+         * will have a key value dictionary with the results of any promises with a key defined
          */
         public invoke = ($injector: ng.auto.IInjectorService, $q: ng.IQService, groups: IRoutePromisesPrioritizedGroup[], currentGroupIndex: number, callback: any, resolvedRouteData: any) => {
-
             var excutedPromises: any[] = [];
-
             var currentGroup = groups[currentGroupIndex];
 
             currentGroup.promises.forEach((statePromise: IRoutePromise) => {
@@ -100,17 +102,10 @@
 
             $q.all(excutedPromises).then((results) => {
                 results.forEach((result, index) => {
-                    if (currentGroup.promises[index].key) {
-                        resolvedRouteData[currentGroup.promises[index].key] = results[index];
-                    }
+                    if (currentGroup.promises[index].key)
+                        resolvedRouteData[currentGroup.promises[index].key] = results[index];                    
                 });
-
-                if (currentGroup.isLast) {
-                    callback();
-                } else {
-                    this.invoke($injector, $q, groups, currentGroupIndex + 1, callback, resolvedRouteData);
-                }
-
+                currentGroup.isLast ? callback() : this.invoke($injector, $q, groups, currentGroupIndex + 1, callback, resolvedRouteData);                 
             });
         }
     }

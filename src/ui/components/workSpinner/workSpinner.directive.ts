@@ -10,8 +10,6 @@ module App.UI {
      * @description work-spinner component interface boundary
      */
     export class WorkSpinner {
-        
-        constructor() { }
 
         public static createInstance = () => { return new WorkSpinner(); }
 

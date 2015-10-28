@@ -117,7 +117,7 @@ module App.Common {
                     }]
             });
 
-            var result = routeResolverServiceProvider.groupRoutePromisesByPriority(routePromises);
+            var result = routeResolverServiceProvider.reduceRoutePromisesByPriority(routePromises);
 
             expect(result.length).toEqual(2);
             expect(result[1].isLast).toEqual(true);

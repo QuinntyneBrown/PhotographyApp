@@ -7,13 +7,10 @@
      * @module App.Common
      */
     export var getCurrentControllerInstance = () => {
-        var nativeHTMLElement = <HTMLElement>document.querySelectorAll('[data-ng-view]')[0];
-
-        if (!nativeHTMLElement)
+        var nativeElement = <HTMLElement>document.querySelectorAll('[data-ng-view]')[0];
+        if (!nativeElement)
             return null;
-
-        var scope: any = angular.element(nativeHTMLElement).scope();
-        return scope.vm;
+        return (<any>angular.element(nativeElement).scope()).vm;
     }
 
     angular.module("app.common").value("getCurrentControllerInstance", getCurrentControllerInstance);

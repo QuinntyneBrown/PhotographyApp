@@ -4,8 +4,11 @@ module App.UI {
 
     "use strict";
 
+    /**
+     * @name VirtualFor
+     * @module App.UI
+     */
     export class VirtualFor {
-        constructor() { }
 
         public static createInstance = () => {
             return new VirtualFor();

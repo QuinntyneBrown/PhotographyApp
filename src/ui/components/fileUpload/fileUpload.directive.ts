@@ -9,7 +9,6 @@ module App.UI {
      * @module App.UI
      */
     export class FileUpload {
-        constructor() {}
 
         public static createInstance = () => { return new FileUpload(); }
 

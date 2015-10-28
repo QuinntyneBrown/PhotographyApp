@@ -13,9 +13,7 @@ module App.UI {
         
         constructor($scope: ng.IScope, $element: ng.IAugmentedJQuery, $attrs: ng.IAttributes) {
             
-
         }
-
 
     }
 

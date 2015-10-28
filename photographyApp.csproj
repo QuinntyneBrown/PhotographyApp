@@ -103,7 +103,6 @@
     <Content Include="src\security\components\login\login.css">
       <DependentUpon>login.scss</DependentUpon>
     </Content>
-    <Content Include="src\security\components\login\login.html" />
     <Content Include="src\security\components\login\login.min.css">
       <DependentUpon>login.css</DependentUpon>
     </Content>

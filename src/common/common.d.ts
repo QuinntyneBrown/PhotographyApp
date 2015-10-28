@@ -52,7 +52,13 @@
     export interface IRouteResolverServiceProvider extends ng.IServiceProvider {
         configure(routePromise: IRoutePromise);
         routePromises: Array<IRoutePromise>;
-        groupRoutePromisesByPriority(routePromises: IRoutePromise[]): Array<IRoutePromisesPrioritizedGroup>;
+
+        /**
+         * Reduce RoutePromises into prioritized groups
+         * Put the route promises with the same priority in the same group
+         * Eventually will be resolve together asynchronously with $q.all
+         */
+        reduceRoutePromisesByPriority(routePromises: IRoutePromise[]): Array<IRoutePromisesPrioritizedGroup>;
     }
 
     /**

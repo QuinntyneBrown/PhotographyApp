@@ -4,6 +4,10 @@ module App.UI {
 
     "use strict";
 
+    /**
+     * @name WorkSpinnerController
+     * @module App.UI
+     */
     export class WorkSpinnerController {
 
         constructor(private requestCounter: Common.IRequestCounter) { }

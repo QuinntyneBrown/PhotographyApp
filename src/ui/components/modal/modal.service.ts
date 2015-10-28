@@ -4,6 +4,10 @@ module App.UI {
     
     "use strict";
 
+    /**
+     * @name modalService
+     * @module App.UI
+     */
     export class ModalService implements IModalService {
         constructor(private $q:ng.IQService) { }
 

@@ -8,9 +8,9 @@
     */
     export class SecurityManager implements ISecurityManager {
 
-        constructor() { }
+        constructor(private localStorageService: Common.ILocalStorageService) { }
 
     }
 
-    angular.module("app.security").service("securityManager", ["apiEndpoint", "dataService", SecurityDataService]);
+    angular.module("app.security").service("securityManager", ["localStorageService", SecurityDataService]);
 } 

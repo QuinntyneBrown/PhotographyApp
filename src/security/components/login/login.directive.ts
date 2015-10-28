@@ -7,13 +7,12 @@
      * @module App.Security
      */
     export class Login {
-        constructor() { }
 
-        public static createInstance = () => {
-            return new Login();
-        }
+        public static createInstance = () => { return new Login(); }
 
-        public templateUrl: string = "src/app/security/components/login/login.html";
+        public template: string = [""].join(" ");
+
+        public static styleUrls: Array<string> = [];
 
         public restrict: string = "E";
 
@@ -23,9 +22,6 @@
 
         public controllerAs: string = "vm";
 
-        public link = (scope: ng.IScope, element: ng.IAugmentedJQuery, attributes: ng.IAttributes) => {
-
-        }
     }
 
     angular.module("app.security").directive("login", [Login.createInstance]);

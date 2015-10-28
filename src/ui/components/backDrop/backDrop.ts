@@ -2,7 +2,9 @@
 
 
 module App.UI {
-    
+
+    "use strict";
+
     /**
      * @name BackDrop
      * @module App.UI
@@ -23,12 +25,11 @@ module App.UI {
         public openAsync = () => {
             var deferred = this.$q.defer();
 
-            
             this.initializeAsync()
                 .then(this.appendBackDropToBodyAsync)
                 .then(this.showAsync)
                 .then(() => {
-
+                this.isOpen = true;
                 deferred.resolve();
 
                 });
@@ -40,6 +41,7 @@ module App.UI {
             var deferred = this.$q.defer();
             this.hideAsync().then((results) => {
                 this.dispose();
+                this.isOpen = false;
                 deferred.resolve();
             });
             return deferred.promise;
@@ -77,8 +79,7 @@ module App.UI {
         }
     
         public appendBackDropToBodyAsync = () => {
-            var s = this.nativeHTMLElement;
-             return this.appendToBodyAsync({ nativeHTMLElement: this.nativeHTMLElement });
+            return this.appendToBodyAsync({ nativeHTMLElement: this.nativeHTMLElement });
         }
 
         public hideAsync = () => {

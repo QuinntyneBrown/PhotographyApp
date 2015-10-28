@@ -4,7 +4,11 @@
 
     export class Configuration implements IConfiguration {
 
-        constructor() { }
+        public createInstance = () => {
+            var instance = new Configuration();
+
+            return instance;
+        }
 
     }
 
