@@ -256,8 +256,12 @@
     <TypeScriptCompile Include="src\ui\components\virtualFor\virtualFor.directive.ts" />
     <TypeScriptCompile Include="src\ui\components\workSpinner\workSpinner.controller.ts" />
     <TypeScriptCompile Include="src\ui\components\workSpinner\workSpinner.directive.ts" />
+    <TypeScriptCompile Include="src\ui\providers\appendToBodyAsync.ts" />
+    <TypeScriptCompile Include="src\ui\providers\destroyScope.ts" />
+    <TypeScriptCompile Include="src\ui\providers\extendCssAsync.ts" />
     <TypeScriptCompile Include="src\ui\providers\position.ts" />
     <TypeScriptCompile Include="src\ui\providers\rectangle.ts" />
+    <TypeScriptCompile Include="src\ui\providers\removeElement.ts" />
     <TypeScriptCompile Include="src\ui\providers\ruler.ts" />
     <TypeScriptCompile Include="src\ui\providers\setOpacityAsync.ts" />
     <TypeScriptCompile Include="src\ui\providers\space.ts" />

@@ -17,6 +17,8 @@ module App.UI {
             private $q:ng.IQService,
             private $scope: any,
             private $timeout: ng.ITimeoutService,
+            private appendToBodyAsync: any,
+            private extendCssAsync: Function,
             private position: IPosition,
             private setOpacityAsync: any) {
             this.bootstrap();            
@@ -38,6 +40,8 @@ module App.UI {
             if (this.isOpen) {
                 this.closeAsync();
             } else {
+
+                //if display backdrop, display the backdrop first, then open
                 this.openAsync();
             }
 
@@ -72,41 +76,40 @@ module App.UI {
 
         public positionCalloutAsync = () => {
             var deferred = this.$q.defer();
+
+            //if fullwidth, should place above, below or onTop
+
+            //if full height, should place right, left or onTop
+
+            // full screen, should place at top left
+
             this.position.below(this.nativeOriginalHTMLElement, this.nativeCalloutHTMLElement, 30).then(() => {
                 deferred.resolve();
             });
             return deferred.promise; 
         }
 
-        public appendToBodyAsync = () => {
-            var deferred = this.$q.defer();
-            document.body.appendChild(this.nativeCalloutHTMLElement);
-            setTimeout(() => { deferred.resolve(); }, 100);
-            return deferred.promise; 
-        }
+        public appendCalloutToBodyAsync = () => { return this.appendToBodyAsync({ nativeHTMLElement: this.nativeCalloutHTMLElement }); }
 
-        public showCalloutElementAsync = () => {
-            return this.setOpacityAsync({ nativeHtmlElement: this.nativeCalloutHTMLElement, opacity: 100 });
-        }
+        public showCalloutElementAsync = () => { return this.setOpacityAsync({ nativeHtmlElement: this.nativeCalloutHTMLElement, opacity: 100 }); }
 
         public hideCalloutElementAsync = () => {
             return this.setOpacityAsync({ nativeHtmlElement: this.nativeCalloutHTMLElement, opacity: 0 });
         }
 
         private setInitialCalloutCssAsync = () => {
-            var deferred = this.$q.defer();
-            angular.extend(this.nativeCalloutHTMLElement.style, {
-                "-webkit-transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
-                "-o-transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
-                "transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
-                "opacity": "0",
-                "position": "fixed",
-                "top": "0",
-                "left": "0",
-                "display":"block"
+            return this.extendCssAsync({
+                nativeHTMLElement: this.nativeCalloutHTMLElement, cssObject: {
+                    "-webkit-transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
+                    "-o-transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
+                    "transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
+                    "opacity": "0",
+                    "position": "fixed",
+                    "top": "0",
+                    "left": "0",
+                    "display": "block"
+                }
             });
-            deferred.resolve();
-            return deferred.promise;
         }
 
         public get transitionDurationInMilliseconds() { return this.$attrs["transitionDurationInMilliseconds"] || 1000; }
@@ -114,18 +117,17 @@ module App.UI {
         public openAsync = () => {
             var deferred = this.$q.defer();
             this.isAnimating = true;
-            this.calloutScope = this.$scope.$new(true);
-
+            this.calloutScope = this.$scope.$new();
             this.getCalloutTemplateAsync()
                 .then(this.compileCalloutTemplateAsync)
                 .then(this.setInitialCalloutCssAsync)
                 .then(this.positionCalloutAsync)
-                .then(this.appendToBodyAsync)
+                .then(this.appendCalloutToBodyAsync)
                 .then(this.showCalloutElementAsync)
                 .then(() => {
                 this.isAnimating = false;
                 this.isOpen = true;
-                this.closeCalloutScheduledPromise = this.$timeout(this.closeAsync, Number(this.$attrs["displayFor"] || 2000));
+                this.closeCalloutScheduledPromise = this.$timeout(this.closeAsync, Number(this.$attrs["displayFor"] || 2000), false);
             });
             return deferred.promise;
         }
@@ -162,13 +164,15 @@ module App.UI {
 
         public closeCalloutScheduledPromise: any = null;
 
-        public get defaultDirection() { return this.$attrs["defaultDirection"]; }
+        public get defaultDirection() { return this.$attrs["defaultDirection"] || "bottom"; }
 
-        public get isFullHeight() { return false; }
+        public get isFullHeight() { return this.$attrs["isFullHeight"] && this.$attrs["isFullHeight"] === "true"; }
 
-        public get isFullWidth() { return false; }
+        public get isFullWidth() { return this.$attrs["isFullWidth"] && this.$attrs["isFullWidth"] === "true"; }
 
-        public get isFullScreen() { return false; }
+        public get isFullScreen() { return this.$attrs["isFullScreen"] && this.$attrs["isFullScreen"] === "true"; }
+
+        public get displayBackDrop() { return this.$attrs["displayBackDrop"] && this.$attrs["displayBackDrop"] === "true"; }
 
         public defaultCalloutTemplate: string = ["<div class='callout'>", "<h1>Callout</h1>", "</div>"].join(" ");
 
@@ -178,5 +182,5 @@ module App.UI {
 
     }
 
-    angular.module("app.ui").controller("calloutController", ["$attrs", "$compile", "$element", "$http", "$q", "$scope", "$timeout", "position","setOpacityAsync",CalloutController]);
+    angular.module("app.ui").controller("calloutController", ["$attrs", "$compile", "$element", "$http", "$q", "$scope", "$timeout","appendToBodyAsync", "extendCssAsync", "position","setOpacityAsync",CalloutController]);
 } 
