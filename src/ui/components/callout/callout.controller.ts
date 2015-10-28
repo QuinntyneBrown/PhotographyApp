@@ -19,6 +19,7 @@ module App.UI {
             private $timeout: ng.ITimeoutService,
             private appendToBodyAsync: any,
             private extendCssAsync: Function,
+            private parseBoolean:any,
             private position: IPosition,
             private setOpacityAsync: any) {
             this.bootstrap();            
@@ -166,13 +167,13 @@ module App.UI {
 
         public get defaultDirection() { return this.$attrs["defaultDirection"] || "bottom"; }
 
-        public get isFullHeight() { return this.$attrs["isFullHeight"] && this.$attrs["isFullHeight"] === "true"; }
+        public get isFullHeight() { return this.parseBoolean(this.$attrs["isFullHeight"]); }
 
-        public get isFullWidth() { return this.$attrs["isFullWidth"] && this.$attrs["isFullWidth"] === "true"; }
+        public get isFullWidth() { return this.parseBoolean(this.$attrs["isFullWidth"]); }
 
-        public get isFullScreen() { return this.$attrs["isFullScreen"] && this.$attrs["isFullScreen"] === "true"; }
+        public get isFullScreen() { return this.parseBoolean(this.$attrs["isFullScreen"]); }
 
-        public get displayBackDrop() { return this.$attrs["displayBackDrop"] && this.$attrs["displayBackDrop"] === "true"; }
+        public get displayBackDrop() { return this.parseBoolean(this.$attrs["displayBackDrop"]); }
 
         public defaultCalloutTemplate: string = ["<div class='callout'>", "<h1>Callout</h1>", "</div>"].join(" ");
 
@@ -182,5 +183,17 @@ module App.UI {
 
     }
 
-    angular.module("app.ui").controller("calloutController", ["$attrs", "$compile", "$element", "$http", "$q", "$scope", "$timeout","appendToBodyAsync", "extendCssAsync", "position","setOpacityAsync",CalloutController]);
+    angular.module("app.ui").controller("calloutController", [
+        "$attrs",
+        "$compile",
+        "$element",
+        "$http",
+        "$q",
+        "$scope",
+        "$timeout",
+        "appendToBodyAsync",
+        "extendCssAsync",
+        "parseBoolean",
+        "position",
+        "setOpacityAsync", CalloutController]);
 } 

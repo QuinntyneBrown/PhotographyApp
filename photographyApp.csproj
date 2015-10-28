@@ -198,6 +198,7 @@
     <TypeScriptCompile Include="src\common\providers\getFormFactor.ts" />
     <TypeScriptCompile Include="src\common\providers\localStorage.ts" />
     <TypeScriptCompile Include="src\common\providers\localStorageService.ts" />
+    <TypeScriptCompile Include="src\common\providers\parseBoolean.ts" />
     <TypeScriptCompile Include="src\common\providers\requestCounter.ts" />
     <TypeScriptCompile Include="src\common\providers\routeResolverServiceProvider.ts" />
     <TypeScriptCompile Include="src\common\providers\loadStyleSheet.ts" />
