@@ -19,7 +19,7 @@ module App.Photography {
             });
 
             $routeProvider.when("/upload", {
-                templateUrl: "src/app/photography/components/photoUpload/photoUpload.html",
+                templateUrl: "src/photography/components/photoUpload/photoUpload.html",
                 controller: "photoUploadController",
                 controllerAs: "vm"
                 //resolve: {

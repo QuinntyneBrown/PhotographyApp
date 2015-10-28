@@ -117,5 +117,28 @@
         }
     }
 
-    angular.module("app.common").provider("routeResolverService", [RouteResolverServiceProvider]);
+    angular.module("app.common")
+        .provider("routeResolverService", [RouteResolverServiceProvider])
+        .run(["$location", "$rootScope", "getCurrentControllerInstance", ($location: ng.ILocationService,$rootScope: ng.IRootScopeService, getCurrentControllerInstance:any) => {
+            $rootScope.$on("$viewContentLoaded", () => {
+                var instance = getCurrentControllerInstance();
+                if (instance.activate) instance.activate();
+            });
+
+            $rootScope.$on("$routeChangeStart", (event, next) => {
+                var instance = getCurrentControllerInstance();
+                if (instance && instance.canDeactivate && !instance.deactivated) {
+                    event.preventDefault();
+                    instance.canDeactivate().then((canDeactivate: boolean) => {
+                        if (canDeactivate) {
+                            instance.deactivated = true;
+                            $location.path(next.$$route.originalPath);
+                        }
+                    });
+                } else {
+                    if (instance && instance.deactivate)
+                        instance.deactivate();
+                }
+            });
+        }]);
 } 
