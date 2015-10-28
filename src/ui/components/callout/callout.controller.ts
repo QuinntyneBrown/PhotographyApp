@@ -133,9 +133,6 @@ module App.UI {
         public get transitionDurationInMilliseconds() { return this.$attrs["transitionDurationInMilliseconds"] || 1000; }
 
         public openAsync = () => {
-
-            return this.backDrop.openAsync();
-
             var deferred = this.$q.defer();
             this.isAnimating = true;
             this.calloutScope = this.$scope.$new();
@@ -148,6 +145,8 @@ module App.UI {
                 .then(() => {
                 this.isAnimating = false;
                 this.isOpen = true;
+
+                
                 this.closeCalloutScheduledPromise = this.$timeout(this.closeAsync, Number(this.$attrs["displayFor"] || 2000), false);
             });
             return deferred.promise;

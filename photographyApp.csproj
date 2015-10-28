@@ -218,6 +218,8 @@
     <TypeScriptCompile Include="src\photography\components\photoUpload\photoUpload.controller.ts" />
     <TypeScriptCompile Include="src\photography\components\rateCalculator\rateCalculator.controller.ts" />
     <TypeScriptCompile Include="src\photography\components\rateCalculator\rateCalculator.directive.ts" />
+    <Content Include="src\photography\components\rates\rates.html" />
+    <TypeScriptCompile Include="src\photography\components\rates\rates.controller.ts" />
     <TypeScriptCompile Include="src\photography\providers\gallery.model.ts" />
     <TypeScriptCompile Include="src\photography\providers\galleryDataService.ts" />
     <TypeScriptCompile Include="src\photography\photography.d.ts" />

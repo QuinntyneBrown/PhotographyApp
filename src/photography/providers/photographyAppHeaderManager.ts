@@ -1,6 +1,5 @@
 ﻿/// <reference path="../../../typings/typescriptapp.d.ts" />
 
-
 module App.Photography {
 
     "use strict";
@@ -10,13 +9,11 @@ module App.Photography {
     * @module App.Photography
     */
     export class PhotographyAppHeaderManager implements UI.IAppHeaderManager {
-        
-        constructor() { }
 
         private _links: Array<any> = [
-            { caption: "Home" },
-            { caption: "Photos" },
-            { caption: "Rates" }
+            { caption: "Home", url: "/" },
+            { caption: "Photos", url: "#/photos" },
+            { caption: "Rates", url: "#/rates" }
         ];
 
         public get links() { return this._links; }
