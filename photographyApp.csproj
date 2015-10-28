@@ -259,6 +259,7 @@
     <TypeScriptCompile Include="src\ui\providers\position.ts" />
     <TypeScriptCompile Include="src\ui\providers\rectangle.ts" />
     <TypeScriptCompile Include="src\ui\providers\ruler.ts" />
+    <TypeScriptCompile Include="src\ui\providers\setOpacityAsync.ts" />
     <TypeScriptCompile Include="src\ui\providers\space.ts" />
     <TypeScriptCompile Include="src\ui\providers\getHTML.ts" />
     <TypeScriptCompile Include="src\ui\providers\translateXAsync.ts" />

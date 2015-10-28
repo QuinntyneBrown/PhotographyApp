@@ -17,7 +17,8 @@ module App.UI {
             private $q:ng.IQService,
             private $scope: any,
             private $timeout: ng.ITimeoutService,
-            private position: IPosition) {
+            private position: IPosition,
+            private setOpacityAsync: any) {
             this.bootstrap();            
         }
 
@@ -85,11 +86,11 @@ module App.UI {
         }
 
         public showCalloutElementAsync = () => {
-            return this.setOpacityAsync({ opacity: 100 });
+            return this.setOpacityAsync({ nativeHtmlElement: this.nativeCalloutHTMLElement, opacity: 100 });
         }
 
         public hideCalloutElementAsync = () => {
-            return this.setOpacityAsync({ opacity: 0 });
+            return this.setOpacityAsync({ nativeHtmlElement: this.nativeCalloutHTMLElement, opacity: 0 });
         }
 
         private setInitialCalloutCssAsync = () => {
@@ -100,23 +101,13 @@ module App.UI {
             this.nativeCalloutHTMLElement.style.top = "0";
             this.nativeCalloutHTMLElement.style.left = "0";
             this.nativeCalloutHTMLElement.style.display = "block";
+
+
             deferred.resolve();
             return deferred.promise;
         }
 
         public get transitionDurationInMilliseconds() { return this.$attrs["transitionDurationInMilliseconds"] || 1000; }
-
-        public setOpacityAsync = (options:any) => {
-            var deferred = this.$q.defer();
-            var self = this;
-            self.calloutAugmentedJQuery.css("opacity", options.opacity);
-            self.nativeCalloutHTMLElement.addEventListener('transitionend', resolve, false);
-            function resolve() {
-                self.nativeCalloutHTMLElement.removeEventListener('transitionend', resolve);
-                deferred.resolve();
-            }
-            return deferred.promise;             
-        }
 
         public openAsync = () => {
             var deferred = this.$q.defer();
@@ -169,6 +160,14 @@ module App.UI {
 
         public closeCalloutScheduledPromise: any = null;
 
+        public get defaultDirection() { return this.$attrs["defaultDirection"]; }
+
+        public get isFullHeight() { return false; }
+
+        public get isFullWidth() { return false; }
+
+        public get isFullScreen() { return false; }
+
         public defaultCalloutTemplate: string = ["<div class='callout'>", "<h1>Callout</h1>", "</div>"].join(" ");
 
         public calloutTemplate: string;
@@ -177,5 +176,5 @@ module App.UI {
 
     }
 
-    angular.module("app.ui").controller("calloutController", ["$attrs", "$compile", "$element", "$http", "$q", "$scope","$timeout","position" ,CalloutController]);
+    angular.module("app.ui").controller("calloutController", ["$attrs", "$compile", "$element", "$http", "$q", "$scope", "$timeout", "position","setOpacityAsync",CalloutController]);
 } 
