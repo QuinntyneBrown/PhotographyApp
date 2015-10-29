@@ -192,6 +192,7 @@
     <TypeScriptCompile Include="src\common\common.module.ts" />
     <TypeScriptCompile Include="src\common\providers\apiEndpointProvider.ts" />
     <TypeScriptCompile Include="src\common\providers\appName.ts" />
+    <TypeScriptCompile Include="src\common\providers\compileAsync.ts" />
     <TypeScriptCompile Include="src\common\providers\componentStyleSheetMappings.ts" />
     <TypeScriptCompile Include="src\common\providers\getCurrentControllerInstance.ts" />
     <TypeScriptCompile Include="src\common\providers\debounce.ts" />
@@ -247,6 +248,7 @@
     <TypeScriptCompile Include="src\ui\components\carousel\carousel.directive.ts" />
     <TypeScriptCompile Include="src\ui\components\fileUpload\fileUpload.directive.ts" />
     <TypeScriptCompile Include="src\ui\components\fileUpload\fileUpload.controller.ts" />
+    <TypeScriptCompile Include="src\ui\components\flyout\flyout.ts" />
     <TypeScriptCompile Include="src\ui\components\hamburgerButton\hamburgerButton.directive.ts" />
     <None Include="src\ui\components\hamburgerButton\hamburgerButton.scss" />
     <TypeScriptCompile Include="src\ui\components\modal\modal.service.ts" />
