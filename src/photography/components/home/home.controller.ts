@@ -8,7 +8,7 @@
      */
     export class HomeController implements IHomeController {
         //constructor(photo: IPhoto, routeData: any) { }
-        constructor(private $q:ng.IQService, private getCurrentControllerInstance: any) {
+        constructor(private $q:ng.IQService) {
             this.photos = [
                 { url: "assets/images/DSC_1287.JPG" },
                 { url: "assets/images/DSC_1256.JPG" },
@@ -47,7 +47,7 @@
     }
 
     angular.module("app.photography")
-        .controller("homeController", ["$q","getCurrentControllerInstance",HomeController])
+        .controller("homeController", ["$q",HomeController])
         .config(["routeResolverServiceProvider", (routeResolverServiceProvider: App.Common.IRouteResolverServiceProvider) => {
 
         routeResolverServiceProvider.configure({

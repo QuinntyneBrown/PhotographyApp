@@ -16,8 +16,6 @@ module App.UI {
 
         public restrict: string = "A";
 
-        public replace: boolean = true;
-
         public controller: string = "calloutController";
 
         public controllerAs: string = "vm";

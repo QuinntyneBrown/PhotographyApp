@@ -30,27 +30,30 @@ module App.UI {
 
         public calloutAugmentedJQuery: ng.IAugmentedJQuery;
 
-        public get nativeCalloutHTMLElement() { return this.calloutAugmentedJQuery[0]; }
+        public get nativeCalloutElement() { return this.calloutAugmentedJQuery ? this.calloutAugmentedJQuery[0] : null; }
 
-        public bootstrap = () => {            
-            this.nativeOriginalHTMLElement.addEventListener(this.$attrs["triggerEvent"] || "click", this.onTrigger);
-            this.$scope.$on("$destroy", this.dispose);
+        public bootstrap = () => {
+            this.triggerEvent = this.$attrs["triggerEvent"] || "click";
+            this.nativeOriginalHTMLElement.addEventListener(this.triggerEvent, this.onTrigger);
+            this.$scope.$on("$destroy", () => {
+                this.dispose();                
+                this.nativeOriginalHTMLElement.removeEventListener(this.triggerEvent, this.onTrigger);
+                angular.element(this.nativeOriginalHTMLElement).remove();               
+                this.$element.remove();
+                this.$element = null;
+                this.$attrs = null;
+            });
         }
+
+        public triggerEvent: string;
 
         public onTrigger = () => {
             if (this.isAnimating)
                 return;
 
             if (this.isOpen) {
-                this.closeAsync().then(() => {
-                    if (this.backDropInstance) {
-                        this.backDropInstance.closeAsync().then(() => {
-                            this.backDropInstance = null;
-                        });
-                    }
-                });
+                this.closeAsync();
             } else {
-
                 if (this.displayBackDrop) {
                     this.backDropInstance = this.backDrop.createInstance();
                     this.backDropInstance.openAsync()
@@ -94,30 +97,23 @@ module App.UI {
 
         public positionCalloutAsync = () => {
             var deferred = this.$q.defer();
-
-            //if fullwidth, should place above, below or onTop
-
-            //if full height, should place right, left or onTop
-
-            // full screen, should place at top left
-
-            this.position.below(this.nativeOriginalHTMLElement, this.nativeCalloutHTMLElement, 30).then(() => {
+            this.position.below(this.nativeOriginalHTMLElement, this.nativeCalloutElement, 30).then(() => {
                 deferred.resolve();
             });
             return deferred.promise; 
         }
 
-        public appendCalloutToBodyAsync = () => { return this.appendToBodyAsync({ nativeHTMLElement: this.nativeCalloutHTMLElement }); }
+        public appendCalloutToBodyAsync = () => { return this.appendToBodyAsync({ nativeHTMLElement: this.nativeCalloutElement }); }
 
-        public showCalloutElementAsync = () => { return this.setOpacityAsync({ nativeHtmlElement: this.nativeCalloutHTMLElement, opacity: 100 }); }
+        public showCalloutElementAsync = () => { return this.setOpacityAsync({ nativeHtmlElement: this.nativeCalloutElement, opacity: 100 }); }
 
         public hideCalloutElementAsync = () => {
-            return this.setOpacityAsync({ nativeHtmlElement: this.nativeCalloutHTMLElement, opacity: 0 });
+            return this.setOpacityAsync({ nativeHtmlElement: this.nativeCalloutElement, opacity: 0 });
         }
 
         private setInitialCalloutCssAsync = () => {
             return this.extendCssAsync({
-                nativeHTMLElement: this.nativeCalloutHTMLElement, cssObject: {
+                nativeHTMLElement: this.nativeCalloutElement, cssObject: {
                     "-webkit-transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
                     "-o-transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
                     "transition": "opacity " + this.transitionDurationInMilliseconds + "ms ease-in-out",
@@ -145,8 +141,6 @@ module App.UI {
                 .then(() => {
                 this.isAnimating = false;
                 this.isOpen = true;
-
-                
                 this.closeCalloutScheduledPromise = this.$timeout(this.closeAsync, Number(this.$attrs["displayFor"] || 2000), false);
             });
             return deferred.promise;
@@ -160,14 +154,23 @@ module App.UI {
                 this.dispose();
                 this.isOpen = false;
                 this.isAnimating = false;
-                deferred.resolve();
+
+                if (this.backDropInstance) {
+                    this.backDropInstance.closeAsync().then(() => {
+                        deferred.resolve();
+                        this.backDropInstance = null;
+                    });
+                } else {
+                    deferred.resolve();    
+                }
+                
             });
             return deferred.promise;
         }
 
         public dispose = () => {
             this.destroyScope({ scope: this.calloutScope });
-            this.removeElement({ nativeHTMLElement: this.nativeCalloutHTMLElement });
+            this.removeElement({ nativeHTMLElement: this.nativeCalloutElement });
             this.calloutAugmentedJQuery = null;
             this.closeCalloutScheduledPromise = null;
             this.calloutTemplate = null;            
@@ -177,15 +180,13 @@ module App.UI {
 
         public get defaultDirection() { return this.$attrs["defaultDirection"] || "bottom"; }
 
-        public get isFullHeight() { return this.parseBoolean({ value: this.$attrs["isFullHeight"] }); } 
-
-        public get isFullWidth() { return this.parseBoolean({ value: this.$attrs["isFullWidth"] }); }
-
-        public get isFullScreen() { return this.parseBoolean({ value: this.$attrs["isFullScreen"] }); }
-
         public get displayBackDrop() { return this.parseBoolean({ value: this.$attrs["displayBackDrop"] }); }
 
-        public defaultCalloutTemplate: string = ["<div class='callout'>", "<h1>Callout</h1>", "</div>"].join(" ");
+        public defaultCalloutTemplate: string = [
+            "<div class='callout'>",
+            "<h1>Callout</h1>",
+            "</div>"
+        ].join(" ");
 
         public calloutTemplate: string;
 

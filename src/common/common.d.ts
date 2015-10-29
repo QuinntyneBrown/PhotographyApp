@@ -50,7 +50,13 @@
     * @module App.Common
     */
     export interface IRouteResolverServiceProvider extends ng.IServiceProvider {
+
         configure(routePromise: IRoutePromise);
+
+        /**
+        * get route promises ordered by priority (ASC)
+        * priority 1 runs before priority 10
+        */
         routePromises: Array<IRoutePromise>;
 
         /**

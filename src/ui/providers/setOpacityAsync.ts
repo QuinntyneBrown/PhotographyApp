@@ -10,15 +10,14 @@
      */
     export var setOpacityAsync = (options: any) => {
         var deferred = $q.defer();
-        options.nativeHtmlElement.style.opacity = options.opacity;
-        
-        options.nativeHtmlElement.addEventListener('transitionend', resolve, false);
-
+        if (options.nativeHtmlElement) {
+            options.nativeHtmlElement.style.opacity = options.opacity;
+            options.nativeHtmlElement.addEventListener('transitionend', resolve, false);            
+        }
         function resolve() {
             options.nativeHtmlElement.removeEventListener('transitionend', resolve);
             deferred.resolve();
         }
-
         return deferred.promise;          
     }
 

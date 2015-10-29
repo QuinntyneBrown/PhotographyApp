@@ -194,7 +194,6 @@
     <TypeScriptCompile Include="src\common\providers\appName.ts" />
     <TypeScriptCompile Include="src\common\providers\compileAsync.ts" />
     <TypeScriptCompile Include="src\common\providers\componentStyleSheetMappings.ts" />
-    <TypeScriptCompile Include="src\common\providers\getCurrentControllerInstance.ts" />
     <TypeScriptCompile Include="src\common\providers\debounce.ts" />
     <TypeScriptCompile Include="src\common\providers\formFactor.ts" />
     <TypeScriptCompile Include="src\common\providers\getFormFactor.ts" />

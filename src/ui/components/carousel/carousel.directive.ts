@@ -32,7 +32,16 @@ module App.UI {
 
         public controller: string = "carouselController";
 
-        public scope:any = { carouselFor:"=" };
+        public scope: any = { carouselFor: "=" };
+
+        public compile = (template: ng.IAugmentedJQuery) => {
+            return (scope: ng.IScope, element: ng.IAugmentedJQuery, attributes: ng.IAttributes, controller: any, transclude: any) => {
+                transclude(scope.$new(), (clone: ng.IAugmentedJQuery) => {
+                    controller.clone = clone;
+                    controller.initialRender();
+                });
+            }
+        }
     }
 
     angular.module("app.ui").directive("carousel", [Carousel.createInstance]);

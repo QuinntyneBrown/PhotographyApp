@@ -11,7 +11,7 @@ module App.Photography {
     export class PhotographyAppHeaderManager implements UI.IAppHeaderManager {
 
         private _links: Array<any> = [
-            { caption: "Home", url: "/" },
+            { caption: "Home", url: "#/" },
             { caption: "Photos", url: "#/photos" },
             { caption: "Rates", url: "#/rates" }
         ];

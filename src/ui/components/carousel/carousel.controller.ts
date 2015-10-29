@@ -15,12 +15,21 @@ module App.UI {
             private $scope: ICarouselScope,
             private $transclude: Function,
             private getHtml: IGetHtmlFn,
+            private removeElement:any,
             private translateXAsync: ITranslateXAsync) {
 
-            $transclude($scope, (clone: ng.IAugmentedJQuery) => {
-                this.clone = clone;
-                this.initialRender();
-            });
+            $scope.$on("$destroy", () => { this.dispose(); });
+        }
+
+        public dispose = () => {            
+            angular.element(this.containerNavtiveElement).find(".slide").remove();
+            this.containerNavtiveElement.innerHTML = "";
+            this.$element[0].innerHTML = null;
+            this.$element = null;
+            this.$attrs = null;
+            this.clone = null;
+            delete this.$element;
+            delete this.clone;
         }
 
         public onNextAsync = () => {
@@ -61,8 +70,7 @@ module App.UI {
          
         private initialRender = () => {
             var fragment = document.createDocumentFragment();
-            var template = this.getHtml(<HTMLElement>this.clone[0].children[0], true);
-                                           
+            var template = this.getHtml(<HTMLElement>this.clone[0].children[0], true);                                    
             for (var i = 0; i < this.items.length; i++) {                                
                 var childScope: any = this.$scope.$new(true);
                 childScope[this.$attrs["carouselForName"] || "carouselItem"] = this.items[i];
@@ -73,7 +81,6 @@ module App.UI {
                 itemContent.addClass("slide");
                 fragment.appendChild(itemContent[0]);             
             }
-
             this.containerNavtiveElement.appendChild(fragment);
         }
 
@@ -97,5 +104,5 @@ module App.UI {
 
     }
 
-    angular.module("app.ui").controller("carouselController", ["$attrs", "$compile", "$element", "$q", "$scope", "$transclude", "getHtml","translateXAsync", CarouselController]);
+    angular.module("app.ui").controller("carouselController", ["$attrs", "$compile", "$element", "$q", "$scope", "$transclude", "getHtml","removeElement","translateXAsync", CarouselController]);
 } 
