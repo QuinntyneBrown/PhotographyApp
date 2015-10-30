@@ -10,10 +10,7 @@
      * @module App.Common
      */
     export var compileAsync = (options: any) => {
-        var deferred = $q.defer();        
-        options.augmentedJQuery = $compile(options.template)(options.scope);
-        deferred.resolve();
-        return deferred.promise;
+        return $q.when(options.augmentedJQuery = $compile(options.template)(options.scope));
     }
 
     angular.module("app.common").value("compileAsync", compileAsync);

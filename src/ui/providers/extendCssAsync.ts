@@ -8,11 +8,8 @@
      * @name extendCssAsync
      * @module App.UI
      */
-    export var extendCssAsync = (options: any) => {
-        var deferred = $q.defer();
-        angular.extend(options.nativeHTMLElement.style, options.cssObject);
-        deferred.resolve();
-        return deferred.promise;
+    export var extendCssAsync = (options: any) => {        
+        return $q.when(angular.extend(options.nativeHTMLElement.style, options.cssObject));
     }
 
     angular.module("app.ui").value("extendCssAsync", extendCssAsync);

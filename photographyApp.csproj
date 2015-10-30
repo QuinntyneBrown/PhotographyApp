@@ -113,6 +113,7 @@
     <Content Include="src\photography\components\rateCalculator\rateCalculator.css.map">
       <DependentUpon>rateCalculator.css</DependentUpon>
     </Content>
+    <Content Include="npm-debug.log" />
     <None Include="Properties\PublishProfiles\photographyapp - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\photographyapp - Web Deploy.pubxml" />
     <Content Include="src\security\components\login\login.scss" />

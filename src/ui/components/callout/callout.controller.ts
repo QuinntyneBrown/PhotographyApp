@@ -17,7 +17,7 @@ module App.UI {
             private $q:ng.IQService,
             private $scope: any,
             private $timeout: ng.ITimeoutService,
-            private appendToBodyAsync: any,
+            private appendToBodyAsync: IAppendToBodyAsync,
             private backDrop:any,
             private destroyScope:any,
             private extendCssAsync: Function,
@@ -101,7 +101,7 @@ module App.UI {
             return deferred.promise; 
         }
 
-        public appendCalloutToBodyAsync = () => { return this.appendToBodyAsync({ nativeHTMLElement: this.nativeCalloutElement }); }
+        public appendCalloutToBodyAsync = () => { return this.appendToBodyAsync({ nativeElement: this.nativeCalloutElement }); }
 
         public showCalloutElementAsync = () => { return this.setOpacityAsync({ nativeHtmlElement: this.nativeCalloutElement, opacity: 100 }); }
 

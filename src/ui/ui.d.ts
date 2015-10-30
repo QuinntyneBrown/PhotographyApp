@@ -1,6 +1,13 @@
 ﻿declare module App.UI {
 
+    export interface IAppendToBodyAsync {
+        (options: IAppendToBodyAsyncOptions):void;
+    }
 
+    export interface IAppendToBodyAsyncOptions{
+        nativeElement: HTMLElement;
+        wait?: number;
+    }
     /**
      * @name ITranslateXAsync
      * @module App.UI

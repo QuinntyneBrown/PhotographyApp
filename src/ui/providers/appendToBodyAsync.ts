@@ -8,10 +8,10 @@
      * @name appendToBodyAsync
      * @module App.UI
      */
-    export var appendToBodyAsync = (options: any) => {
+    export var appendToBodyAsync: IAppendToBodyAsync = (options: IAppendToBodyAsyncOptions) => {
         var deferred = $q.defer();
-        document.body.appendChild(options.nativeHTMLElement);
-        setTimeout(() => { deferred.resolve(); }, 100);
+        document.body.appendChild(options.nativeElement);
+        setTimeout(() => { deferred.resolve(); }, options.wait || 100);
         return deferred.promise;
     }
 

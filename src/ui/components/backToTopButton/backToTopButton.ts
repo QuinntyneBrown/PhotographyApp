@@ -11,7 +11,7 @@
     export class BackToTopButton {
         
         constructor(private $q: ng.IQService,
-            private appendToBodyAsync: any,
+            private appendToBodyAsync: IAppendToBodyAsync,
             private debounce: any,
             private extendCssAsync: any,
             private removeElement: any,

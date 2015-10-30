@@ -37,6 +37,12 @@
     },
     "rx/rx-lite.d.ts": {
       "commit": "68548c2daab053869f323d475419c693478bbb73"
+    },
+    "requirejs/require.d.ts": {
+      "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
+    },
+    "node/node.d.ts": {
+      "commit": "eb59a40d3c2f3257e34ec2ede181046230814a41"
     }
   }
 }

@@ -12,12 +12,6 @@
         
         public get photos() { return this.routeData.photos; }
 
-        public activate = () => { }
-
-        public deactivate = () => { }
-
-        public canDeactivate = () => { return this.$q.when(true); }
-
         public static canActivate = () => {
             return ["$http", "$q", "photo", "photoDataService", ($http: ng.IHttpService, $q: ng.IQService, photo: IPhoto, photoDataService: IPhotoDataService) => {
                 var deferred = $q.defer();

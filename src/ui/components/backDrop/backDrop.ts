@@ -12,7 +12,7 @@ module App.UI {
     export class BackDrop {
         
         constructor(private $q: ng.IQService,
-            private appendToBodyAsync: any,
+            private appendToBodyAsync: IAppendToBodyAsync,
             private extendCssAsync:any,
             private removeElement:any,
             private setOpacityAsync:any) { }
@@ -79,7 +79,7 @@ module App.UI {
         }
     
         public appendBackDropToBodyAsync = () => {
-            return this.appendToBodyAsync({ nativeHTMLElement: this.nativeHTMLElement });
+            return this.appendToBodyAsync({ nativeElement: this.nativeHTMLElement });
         }
 
         public hideAsync = () => {

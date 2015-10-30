@@ -67,8 +67,8 @@
          * Eventually will be resolve together asynchronously with $q.all
          */
         public reduceRoutePromisesByPriority = (routePromises: IRoutePromise[]) => {
-            var priorities: any = [];
-            var routePromisesPrioritizedGroups: any[] = [];
+            var priorities: Array<number> = [];
+            var routePromisesPrioritizedGroups: Array<any> = [];
 
             routePromises.forEach((promise) => {
                 if (priorities.indexOf(promise.priority) < 0)
@@ -93,7 +93,7 @@
          * will have a key value dictionary with the results of any promises with a key defined
          */
         public invoke = ($injector: ng.auto.IInjectorService, $q: ng.IQService, groups: IRoutePromisesPrioritizedGroup[], currentGroupIndex: number, callback: any, resolvedRouteData: any) => {
-            var excutedPromises: any[] = [];
+            var excutedPromises: Array<any> = [];
             var currentGroup = groups[currentGroupIndex];
 
             currentGroup.promises.forEach((statePromise: IRoutePromise) => {
@@ -114,7 +114,7 @@
         .provider("routeResolverService", [RouteResolverServiceProvider])
         .run(["$injector", "$location", "$rootScope", ($injector:ng.auto.IInjectorService, $location: ng.ILocationService,$rootScope: ng.IRootScopeService) => {
             $rootScope.$on("$viewContentLoaded", () => {
-                var $route:any = $injector.get("$route");
+                var $route: any = $injector.get("$route");
                 var instance = $route.current.scope[$route.current.controllerAs];
                 if (instance.activate) instance.activate();
             });
