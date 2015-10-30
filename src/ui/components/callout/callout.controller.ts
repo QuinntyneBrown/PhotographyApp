@@ -60,10 +60,8 @@ module App.UI {
                         .then(this.openAsync);
                 } else {
                     this.openAsync();    
-                }
-                
+                }                
             }
-
         }
 
         public backDropInstance: any = null;
@@ -154,7 +152,6 @@ module App.UI {
                 this.dispose();
                 this.isOpen = false;
                 this.isAnimating = false;
-
                 if (this.backDropInstance) {
                     this.backDropInstance.closeAsync().then(() => {
                         deferred.resolve();
@@ -162,8 +159,7 @@ module App.UI {
                     });
                 } else {
                     deferred.resolve();    
-                }
-                
+                }                
             });
             return deferred.promise;
         }

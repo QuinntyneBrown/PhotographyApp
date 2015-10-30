@@ -195,6 +195,7 @@
     <TypeScriptCompile Include="src\common\providers\compileAsync.ts" />
     <TypeScriptCompile Include="src\common\providers\componentStyleSheetMappings.ts" />
     <TypeScriptCompile Include="src\common\providers\debounce.ts" />
+    <TypeScriptCompile Include="src\common\providers\dot.ts" />
     <TypeScriptCompile Include="src\common\providers\formFactor.ts" />
     <TypeScriptCompile Include="src\common\providers\getFormFactor.ts" />
     <TypeScriptCompile Include="src\common\providers\localStorage.ts" />

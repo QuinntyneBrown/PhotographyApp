@@ -7,51 +7,46 @@
      * @module App.Photography
      */
     export class HomeController implements IHomeController {
-        //constructor(photo: IPhoto, routeData: any) { }
-        constructor(private $q:ng.IQService) {
-            this.photos = [
-                { url: "assets/images/DSC_1287.JPG" },
-                { url: "assets/images/DSC_1256.JPG" },
-                { url: "assets/images/DSC_1245.JPG" }];            
-        }
+        
+        constructor(private $q:ng.IQService, private routeData:any) { }
+        
+        public get photos() { return this.routeData.photos; }
 
-        private _slideTemplate: string;
+        public activate = () => { }
 
-        public get slideTemplate() { return this._slideTemplate; }
+        public deactivate = () => { }
 
-        public set slideTemplate(value:string) { this._slideTemplate = value; }
-
-        private _photos: Array<IPhoto> = [];
-
-        public get photos() { return this._photos; }
-
-        public set photos(value: Array<IPhoto>) { this._photos = value; }
-
-        public static styleUrls: Array<string> = [];
+        public canDeactivate = () => { return this.$q.when(true); }
 
         public static canActivate = () => {
-            return ["$http", "$q", "photoDataService", ($http: ng.IHttpService, $q: ng.IQService, photoDataService: IPhotoDataService) => {
+            return ["$http", "$q", "photo", "photoDataService", ($http: ng.IHttpService, $q: ng.IQService, photo: IPhoto, photoDataService: IPhotoDataService) => {
                 var deferred = $q.defer();
-                $q.all([
-                    $http.get("src/app/photography/components/home/photoSlide.html"),
-                    photoDataService.getAllFeaturedPhotos()
-                ]).then((results: any) => {
-                    deferred.resolve({
-                        slideTemplate: results[0],
-                        photos: results[1]
-                    });
+                var promises = [];
+                var data = [
+                    { url: "assets/images/DSC_1287.JPG" },
+                    { url: "assets/images/DSC_1256.JPG" },
+                    { url: "assets/images/DSC_1245.JPG" }
+                ];
+                for (var i = 0; i < data.length; i++) {
+                    promises.push(photo.createInstanceAsync({ data: data[i] }));
+                }
+
+                $q.all(promises).then((photos: Array<IPhoto>) => {
+                    deferred.resolve(photos);
                 });
+                
                 return deferred.promise;
             }];
         }
     }
 
     angular.module("app.photography")
-        .controller("homeController", ["$q",HomeController])
+        .controller("homeController", ["$q","routeData",HomeController])
         .config(["routeResolverServiceProvider", (routeResolverServiceProvider: App.Common.IRouteResolverServiceProvider) => {
 
         routeResolverServiceProvider.configure({
-            route:"/",
+            route: "/",
+            key:"photos",
             promise: HomeController.canActivate()
         });
 

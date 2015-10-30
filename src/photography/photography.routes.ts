@@ -10,12 +10,12 @@ module App.Photography {
             $routeProvider.when("/", {
                 templateUrl: "src/photography/components/home/home.html",
                 controller: "homeController",
-                controllerAs: "vm"
-                //resolve: {
-                //    routeData: ["routeResolverService", (routeResolverService:App.Common.IRouteResolverService) => {
-                //        return routeResolverService.resolve("/");
-                //    }]
-                //}
+                controllerAs: "vm",
+                resolve: {
+                    routeData: ["routeResolverService", (routeResolverService: Common.IRouteResolverService) => {
+                        return routeResolverService.resolve("/");                        
+                    }]
+                }
             });
 
             $routeProvider.when("/photos", {

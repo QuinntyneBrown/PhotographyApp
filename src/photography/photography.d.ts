@@ -5,7 +5,8 @@
     * @module App.Photography
     */
     export interface IPhoto {
-        
+        createInstanceAsync(options: any): ng.IPromise<IPhoto>;
+        url:string;
     }
 
     /**
@@ -13,7 +14,6 @@
     * @module App.Photography
     */
     export interface IHomeController {
-        slideTemplate: string;
         photos: Array<IPhoto>;
     }
 

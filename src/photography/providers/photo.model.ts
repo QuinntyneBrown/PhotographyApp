@@ -16,6 +16,8 @@
 
             var instance = new Photo(this.$q);
 
+            instance.url = options.data.url;
+
             deferred.resolve(instance);
 
             return deferred.promise;
@@ -31,7 +33,14 @@
 
         public get description() { return this._description; }
 
-        public set description(value:string) { this._description = value; }
+        public set description(value: string) { this._description = value; }
+
+        private _url: string;
+
+        public get url() { return this._url; }
+
+        public set url(value: string) { this._url = value; }
+
 
     }
 

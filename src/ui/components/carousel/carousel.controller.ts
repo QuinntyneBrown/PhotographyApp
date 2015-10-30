@@ -19,6 +19,11 @@ module App.UI {
             private translateXAsync: ITranslateXAsync) {
 
             $scope.$on("$destroy", () => { this.dispose(); });
+
+            $transclude($scope, (clone: ng.IAugmentedJQuery) => {
+                this.clone = clone;
+                this.initialRender();
+            });
         }
 
         public dispose = () => {            

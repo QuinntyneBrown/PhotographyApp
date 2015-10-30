@@ -113,22 +113,20 @@
     angular.module("app.common")
         .provider("routeResolverService", [RouteResolverServiceProvider])
         .run(["$injector", "$location", "$rootScope", ($injector:ng.auto.IInjectorService, $location: ng.ILocationService,$rootScope: ng.IRootScopeService) => {
-
             $rootScope.$on("$viewContentLoaded", () => {
                 var $route:any = $injector.get("$route");
                 var instance = $route.current.scope[$route.current.controllerAs];
                 if (instance.activate) instance.activate();
             });
 
-            $rootScope.$on("$routeChangeStart", (event, next) => {
-                var $route: any = $injector.get("$route");
-                var instance = $route.current ? $route.current.scope[$route.current.controllerAs] : null;
+            $rootScope.$on("$routeChangeStart", (event, next, current) => {                
+                var instance = current && current.controllerAs ? current.scope[current.controllerAs] : null;
                 if (instance && instance.canDeactivate && !instance.deactivated) {
                     event.preventDefault();
                     instance.canDeactivate().then((canDeactivate: boolean) => {
                         if (canDeactivate) {
                             instance.deactivated = true;
-                            $location.path(next.$$route.originalPath);
+                            $location.path(next.originalPath);
                         }
                     });
                 } else {
