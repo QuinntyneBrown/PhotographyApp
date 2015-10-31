@@ -2,6 +2,10 @@
 
     "use strict";
 
+    /**
+     * @name RatesController
+     * @module App.Photography
+     */
     export class RatesController {
 
         constructor(private routeData: any) { }

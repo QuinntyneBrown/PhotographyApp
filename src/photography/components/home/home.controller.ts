@@ -32,15 +32,13 @@
         }
     }
 
-    angular.module("app.photography")
-        .controller("homeController", ["$q","routeData",HomeController])
-        .config(["routeResolverServiceProvider", (routeResolverServiceProvider: App.Common.IRouteResolverServiceProvider) => {
+    Component({
+        module: "app.photography",
+        component: HomeController,
+        componentName: "homeController",
+        providers: ["$q", "routeData"],
+        route: "/",
+        key: "photos"
+    });
 
-        routeResolverServiceProvider.configure({
-            route: "/",
-            key:"photos",
-            promise: HomeController.canActivate()
-        });
-
-    }]);
 } 
