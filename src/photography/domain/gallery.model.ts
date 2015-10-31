@@ -1,4 +1,6 @@
 ﻿module App.Photography {
+
+    "use strict";
     
     /**
      * @name Gallery
@@ -8,15 +10,9 @@
 
         constructor(private $q: ng.IQService) { }
 
-        public createInstanceAsync = (options: any) => {
-
-            var deferred = this.$q.defer();
-
+        public createInstanceAsync = (options: any) => {            
             var instance = new Photo(this.$q);
-
-            deferred.resolve(instance);
-
-            return deferred.promise;
+            return this.$q.when(instance);
         }
 
         private _photos: Array<IPhoto>;

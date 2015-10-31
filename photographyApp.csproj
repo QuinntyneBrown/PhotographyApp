@@ -64,6 +64,7 @@
     <Content Include="assets\images\DSC_1245.JPG" />
     <Content Include="assets\images\DSC_1256.JPG" />
     <Content Include="assets\images\DSC_1287.JPG" />
+    <Content Include="assets\images\quinntyne_brown.jpg" />
     <Content Include="dist\photographyApp.js" />
     <Content Include="node_modules\angular-animate\angular-animate.js" />
     <Content Include="node_modules\angular-material\angular-material.css" />

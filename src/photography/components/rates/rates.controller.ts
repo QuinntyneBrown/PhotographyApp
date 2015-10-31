@@ -4,8 +4,18 @@
 
     export class RatesController {
         
+        public static canActivate = () => {
+            return ["$q", ($q:ng.IQService) => { return $q.when(true); }];
+        }
     }
 
-    angular.module("app.photography").controller("ratesController", [RatesController]);
+    Component({
+        module: "app.photography",
+        controller: App.Photography.RatesController,
+        controllerName: "ratesController",
+        injectables:[],
+        route: "/rates",
+        key:"rates"
+    });
 }
  

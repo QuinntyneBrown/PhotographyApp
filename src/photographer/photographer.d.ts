@@ -7,7 +7,8 @@
 
     export interface IPhotographer {
         createInstanceAsync(options: any): ng.IPromise<IPhotographer>;
-        fullName:string;
+        fullName: string;
+        profileImageUrl:string;
     }
 
 } 

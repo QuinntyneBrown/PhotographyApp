@@ -11,7 +11,8 @@
 
         public getFeaturedPhotographer = () => {
             return this.$q.when({ data: {
-                fullName: "Quinntyne Brown"
+                fullName: "Quinntyne Brown",
+                profileImageUrl: "/assets/images/quinntyne_brown.jpg"
             } });
         }
 
