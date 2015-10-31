@@ -2,6 +2,12 @@
 
 module App.UI {
 
+    "use strict";
+
+    /**
+     * @name AppHeaderController
+     * @module App.UI
+     */
     export class AppHeaderController {
         constructor(
             private $injector: ng.auto.IInjectorService,
@@ -32,5 +38,23 @@ module App.UI {
 
     }
 
-    angular.module("app.ui").controller("appHeaderController", ["$injector", "$scope","appName","getFormFactor", AppHeaderController]);
+    Component({        
+        module: "app.ui",
+        component: AppHeaderController,
+        componentName: "appHeaderController",
+        selector: "app-header",
+        providers: ["$injector", "$scope", "appName", "getFormFactor"],
+        template: [
+            "<div class='app-header'>",
+            "<div data-ng-if='vm.isDeskTop()'>",
+            "<a href='{{ ::link.url }}' data-ng-repeat='link in vm.links'>{{ ::link.caption }}</a>",
+            "</div>",
+            "<div data-ng-if='!vm.isDeskTop()'>",
+            "<hamburger-button callout callout-templateUrl='vm.getMobileMenuTemplateUrl()'></hamburger-button>",
+            "</div>",
+            "</div>"
+        ].join(" ")
+    });
+
+    
 } 
