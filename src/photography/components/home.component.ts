@@ -37,7 +37,7 @@
         component: HomeComponent,
         componentName: "homeComponent",
         providers: ["$q", "routeData"],
-        route: "/",
+        routes: ["/","/photos"],
         key: "photos"
     });
 

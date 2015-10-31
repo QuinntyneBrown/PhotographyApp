@@ -57,6 +57,10 @@
             return this._routePromises.filter((routePromise: IRoutePromise) => {
                 if (routePromise.route)
                     return routePromise.route === route;
+
+                if (routePromise.routes)
+                    return routePromise.routes.indexOf(route) > -1;
+
                 return true;
             });
         }

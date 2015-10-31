@@ -88,6 +88,7 @@
         route?: string;
         promise: any;
         key?: string;
+        routes?:Array<string>;
     }
 
 /**

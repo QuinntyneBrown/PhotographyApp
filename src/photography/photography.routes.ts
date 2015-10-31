@@ -14,15 +14,11 @@ module App.Photography {
                 $routeProvider: $routeProvider
             });
 
-            $routeProvider.when("/photos", {
-                templateUrl: "src/photography/components/home.component.html",
-                controller: "homeComponent",
-                controllerAs: "vm",
-                resolve: {
-                    routeData: ["routeResolverService", (routeResolverService: Common.IRouteResolverService) => {
-                        return routeResolverService.resolve("/");
-                    }]
-                }
+            Route({
+                when: "/photos",
+                componentTemplateUrl: "src/photography/components/home.component.html",
+                componentName: "homeComponent",
+                $routeProvider: $routeProvider
             });
 
             $routeProvider.when("/rates", {

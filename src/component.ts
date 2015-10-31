@@ -39,7 +39,8 @@
                 .config([
                     "routeResolverServiceProvider", (routeResolverServiceProvider: App.Common.IRouteResolverServiceProvider) => {
                         routeResolverServiceProvider.configure({
-                            route: options.key.route,
+                            route: options.route,
+                            routes:options.routes,
                             key: options.key,
                             promise: options.component.canActivate()
                         });

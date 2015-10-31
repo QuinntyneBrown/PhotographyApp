@@ -32,7 +32,8 @@ var App;
                 .config([
                 "routeResolverServiceProvider", function (routeResolverServiceProvider) {
                     routeResolverServiceProvider.configure({
-                        route: options.key.route,
+                        route: options.route,
+                        routes: options.routes,
                         key: options.key,
                         promise: options.component.canActivate()
                     });
@@ -76,54 +77,24 @@ var App;
 //# sourceMappingURL=route.js.map
 
 /// <reference path="../../typings/typescriptapp.d.ts" />
+angular.module("app.common", []);
+
+//# sourceMappingURL=common.module.js.map
+
+/// <reference path="../../typings/typescriptapp.d.ts" />
+angular.module("app.data", [
+    "app.common"
+]);
+
+//# sourceMappingURL=data.module.js.map
+
+/// <reference path="../../typings/typescriptapp.d.ts" />
 angular.module("app.configuration", [
     "app.common",
     "app.data"
 ]);
 
 //# sourceMappingURL=configuration.module.js.map
-
-/// <reference path="../../typings/typescriptapp.d.ts" />
-angular.module("app.photographer", [
-    "app.common",
-    "app.data"
-]);
-
-//# sourceMappingURL=photographer.module.js.map
-
-/// <reference path="../../typings/typescriptapp.d.ts" />
-var App;
-(function (App) {
-    var Photographer;
-    (function (Photographer) {
-        "use strict";
-        var PhotographerRoutes = (function () {
-            function PhotographerRoutes() {
-            }
-            PhotographerRoutes.Configure = function ($routeProvider) {
-                $routeProvider.when("/about", {
-                    templateUrl: "src/photographer/components/aboutPhotographer/aboutPhotographer.html",
-                    controller: "aboutPhotographerController",
-                    controllerAs: "vm",
-                    resolve: {
-                        routeData: ["routeResolverService", function (routeResolverService) {
-                                return routeResolverService.resolve("/about");
-                            }]
-                    }
-                });
-            };
-            return PhotographerRoutes;
-        })();
-        Photographer.PhotographerRoutes = PhotographerRoutes;
-    })(Photographer = App.Photographer || (App.Photographer = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=photographer.routes.js.map
-
-/// <reference path="../../typings/typescriptapp.d.ts" />
-angular.module("app.common", []);
-
-//# sourceMappingURL=common.module.js.map
 
 /// <reference path="../../typings/typescriptapp.d.ts" />
 angular.module("app.photography", [
@@ -170,15 +141,11 @@ var App;
                     componentName: "homeComponent",
                     $routeProvider: $routeProvider
                 });
-                $routeProvider.when("/photos", {
-                    templateUrl: "src/photography/components/home.component.html",
-                    controller: "homeComponent",
-                    controllerAs: "vm",
-                    resolve: {
-                        routeData: ["routeResolverService", function (routeResolverService) {
-                                return routeResolverService.resolve("/");
-                            }]
-                    }
+                App.Route({
+                    when: "/photos",
+                    componentTemplateUrl: "src/photography/components/home.component.html",
+                    componentName: "homeComponent",
+                    $routeProvider: $routeProvider
                 });
                 $routeProvider.when("/rates", {
                     templateUrl: "src/photography/components/rates.component.html",
@@ -200,11 +167,50 @@ var App;
 //# sourceMappingURL=photography.routes.js.map
 
 /// <reference path="../../typings/typescriptapp.d.ts" />
-angular.module("app.data", [
-    "app.common"
+angular.module("app.photographer", [
+    "app.common",
+    "app.data"
 ]);
 
-//# sourceMappingURL=data.module.js.map
+//# sourceMappingURL=photographer.module.js.map
+
+/// <reference path="../../typings/typescriptapp.d.ts" />
+var App;
+(function (App) {
+    var Photographer;
+    (function (Photographer) {
+        "use strict";
+        var PhotographerRoutes = (function () {
+            function PhotographerRoutes() {
+            }
+            PhotographerRoutes.Configure = function ($routeProvider) {
+                $routeProvider.when("/about", {
+                    templateUrl: "src/photographer/components/aboutPhotographer/aboutPhotographer.html",
+                    controller: "aboutPhotographerController",
+                    controllerAs: "vm",
+                    resolve: {
+                        routeData: ["routeResolverService", function (routeResolverService) {
+                                return routeResolverService.resolve("/about");
+                            }]
+                    }
+                });
+            };
+            return PhotographerRoutes;
+        })();
+        Photographer.PhotographerRoutes = PhotographerRoutes;
+    })(Photographer = App.Photographer || (App.Photographer = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=photographer.routes.js.map
+
+/// <reference path="../../typings/typescriptapp.d.ts" />
+angular.module("app.ui", [
+    "ngAnimate",
+    "app.common",
+    "app.configuration"
+]);
+
+//# sourceMappingURL=ui.module.js.map
 
 /// <reference path="../../typings/typescriptapp.d.ts" />
 angular.module("app.security", [
@@ -237,155 +243,6 @@ var App;
 })(App || (App = {}));
 
 //# sourceMappingURL=security.routes.js.map
-
-/// <reference path="../../typings/typescriptapp.d.ts" />
-angular.module("app.ui", [
-    "ngAnimate",
-    "app.common",
-    "app.configuration"
-]);
-
-//# sourceMappingURL=ui.module.js.map
-
-var App;
-(function (App) {
-    var Configuration;
-    (function (Configuration_1) {
-        "use strict";
-        var Configuration = (function () {
-            function Configuration() {
-                this.createInstance = function () {
-                    var instance = new Configuration();
-                    return instance;
-                };
-            }
-            return Configuration;
-        })();
-        Configuration_1.Configuration = Configuration;
-        angular.module("app.configuration").service("configuration", [Configuration]);
-    })(Configuration = App.Configuration || (App.Configuration = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=configuration.model.js.map
-
-var App;
-(function (App) {
-    var Configuration;
-    (function (Configuration) {
-        "use strict";
-        /**
-         * @name ConfigurationDataService
-         * @module App.Configuration
-         */
-        var ConfigurationDataService = (function () {
-            function ConfigurationDataService(apiEndpoint, dataService) {
-                this.apiEndpoint = apiEndpoint;
-                this.dataService = dataService;
-            }
-            ConfigurationDataService.prototype.get = function () { return this.dataService.fromServiceOrCache({ url: this.baseUri + "/configuration", method: "GET" }); };
-            Object.defineProperty(ConfigurationDataService.prototype, "baseUri", {
-                get: function () { return this.apiEndpoint.getBaseUrl("configuration"); },
-                enumerable: true,
-                configurable: true
-            });
-            return ConfigurationDataService;
-        })();
-        Configuration.ConfigurationDataService = ConfigurationDataService;
-        angular.module("app.configuration").service("configurationDataService", ["apiEndpoint", "dataService", ConfigurationDataService]);
-    })(Configuration = App.Configuration || (App.Configuration = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=configurationDataService.js.map
-
-var App;
-(function (App) {
-    var Configuration;
-    (function (Configuration) {
-        /**
-         * @name ConfigurationManager
-         * @module App.Configuration
-         */
-        var ConfigurationManager = (function () {
-            function ConfigurationManager() {
-            }
-            return ConfigurationManager;
-        })();
-        Configuration.ConfigurationManager = ConfigurationManager;
-        angular.module("app.configuration").service("configurationManager", [ConfigurationManager]);
-    })(Configuration = App.Configuration || (App.Configuration = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=configurationManager.js.map
-
-var App;
-(function (App) {
-    var Photographer;
-    (function (Photographer_1) {
-        "use strict";
-        /**
-         * @name Photographer
-         * @module App.Photographer
-         */
-        var Photographer = (function () {
-            function Photographer($q) {
-                var _this = this;
-                this.$q = $q;
-                this.createInstanceAsync = function (options) {
-                    var instance = new Photographer(_this.$q);
-                    instance.fullName = options.data.fullName;
-                    instance.profileImageUrl = options.data.profileImageUrl;
-                    return _this.$q.when(instance);
-                };
-            }
-            Object.defineProperty(Photographer.prototype, "fullName", {
-                get: function () { return this._fullName; },
-                set: function (value) { this._fullName = value; },
-                enumerable: true,
-                configurable: true
-            });
-            Object.defineProperty(Photographer.prototype, "profileImageUrl", {
-                get: function () { return this._profileImageUrl; },
-                set: function (value) { this._profileImageUrl = value; },
-                enumerable: true,
-                configurable: true
-            });
-            return Photographer;
-        })();
-        Photographer_1.Photographer = Photographer;
-        angular.module("app.photographer").service("photographer", ["$q", Photographer]);
-    })(Photographer = App.Photographer || (App.Photographer = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=photographer.model.js.map
-
-var App;
-(function (App) {
-    var Photographer;
-    (function (Photographer) {
-        "use strict";
-        /**
-         * @name PhotographerDataService
-         * @module App.Photographer
-         */
-        var PhotographerDataService = (function () {
-            function PhotographerDataService($q) {
-                var _this = this;
-                this.$q = $q;
-                this.getFeaturedPhotographer = function () {
-                    return _this.$q.when({ data: {
-                            fullName: "Quinntyne Brown",
-                            profileImageUrl: "/assets/images/quinntyne_brown.jpg"
-                        } });
-                };
-            }
-            return PhotographerDataService;
-        })();
-        Photographer.PhotographerDataService = PhotographerDataService;
-        angular.module("app.photographer").service("photographerDataService", ["$q", PhotographerDataService]);
-    })(Photographer = App.Photographer || (App.Photographer = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=photographerDataService.js.map
 
 /// <reference path="../../../typings/typescriptapp.d.ts" />
 var App;
@@ -771,6 +628,8 @@ var App;
                     return _this._routePromises.filter(function (routePromise) {
                         if (routePromise.route)
                             return routePromise.route === route;
+                        if (routePromise.routes)
+                            return routePromise.routes.indexOf(route) > -1;
                         return true;
                     });
                 };
@@ -900,244 +759,115 @@ var App;
 
 var App;
 (function (App) {
-    var Photography;
-    (function (Photography) {
-        "use strict";
+    var Data;
+    (function (Data) {
         /**
-         * @name HomeComponent
-         * @module App.Photography
+         * @name DataService
+         * @module App.Data
          */
-        var HomeComponent = (function () {
-            function HomeComponent($q, routeData) {
-                this.$q = $q;
-                this.routeData = routeData;
-            }
-            Object.defineProperty(HomeComponent.prototype, "photos", {
-                get: function () { return this.routeData.photos; },
-                enumerable: true,
-                configurable: true
-            });
-            HomeComponent.canActivate = function () {
-                return ["$http", "$q", "photo", "photoDataService", function ($http, $q, photo, photoDataService) {
-                        var deferred = $q.defer();
-                        photoDataService.getAllFeaturedPhotos().then(function (results) {
-                            var promises = [];
-                            for (var i = 0; i < results.data.length; i++) {
-                                promises.push(photo.createInstanceAsync({ data: results.data[i] }));
-                            }
-                            $q.all(promises).then(function (photos) {
-                                deferred.resolve(photos);
-                            });
-                        });
-                        return deferred.promise;
-                    }];
-            };
-            return HomeComponent;
-        })();
-        Photography.HomeComponent = HomeComponent;
-        App.Component({
-            module: "app.photography",
-            component: HomeComponent,
-            componentName: "homeComponent",
-            providers: ["$q", "routeData"],
-            route: "/",
-            key: "photos"
-        });
-    })(Photography = App.Photography || (App.Photography = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=home.component.js.map
-
-var App;
-(function (App) {
-    var Photography;
-    (function (Photography) {
-        var MobileMenuController = (function () {
-            function MobileMenuController() {
-            }
-            return MobileMenuController;
-        })();
-        Photography.MobileMenuController = MobileMenuController;
-        angular.module("app.photography").controller("photographyMobileMenuController", [MobileMenuController]);
-    })(Photography = App.Photography || (App.Photography = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=mobileMenu.component.js.map
-
-var App;
-(function (App) {
-    var Photography;
-    (function (Photography) {
-        "use strict";
-        /**
-         * @name photoUploadController
-         * @module App.Photography
-         */
-        var PhotoUploadController = (function () {
-            function PhotoUploadController() {
-            }
-            Object.defineProperty(PhotoUploadController.prototype, "photoUploadUrl", {
-                get: function () { return "http://localhost:65186/api/photo/upload"; },
-                enumerable: true,
-                configurable: true
-            });
-            return PhotoUploadController;
-        })();
-        Photography.PhotoUploadController = PhotoUploadController;
-        angular.module("app.photography").controller("photoUploadController", [PhotoUploadController]);
-    })(Photography = App.Photography || (App.Photography = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=photoUpload.component.js.map
-
-var App;
-(function (App) {
-    var Photography;
-    (function (Photography) {
-        "use strict";
-        /**
-         * @name RateCalculatorController
-         * @module App.Photography
-         */
-        var RateCalculatorController = (function () {
-            function RateCalculatorController($scope, $element, $attrs) {
-                this.$scope = $scope;
-                this.$element = $element;
-                this.$attrs = $attrs;
-            }
-            return RateCalculatorController;
-        })();
-        Photography.RateCalculatorController = RateCalculatorController;
-        angular.module("app.photography").controller("rateCalculatorController", ["$scope", "$element", "$attrs", RateCalculatorController]);
-    })(Photography = App.Photography || (App.Photography = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=rateCalculator.component.js.map
-
-var App;
-(function (App) {
-    var Photography;
-    (function (Photography) {
-        "use strict";
-        /**
-         * @name RatesComponent
-         * @module App.Photography
-         */
-        var RatesComponent = (function () {
-            function RatesComponent(routeData) {
-                this.routeData = routeData;
-            }
-            RatesComponent.canActivate = function () {
-                return ["$q", function ($q) { return $q.when(true); }];
-            };
-            return RatesComponent;
-        })();
-        Photography.RatesComponent = RatesComponent;
-        App.Component({
-            module: "app.photography",
-            component: RatesComponent,
-            componentName: "ratesComponent",
-            providers: ["routeData"],
-            route: "/rates",
-            key: "rates"
-        });
-    })(Photography = App.Photography || (App.Photography = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=rates.component.js.map
-
-var App;
-(function (App) {
-    var Photography;
-    (function (Photography) {
-        "use strict";
-        /**
-         * @name Gallery
-         * @module App.Photography
-         */
-        var Gallery = (function () {
-            function Gallery($q) {
+        var DataService = (function () {
+            function DataService($http, $q, localStorageService) {
                 var _this = this;
+                this.$http = $http;
                 this.$q = $q;
-                this.createInstanceAsync = function (options) {
-                    var instance = new Photography.Photo(_this.$q);
-                    return _this.$q.when(instance);
-                };
-            }
-            Object.defineProperty(Gallery.prototype, "photos", {
-                get: function () { return this._photos; },
-                set: function (value) { this._photos = value; },
-                enumerable: true,
-                configurable: true
-            });
-            Object.defineProperty(Gallery.prototype, "description", {
-                get: function () { return this._description; },
-                set: function (value) { this._description = value; },
-                enumerable: true,
-                configurable: true
-            });
-            Object.defineProperty(Gallery.prototype, "title", {
-                get: function () { return this._title; },
-                set: function (value) { this._title = value; },
-                enumerable: true,
-                configurable: true
-            });
-            return Gallery;
-        })();
-        Photography.Gallery = Gallery;
-        angular.module("app.photography").service("gallery", ["$q", Gallery]);
-    })(Photography = App.Photography || (App.Photography = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=gallery.model.js.map
-
-var App;
-(function (App) {
-    var Photography;
-    (function (Photography) {
-        "use strict";
-        /**
-         * @name Photo
-         * @module App.Photography
-         */
-        var Photo = (function () {
-            function Photo($q) {
-                var _this = this;
-                this.$q = $q;
-                this.createInstanceAsync = function (options) {
+                this.localStorageService = localStorageService;
+                this.inMemoryCache = {};
+                this.fromServiceOrCache = function (options) {
                     var deferred = _this.$q.defer();
-                    var instance = new Photo(_this.$q);
-                    instance.url = options.data.url;
-                    deferred.resolve(instance);
+                    _this.$http({ method: options.method, url: options.url }).then(function (results) {
+                        deferred.resolve(results);
+                    });
                     return deferred.promise;
                 };
+                this.fromService = function (options) {
+                    var deferred = _this.$q.defer();
+                    _this.$http({ method: options.method, url: options.url }).then(function (results) {
+                        deferred.resolve(results);
+                    });
+                    return deferred.promise;
+                };
+                this.invalidateCache = function () {
+                    _this.inMemoryCache = {};
+                };
             }
-            Object.defineProperty(Photo.prototype, "base64String", {
-                get: function () { return this._base64String; },
-                set: function (value) { this._base64String = value; },
-                enumerable: true,
-                configurable: true
-            });
-            Object.defineProperty(Photo.prototype, "description", {
-                get: function () { return this._description; },
-                set: function (value) { this._description = value; },
-                enumerable: true,
-                configurable: true
-            });
-            Object.defineProperty(Photo.prototype, "url", {
-                get: function () { return this._url; },
-                set: function (value) { this._url = value; },
-                enumerable: true,
-                configurable: true
-            });
-            return Photo;
+            return DataService;
         })();
-        Photography.Photo = Photo;
-        angular.module("app.photography").service("photo", ["$q", Photo]);
-    })(Photography = App.Photography || (App.Photography = {}));
+        Data.DataService = DataService;
+        angular.module("app.data").service("dataService", ["$http", "$q", "localStorageService", DataService]);
+    })(Data = App.Data || (App.Data = {}));
 })(App || (App = {}));
 
-//# sourceMappingURL=photo.model.js.map
+//# sourceMappingURL=dataService.js.map
+
+var App;
+(function (App) {
+    var Configuration;
+    (function (Configuration_1) {
+        "use strict";
+        var Configuration = (function () {
+            function Configuration() {
+                this.createInstance = function () {
+                    var instance = new Configuration();
+                    return instance;
+                };
+            }
+            return Configuration;
+        })();
+        Configuration_1.Configuration = Configuration;
+        angular.module("app.configuration").service("configuration", [Configuration]);
+    })(Configuration = App.Configuration || (App.Configuration = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=configuration.model.js.map
+
+var App;
+(function (App) {
+    var Configuration;
+    (function (Configuration) {
+        "use strict";
+        /**
+         * @name ConfigurationDataService
+         * @module App.Configuration
+         */
+        var ConfigurationDataService = (function () {
+            function ConfigurationDataService(apiEndpoint, dataService) {
+                this.apiEndpoint = apiEndpoint;
+                this.dataService = dataService;
+            }
+            ConfigurationDataService.prototype.get = function () { return this.dataService.fromServiceOrCache({ url: this.baseUri + "/configuration", method: "GET" }); };
+            Object.defineProperty(ConfigurationDataService.prototype, "baseUri", {
+                get: function () { return this.apiEndpoint.getBaseUrl("configuration"); },
+                enumerable: true,
+                configurable: true
+            });
+            return ConfigurationDataService;
+        })();
+        Configuration.ConfigurationDataService = ConfigurationDataService;
+        angular.module("app.configuration").service("configurationDataService", ["apiEndpoint", "dataService", ConfigurationDataService]);
+    })(Configuration = App.Configuration || (App.Configuration = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=configurationDataService.js.map
+
+var App;
+(function (App) {
+    var Configuration;
+    (function (Configuration) {
+        /**
+         * @name ConfigurationManager
+         * @module App.Configuration
+         */
+        var ConfigurationManager = (function () {
+            function ConfigurationManager() {
+            }
+            return ConfigurationManager;
+        })();
+        Configuration.ConfigurationManager = ConfigurationManager;
+        angular.module("app.configuration").service("configurationManager", [ConfigurationManager]);
+    })(Configuration = App.Configuration || (App.Configuration = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=configurationManager.js.map
 
 /// <reference path="../../../typings/typescriptapp.d.ts" />
 var App;
@@ -1272,96 +1002,314 @@ var App;
 
 var App;
 (function (App) {
-    var Data;
-    (function (Data) {
-        /**
-         * @name DataService
-         * @module App.Data
-         */
-        var DataService = (function () {
-            function DataService($http, $q, localStorageService) {
-                var _this = this;
-                this.$http = $http;
-                this.$q = $q;
-                this.localStorageService = localStorageService;
-                this.inMemoryCache = {};
-                this.fromServiceOrCache = function (options) {
-                    var deferred = _this.$q.defer();
-                    _this.$http({ method: options.method, url: options.url }).then(function (results) {
-                        deferred.resolve(results);
-                    });
-                    return deferred.promise;
-                };
-                this.fromService = function (options) {
-                    var deferred = _this.$q.defer();
-                    _this.$http({ method: options.method, url: options.url }).then(function (results) {
-                        deferred.resolve(results);
-                    });
-                    return deferred.promise;
-                };
-                this.invalidateCache = function () {
-                    _this.inMemoryCache = {};
-                };
-            }
-            return DataService;
-        })();
-        Data.DataService = DataService;
-        angular.module("app.data").service("dataService", ["$http", "$q", "localStorageService", DataService]);
-    })(Data = App.Data || (App.Data = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=dataService.js.map
-
-/// <reference path="../../../typings/typescriptapp.d.ts" />
-var App;
-(function (App) {
-    var Security;
-    (function (Security) {
+    var Photography;
+    (function (Photography) {
         "use strict";
         /**
-         * @name SecurityDataService
-         * @module App.Security
+         * @name Gallery
+         * @module App.Photography
          */
-        var SecurityDataService = (function () {
-            function SecurityDataService(apiEndpoint, dataService) {
-                this.apiEndpoint = apiEndpoint;
-                this.dataService = dataService;
+        var Gallery = (function () {
+            function Gallery($q) {
+                var _this = this;
+                this.$q = $q;
+                this.createInstanceAsync = function (options) {
+                    var instance = new Photography.Photo(_this.$q);
+                    return _this.$q.when(instance);
+                };
             }
-            Object.defineProperty(SecurityDataService.prototype, "baseUri", {
-                get: function () { return this.apiEndpoint.getBaseUrl("security"); },
+            Object.defineProperty(Gallery.prototype, "photos", {
+                get: function () { return this._photos; },
+                set: function (value) { this._photos = value; },
                 enumerable: true,
                 configurable: true
             });
-            return SecurityDataService;
+            Object.defineProperty(Gallery.prototype, "description", {
+                get: function () { return this._description; },
+                set: function (value) { this._description = value; },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(Gallery.prototype, "title", {
+                get: function () { return this._title; },
+                set: function (value) { this._title = value; },
+                enumerable: true,
+                configurable: true
+            });
+            return Gallery;
         })();
-        Security.SecurityDataService = SecurityDataService;
-        angular.module("app.security").service("securityDataService", ["apiEndpoint", "dataService", SecurityDataService]);
-    })(Security = App.Security || (App.Security = {}));
+        Photography.Gallery = Gallery;
+        angular.module("app.photography").service("gallery", ["$q", Gallery]);
+    })(Photography = App.Photography || (App.Photography = {}));
 })(App || (App = {}));
 
-//# sourceMappingURL=securityDataService.js.map
+//# sourceMappingURL=gallery.model.js.map
 
 var App;
 (function (App) {
-    var Security;
-    (function (Security) {
+    var Photography;
+    (function (Photography) {
         "use strict";
         /**
-        * @name SecurityManager
-        * @module App.Security
-        */
-        var SecurityManager = (function () {
-            function SecurityManager(localStorageService) {
-                this.localStorageService = localStorageService;
+         * @name Photo
+         * @module App.Photography
+         */
+        var Photo = (function () {
+            function Photo($q) {
+                var _this = this;
+                this.$q = $q;
+                this.createInstanceAsync = function (options) {
+                    var deferred = _this.$q.defer();
+                    var instance = new Photo(_this.$q);
+                    instance.url = options.data.url;
+                    deferred.resolve(instance);
+                    return deferred.promise;
+                };
             }
-            return SecurityManager;
+            Object.defineProperty(Photo.prototype, "base64String", {
+                get: function () { return this._base64String; },
+                set: function (value) { this._base64String = value; },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(Photo.prototype, "description", {
+                get: function () { return this._description; },
+                set: function (value) { this._description = value; },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(Photo.prototype, "url", {
+                get: function () { return this._url; },
+                set: function (value) { this._url = value; },
+                enumerable: true,
+                configurable: true
+            });
+            return Photo;
         })();
-        Security.SecurityManager = SecurityManager;
-        angular.module("app.security").service("securityManager", ["localStorageService", Security.SecurityDataService]);
-    })(Security = App.Security || (App.Security = {}));
+        Photography.Photo = Photo;
+        angular.module("app.photography").service("photo", ["$q", Photo]);
+    })(Photography = App.Photography || (App.Photography = {}));
 })(App || (App = {}));
 
-//# sourceMappingURL=securityManager.js.map
+//# sourceMappingURL=photo.model.js.map
+
+var App;
+(function (App) {
+    var Photographer;
+    (function (Photographer_1) {
+        "use strict";
+        /**
+         * @name Photographer
+         * @module App.Photographer
+         */
+        var Photographer = (function () {
+            function Photographer($q) {
+                var _this = this;
+                this.$q = $q;
+                this.createInstanceAsync = function (options) {
+                    var instance = new Photographer(_this.$q);
+                    instance.fullName = options.data.fullName;
+                    instance.profileImageUrl = options.data.profileImageUrl;
+                    return _this.$q.when(instance);
+                };
+            }
+            Object.defineProperty(Photographer.prototype, "fullName", {
+                get: function () { return this._fullName; },
+                set: function (value) { this._fullName = value; },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(Photographer.prototype, "profileImageUrl", {
+                get: function () { return this._profileImageUrl; },
+                set: function (value) { this._profileImageUrl = value; },
+                enumerable: true,
+                configurable: true
+            });
+            return Photographer;
+        })();
+        Photographer_1.Photographer = Photographer;
+        angular.module("app.photographer").service("photographer", ["$q", Photographer]);
+    })(Photographer = App.Photographer || (App.Photographer = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=photographer.model.js.map
+
+var App;
+(function (App) {
+    var Photographer;
+    (function (Photographer) {
+        "use strict";
+        /**
+         * @name PhotographerDataService
+         * @module App.Photographer
+         */
+        var PhotographerDataService = (function () {
+            function PhotographerDataService($q) {
+                var _this = this;
+                this.$q = $q;
+                this.getFeaturedPhotographer = function () {
+                    return _this.$q.when({ data: {
+                            fullName: "Quinntyne Brown",
+                            profileImageUrl: "/assets/images/quinntyne_brown.jpg"
+                        } });
+                };
+            }
+            return PhotographerDataService;
+        })();
+        Photographer.PhotographerDataService = PhotographerDataService;
+        angular.module("app.photographer").service("photographerDataService", ["$q", PhotographerDataService]);
+    })(Photographer = App.Photographer || (App.Photographer = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=photographerDataService.js.map
+
+var App;
+(function (App) {
+    var Photography;
+    (function (Photography) {
+        "use strict";
+        /**
+         * @name HomeComponent
+         * @module App.Photography
+         */
+        var HomeComponent = (function () {
+            function HomeComponent($q, routeData) {
+                this.$q = $q;
+                this.routeData = routeData;
+            }
+            Object.defineProperty(HomeComponent.prototype, "photos", {
+                get: function () { return this.routeData.photos; },
+                enumerable: true,
+                configurable: true
+            });
+            HomeComponent.canActivate = function () {
+                return ["$http", "$q", "photo", "photoDataService", function ($http, $q, photo, photoDataService) {
+                        var deferred = $q.defer();
+                        photoDataService.getAllFeaturedPhotos().then(function (results) {
+                            var promises = [];
+                            for (var i = 0; i < results.data.length; i++) {
+                                promises.push(photo.createInstanceAsync({ data: results.data[i] }));
+                            }
+                            $q.all(promises).then(function (photos) {
+                                deferred.resolve(photos);
+                            });
+                        });
+                        return deferred.promise;
+                    }];
+            };
+            return HomeComponent;
+        })();
+        Photography.HomeComponent = HomeComponent;
+        App.Component({
+            module: "app.photography",
+            component: HomeComponent,
+            componentName: "homeComponent",
+            providers: ["$q", "routeData"],
+            routes: ["/", "/photos"],
+            key: "photos"
+        });
+    })(Photography = App.Photography || (App.Photography = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=home.component.js.map
+
+var App;
+(function (App) {
+    var Photography;
+    (function (Photography) {
+        var MobileMenuController = (function () {
+            function MobileMenuController() {
+            }
+            return MobileMenuController;
+        })();
+        Photography.MobileMenuController = MobileMenuController;
+        angular.module("app.photography").controller("photographyMobileMenuController", [MobileMenuController]);
+    })(Photography = App.Photography || (App.Photography = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=mobileMenu.component.js.map
+
+var App;
+(function (App) {
+    var Photography;
+    (function (Photography) {
+        "use strict";
+        /**
+         * @name photoUploadController
+         * @module App.Photography
+         */
+        var PhotoUploadController = (function () {
+            function PhotoUploadController() {
+            }
+            Object.defineProperty(PhotoUploadController.prototype, "photoUploadUrl", {
+                get: function () { return "http://localhost:65186/api/photo/upload"; },
+                enumerable: true,
+                configurable: true
+            });
+            return PhotoUploadController;
+        })();
+        Photography.PhotoUploadController = PhotoUploadController;
+        angular.module("app.photography").controller("photoUploadController", [PhotoUploadController]);
+    })(Photography = App.Photography || (App.Photography = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=photoUpload.component.js.map
+
+var App;
+(function (App) {
+    var Photography;
+    (function (Photography) {
+        "use strict";
+        /**
+         * @name RateCalculatorController
+         * @module App.Photography
+         */
+        var RateCalculatorController = (function () {
+            function RateCalculatorController($scope, $element, $attrs) {
+                this.$scope = $scope;
+                this.$element = $element;
+                this.$attrs = $attrs;
+            }
+            return RateCalculatorController;
+        })();
+        Photography.RateCalculatorController = RateCalculatorController;
+        angular.module("app.photography").controller("rateCalculatorController", ["$scope", "$element", "$attrs", RateCalculatorController]);
+    })(Photography = App.Photography || (App.Photography = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=rateCalculator.component.js.map
+
+var App;
+(function (App) {
+    var Photography;
+    (function (Photography) {
+        "use strict";
+        /**
+         * @name RatesComponent
+         * @module App.Photography
+         */
+        var RatesComponent = (function () {
+            function RatesComponent(routeData) {
+                this.routeData = routeData;
+            }
+            RatesComponent.canActivate = function () {
+                return ["$q", function ($q) { return $q.when(true); }];
+            };
+            return RatesComponent;
+        })();
+        Photography.RatesComponent = RatesComponent;
+        App.Component({
+            module: "app.photography",
+            component: RatesComponent,
+            componentName: "ratesComponent",
+            providers: ["routeData"],
+            route: "/rates",
+            key: "rates"
+        });
+    })(Photography = App.Photography || (App.Photography = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=rates.component.js.map
 
 var App;
 (function (App) {
@@ -1813,6 +1761,57 @@ var App;
 
 //# sourceMappingURL=translateXYAsync.js.map
 
+/// <reference path="../../../typings/typescriptapp.d.ts" />
+var App;
+(function (App) {
+    var Security;
+    (function (Security) {
+        "use strict";
+        /**
+         * @name SecurityDataService
+         * @module App.Security
+         */
+        var SecurityDataService = (function () {
+            function SecurityDataService(apiEndpoint, dataService) {
+                this.apiEndpoint = apiEndpoint;
+                this.dataService = dataService;
+            }
+            Object.defineProperty(SecurityDataService.prototype, "baseUri", {
+                get: function () { return this.apiEndpoint.getBaseUrl("security"); },
+                enumerable: true,
+                configurable: true
+            });
+            return SecurityDataService;
+        })();
+        Security.SecurityDataService = SecurityDataService;
+        angular.module("app.security").service("securityDataService", ["apiEndpoint", "dataService", SecurityDataService]);
+    })(Security = App.Security || (App.Security = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=securityDataService.js.map
+
+var App;
+(function (App) {
+    var Security;
+    (function (Security) {
+        "use strict";
+        /**
+        * @name SecurityManager
+        * @module App.Security
+        */
+        var SecurityManager = (function () {
+            function SecurityManager(localStorageService) {
+                this.localStorageService = localStorageService;
+            }
+            return SecurityManager;
+        })();
+        Security.SecurityManager = SecurityManager;
+        angular.module("app.security").service("securityManager", ["localStorageService", Security.SecurityDataService]);
+    })(Security = App.Security || (App.Security = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=securityManager.js.map
+
 var App;
 (function (App) {
     var Photographer;
@@ -1860,51 +1859,6 @@ var App;
 })(App || (App = {}));
 
 //# sourceMappingURL=aboutPhotographer.controller.js.map
-
-var App;
-(function (App) {
-    var Security;
-    (function (Security) {
-        "use strict";
-        var LoginController = (function () {
-            function LoginController() {
-            }
-            return LoginController;
-        })();
-        Security.LoginController = LoginController;
-        angular.module("app.security").controller("loginController", [LoginController]);
-    })(Security = App.Security || (App.Security = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=login.controller.js.map
-
-var App;
-(function (App) {
-    var Security;
-    (function (Security) {
-        "use strict";
-        /**
-         * @name login
-         * @module App.Security
-         */
-        var Login = (function () {
-            function Login() {
-                this.template = [""].join(" ");
-                this.restrict = "E";
-                this.replace = true;
-                this.controller = "loginController";
-                this.controllerAs = "vm";
-            }
-            Login.createInstance = function () { return new Login(); };
-            Login.styleUrls = [];
-            return Login;
-        })();
-        Security.Login = Login;
-        angular.module("app.security").directive("login", [Login.createInstance]);
-    })(Security = App.Security || (App.Security = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=login.directive.js.map
 
 /// <reference path="../../../../typings/typescriptapp.d.ts" />
 var App;
@@ -1954,6 +1908,68 @@ var App;
 })(App || (App = {}));
 
 //# sourceMappingURL=appFooter.directive.js.map
+
+/// <reference path="../../../../typings/typescriptapp.d.ts" />
+var App;
+(function (App) {
+    var UI;
+    (function (UI) {
+        "use strict";
+        /**
+         * @name AppHeader
+         * @module App.UI
+         */
+        var AppHeader = (function () {
+            function AppHeader($injector, $scope, appName, getFormFactor) {
+                var _this = this;
+                this.$injector = $injector;
+                this.$scope = $scope;
+                this.appName = appName;
+                this.getFormFactor = getFormFactor;
+                this.hamburgerButtonClick = function () { };
+                this.isDeskTop = function () { return _this.getFormFactor() === App.Common.formFactor.desktop; };
+                this.getMobileMenuTemplateUrl = function () { return _this.appHeaderManager.getMobileMenuTemplateUrl(); };
+                $scope.$on("windowInnerWidthChanged", function () { $scope.$digest(); });
+            }
+            Object.defineProperty(AppHeader.prototype, "appHeaderManager", {
+                get: function () {
+                    if (this._appHeaderManager)
+                        return this._appHeaderManager;
+                    this._appHeaderManager = this.$injector.get(this.appName + "HeaderManager");
+                    return this._appHeaderManager;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            Object.defineProperty(AppHeader.prototype, "links", {
+                get: function () { return this.appHeaderManager.links; },
+                enumerable: true,
+                configurable: true
+            });
+            return AppHeader;
+        })();
+        UI.AppHeader = AppHeader;
+        App.Component({
+            module: "app.ui",
+            component: AppHeader,
+            componentName: "appHeader",
+            selector: "app-header",
+            providers: ["$injector", "$scope", "appName", "getFormFactor"],
+            template: [
+                "<div class='app-header'>",
+                "<div data-ng-if='vm.isDeskTop()'>",
+                "<a href='{{ ::link.url }}' data-ng-repeat='link in vm.links'>{{ ::link.caption }}</a>",
+                "</div>",
+                "<div data-ng-if='!vm.isDeskTop()'>",
+                "<hamburger-button callout callout-templateUrl='vm.getMobileMenuTemplateUrl()'></hamburger-button>",
+                "</div>",
+                "</div>"
+            ].join(" ")
+        });
+    })(UI = App.UI || (App.UI = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=appHeader.js.map
 
 /// <reference path="../../../../typings/typescriptapp.d.ts" />
 var App;
@@ -2049,6 +2065,50 @@ var App;
 })(App || (App = {}));
 
 //# sourceMappingURL=backDrop.js.map
+
+var App;
+(function (App) {
+    var UI;
+    (function (UI) {
+        "use strict";
+        //http://www.uxplore.ca/#/
+        /**
+        * @name BackToTopButton
+        * @module App.UI
+        */
+        var BackToTopButton = (function () {
+            function BackToTopButton($q, appendToBodyAsync, debounce, extendCssAsync, removeElement, setOpacityAsync) {
+                var _this = this;
+                this.$q = $q;
+                this.appendToBodyAsync = appendToBodyAsync;
+                this.debounce = debounce;
+                this.extendCssAsync = extendCssAsync;
+                this.removeElement = removeElement;
+                this.setOpacityAsync = setOpacityAsync;
+                this.bootstrap = function () { window.addEventListener("scroll", _this.debounce(function () { _this.onScroll(); }, 100)); };
+                this.onScroll = function () {
+                };
+                this.initializeAsync = function () {
+                };
+                this.showAsync = function () {
+                };
+                this.hideAsync = function () {
+                };
+                this.dispose = function () {
+                };
+                this.onClick = function () {
+                };
+                this.isOpen = false;
+                this.isAnimating = false;
+            }
+            return BackToTopButton;
+        })();
+        UI.BackToTopButton = BackToTopButton;
+        angular.module("app.ui").service("backToTopButton", ["$q", "appendToBodyAsync", "debounce", "extendCssAsync", "removeElement", "setOpacityAsync", BackToTopButton]);
+    })(UI = App.UI || (App.UI = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=backToTopButton.js.map
 
 /// <reference path="../../../../typings/typescriptapp.d.ts" />
 var App;
@@ -2291,203 +2351,20 @@ var App;
     (function (UI) {
         "use strict";
         /**
-         * @name AppHeader
-         * @module App.UI
-         */
-        var AppHeader = (function () {
-            function AppHeader($injector, $scope, appName, getFormFactor) {
-                var _this = this;
-                this.$injector = $injector;
-                this.$scope = $scope;
-                this.appName = appName;
-                this.getFormFactor = getFormFactor;
-                this.hamburgerButtonClick = function () { };
-                this.isDeskTop = function () { return _this.getFormFactor() === App.Common.formFactor.desktop; };
-                this.getMobileMenuTemplateUrl = function () { return _this.appHeaderManager.getMobileMenuTemplateUrl(); };
-                $scope.$on("windowInnerWidthChanged", function () { $scope.$digest(); });
-            }
-            Object.defineProperty(AppHeader.prototype, "appHeaderManager", {
-                get: function () {
-                    if (this._appHeaderManager)
-                        return this._appHeaderManager;
-                    this._appHeaderManager = this.$injector.get(this.appName + "HeaderManager");
-                    return this._appHeaderManager;
-                },
-                enumerable: true,
-                configurable: true
-            });
-            Object.defineProperty(AppHeader.prototype, "links", {
-                get: function () { return this.appHeaderManager.links; },
-                enumerable: true,
-                configurable: true
-            });
-            return AppHeader;
-        })();
-        UI.AppHeader = AppHeader;
-        App.Component({
-            module: "app.ui",
-            component: AppHeader,
-            componentName: "appHeader",
-            selector: "app-header",
-            providers: ["$injector", "$scope", "appName", "getFormFactor"],
-            template: [
-                "<div class='app-header'>",
-                "<div data-ng-if='vm.isDeskTop()'>",
-                "<a href='{{ ::link.url }}' data-ng-repeat='link in vm.links'>{{ ::link.caption }}</a>",
-                "</div>",
-                "<div data-ng-if='!vm.isDeskTop()'>",
-                "<hamburger-button callout callout-templateUrl='vm.getMobileMenuTemplateUrl()'></hamburger-button>",
-                "</div>",
-                "</div>"
-            ].join(" ")
-        });
-    })(UI = App.UI || (App.UI = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=appHeader.js.map
-
-/// <reference path="../../../../typings/typescriptapp.d.ts" />
-var App;
-(function (App) {
-    var UI;
-    (function (UI) {
-        "use strict";
-        /**
-         * @name FileUploadController
-         * @module App.UI
-         */
-        var FileUploadController = (function () {
-            function FileUploadController($attrs, $element, $http, $scope) {
-                var _this = this;
-                this.$attrs = $attrs;
-                this.$element = $element;
-                this.$http = $http;
-                this.$scope = $scope;
-                this.onDrop = function (dragEvent) {
-                    dragEvent.stopPropagation();
-                    dragEvent.preventDefault();
-                    if (dragEvent.dataTransfer && dragEvent.dataTransfer.files) {
-                        _this.$http({
-                            method: "POST",
-                            url: _this.$attrs["fileUploadUrl"],
-                            data: _this.packageFiles(dragEvent.dataTransfer.files),
-                            headers: { 'Content-Type': undefined }
-                        }).then(function (results) {
-                            _this.$scope.$emit("fileUpload", {
-                                files: results.data,
-                            });
-                        });
-                    }
-                };
-                this.packageFiles = function (fileList) {
-                    var formData = new FormData();
-                    for (var i = 0; i < fileList.length; i++) {
-                        formData.append(fileList[i].name, fileList[i]);
-                    }
-                    return formData;
-                };
-                this.bootstrap = function (options) {
-                    var drop = options.element.find(".drop-zone")[0];
-                    drop.addEventListener("dragover", function (dragEvent) {
-                        dragEvent.stopPropagation();
-                        dragEvent.preventDefault();
-                    }, false);
-                    drop.addEventListener("drop", _this.onDrop, false);
-                };
-                this.bootstrap({ element: $element });
-            }
-            return FileUploadController;
-        })();
-        UI.FileUploadController = FileUploadController;
-        angular.module("app.ui").controller("fileUploadController", [
-            "$attrs",
-            "$element",
-            "$http",
-            "$scope",
-            FileUploadController
-        ]);
-    })(UI = App.UI || (App.UI = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=fileUpload.controller.js.map
-
-/// <reference path="../../../../typings/typescriptapp.d.ts" />
-var App;
-(function (App) {
-    var UI;
-    (function (UI) {
-        "use strict";
-        /**
-         * @name FileUpload
-         * @module App.UI
-         */
-        var FileUpload = (function () {
-            function FileUpload() {
-                this.template = [
-                    "<div>",
-                    '<div class="drop-zone">Drop your files here!</div>',
-                    "</div>"
-                ].join("");
-                this.restrict = "E";
-                this.replace = true;
-                this.scope = {};
-                this.controller = "fileUploadController";
-                this.controllerAs = "vm";
-            }
-            FileUpload.createInstance = function () { return new FileUpload(); };
-            FileUpload.styleUrls = ["/src/app/ui/components/fileUpload/fileUpload.css"];
-            return FileUpload;
-        })();
-        UI.FileUpload = FileUpload;
-        angular.module("app.ui").directive("fileUpload", [FileUpload.createInstance]);
-    })(UI = App.UI || (App.UI = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=fileUpload.directive.js.map
-
-var App;
-(function (App) {
-    var UI;
-    (function (UI) {
-        "use strict";
-        //http://www.uxplore.ca/#/
-        /**
-        * @name BackToTopButton
+        * @name SearhBoxController
         * @module App.UI
         */
-        var BackToTopButton = (function () {
-            function BackToTopButton($q, appendToBodyAsync, debounce, extendCssAsync, removeElement, setOpacityAsync) {
-                var _this = this;
-                this.$q = $q;
-                this.appendToBodyAsync = appendToBodyAsync;
-                this.debounce = debounce;
-                this.extendCssAsync = extendCssAsync;
-                this.removeElement = removeElement;
-                this.setOpacityAsync = setOpacityAsync;
-                this.bootstrap = function () { window.addEventListener("scroll", _this.debounce(function () { _this.onScroll(); }, 100)); };
-                this.onScroll = function () {
-                };
-                this.initializeAsync = function () {
-                };
-                this.showAsync = function () {
-                };
-                this.hideAsync = function () {
-                };
-                this.dispose = function () {
-                };
-                this.onClick = function () {
-                };
-                this.isOpen = false;
-                this.isAnimating = false;
+        var SearhBoxController = (function () {
+            function SearhBoxController($scope, $element, $attrs) {
             }
-            return BackToTopButton;
+            return SearhBoxController;
         })();
-        UI.BackToTopButton = BackToTopButton;
-        angular.module("app.ui").service("backToTopButton", ["$q", "appendToBodyAsync", "debounce", "extendCssAsync", "removeElement", "setOpacityAsync", BackToTopButton]);
+        UI.SearhBoxController = SearhBoxController;
+        angular.module("app.ui").controller("searhBoxController", ["$scope", "$element", "$attrs", SearhBoxController]);
     })(UI = App.UI || (App.UI = {}));
 })(App || (App = {}));
 
-//# sourceMappingURL=backToTopButton.js.map
+//# sourceMappingURL=searchBox.controller.js.map
 
 /// <reference path="../../../../typings/typescriptapp.d.ts" />
 var App;
@@ -2496,278 +2373,33 @@ var App;
     (function (UI) {
         "use strict";
         /**
-         * @name modalService
+         * @name SearhBox
          * @module App.UI
          */
-        var ModalService = (function () {
-            function ModalService($q) {
-                this.$q = $q;
-                this.open = function () {
-                };
-                this.close = function () {
-                };
-            }
-            return ModalService;
-        })();
-        UI.ModalService = ModalService;
-        angular.module("app.ui").service("modalService", ["$q", ModalService]);
-    })(UI = App.UI || (App.UI = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=modal.service.js.map
-
-/// <reference path="../../../../typings/typescriptapp.d.ts" />
-var App;
-(function (App) {
-    var UI;
-    (function (UI) {
-        "use strict";
-        /**
-         * @name HamburgerButton
-         * @module App.UI
-         */
-        var HamburgerButton = (function () {
-            function HamburgerButton() {
+        var SearchBox = (function () {
+            function SearchBox() {
                 this.template = [
-                    "<div class='hamburger-button' data-ng-click='onClick()'>",
-                    "<div></div>",
-                    "<div></div>",
-                    "<div></div>",
+                    "<div class='search-container'>",
+                    "<form name='searchForm'>",
+                    "<input></input>",
+                    "</form>",
                     "</div>"
                 ].join(" ");
+                this.styleUrls = [""];
                 this.replace = true;
                 this.restrict = "E";
-                this.scope = { onClick: "&" };
-            }
-            HamburgerButton.createInstance = function () { return new HamburgerButton(); };
-            return HamburgerButton;
-        })();
-        UI.HamburgerButton = HamburgerButton;
-        angular.module("app.ui").directive("hamburgerButton", [HamburgerButton.createInstance]);
-    })(UI = App.UI || (App.UI = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=hamburgerButton.directive.js.map
-
-var App;
-(function (App) {
-    var UI;
-    (function (UI) {
-        "use strict";
-        /**
-         * @name Flyout
-         * @description
-         */
-        var Flyout = (function () {
-            function Flyout($q, extendCssAsync) {
-                var _this = this;
-                this.$q = $q;
-                this.extendCssAsync = extendCssAsync;
-                this.createInstance = function (options) {
-                    var instance = new Flyout(_this.$q, _this.extendCssAsync);
-                    return instance;
-                };
-                this.initializeAsync = function () {
-                    var deferred = _this.$q.defer();
-                    _this.augmentedJQuery = angular.element("<div></div>");
-                    _this.extendCssAsync({
-                        nativeHTMLElement: _this.nativeElement,
-                        cssObject: {
-                            "transition": "transform .500s cubic-bezier(.10, .10, .25, .90)",
-                            "opacity": "100",
-                            "position": "fixed",
-                            "top": "0",
-                            "left": "-100",
-                            "height": "100%",
-                            "width": "100%",
-                            "background-color": "rgba(0, 0, 0, .25)",
-                            "display": "block"
-                        }
-                    }).then(function () {
-                        deferred.resolve();
-                    });
-                    return deferred.promise;
-                };
-                this.showAsync = function () {
-                };
-                this.hideAsync = function () {
-                };
-                this.dispose = function () {
-                };
-                this.onClick = function () {
-                };
-                this.isOpen = false;
-                this.isAnimating = false;
-            }
-            Object.defineProperty(Flyout.prototype, "nativeElement", {
-                get: function () { return this.augmentedJQuery[0]; },
-                enumerable: true,
-                configurable: true
-            });
-            return Flyout;
-        })();
-        UI.Flyout = Flyout;
-        App.Component({
-            dynamic: true,
-            module: "app.ui",
-            componentName: "flyout",
-            component: Flyout,
-            providers: ["$q"]
-        });
-    })(UI = App.UI || (App.UI = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=flyout.js.map
-
-
-
-//# sourceMappingURL=tabContent.controller.js.map
-
-/// <reference path="../../../../typings/typescriptapp.d.ts" />
-var App;
-(function (App) {
-    var UI;
-    (function (UI) {
-        "use strict";
-        /**
-         * @name TabTitle
-         * @module App.UI
-         */
-        var TabContent = (function () {
-            function TabContent() {
-                this.restrict = "E";
-                this.replace = true;
-                this.scope = {};
-                this.template = [
-                    "<div>",
-                    "</div>"
-                ].join(" ");
-                this.controller = "tabContentController";
+                this.controller = "searchBoxController";
                 this.controllerAs = "vm";
             }
-            TabContent.createInstance = function () { return new TabContent(); };
-            TabContent.styleUrls = [];
-            return TabContent;
+            SearchBox.createInstance = function () { return new SearchBox(); };
+            return SearchBox;
         })();
-        UI.TabContent = TabContent;
-        angular.module("app.ui").directive("tabContent", [TabContent.createInstance]);
+        UI.SearchBox = SearchBox;
+        angular.module("app.ui").directive("searchBox", [SearchBox.createInstance]);
     })(UI = App.UI || (App.UI = {}));
 })(App || (App = {}));
 
-//# sourceMappingURL=tabContent.directive.js.map
-
-/// <reference path="../../../../typings/typescriptapp.d.ts" />
-var App;
-(function (App) {
-    var UI;
-    (function (UI) {
-        "use strict";
-        /**
-         * @name TabsController
-         * @module App.UI
-         */
-        var TabsController = (function () {
-            function TabsController($scope, $transclude, getHtml) {
-                var _this = this;
-                this.$scope = $scope;
-                this.$transclude = $transclude;
-                this.getHtml = getHtml;
-                this.initialRender = function () { };
-                $transclude($scope, function (clone) {
-                    _this.clone = clone;
-                    _this.initialRender();
-                });
-            }
-            Object.defineProperty(TabsController.prototype, "templateRef", {
-                get: function () {
-                    if (this._templateRef)
-                        return this._templateRef;
-                    this._templateRef = angular.element(this.getHtml(this.clone[0].children[0], true));
-                    return this._templateRef;
-                },
-                enumerable: true,
-                configurable: true
-            });
-            return TabsController;
-        })();
-        UI.TabsController = TabsController;
-        angular.module("app.ui").controller("tabsController", ["$scope", "$transclude", TabsController]);
-    })(UI = App.UI || (App.UI = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=tabs.controller.js.map
-
-/// <reference path="../../../../typings/typescriptapp.d.ts" />
-var App;
-(function (App) {
-    var UI;
-    (function (UI) {
-        "use strict";
-        /**
-         * @name Tabs
-         * @module App.UI
-         */
-        var Tabs = (function () {
-            function Tabs() {
-                this.restrict = "E";
-                this.replace = true;
-                this.template = [
-                    "<div>",
-                    "<button>Next Tab</button>",
-                    "</div>"
-                ].join(" ");
-                this.transclude = "element";
-                this.controller = "tabsController";
-                this.controllerAs = "vm";
-            }
-            Tabs.createInstance = function () { return new Tabs(); };
-            Tabs.styleUrls = [];
-            return Tabs;
-        })();
-        UI.Tabs = Tabs;
-        angular.module("app.ui").directive("tabs", [Tabs.createInstance]);
-    })(UI = App.UI || (App.UI = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=tabs.directive.js.map
-
-
-
-//# sourceMappingURL=tabTitle.controller.js.map
-
-/// <reference path="../../../../typings/typescriptapp.d.ts" />
-var App;
-(function (App) {
-    var UI;
-    (function (UI) {
-        "use strict";
-        /**
-         * @name TabTitle
-         * @module App.UI
-         */
-        var TabTitle = (function () {
-            function TabTitle() {
-                this.restrict = "E";
-                this.replace = true;
-                this.scope = {};
-                this.template = [
-                    "<h1>",
-                    "{{ ::vm.title }}",
-                    "</h1>"
-                ].join(" ");
-                this.controller = "tabTitleController";
-                this.controllerAs = "vm";
-            }
-            TabTitle.createInstance = function () { return new TabTitle(); };
-            TabTitle.styleUrls = [];
-            return TabTitle;
-        })();
-        UI.TabTitle = TabTitle;
-        angular.module("app.ui").directive("tabTitle", [TabTitle.createInstance]);
-    })(UI = App.UI || (App.UI = {}));
-})(App || (App = {}));
-
-//# sourceMappingURL=tabTitle.directive.js.map
+//# sourceMappingURL=searchBox.directive.js.map
 
 /// <reference path="../../../../typings/typescriptapp.d.ts" />
 var App;
@@ -2940,27 +2572,9 @@ var App;
 
 //# sourceMappingURL=carousel.directive.js.map
 
-/// <reference path="../../../../typings/typescriptapp.d.ts" />
-var App;
-(function (App) {
-    var UI;
-    (function (UI) {
-        "use strict";
-        /**
-        * @name SearhBoxController
-        * @module App.UI
-        */
-        var SearhBoxController = (function () {
-            function SearhBoxController($scope, $element, $attrs) {
-            }
-            return SearhBoxController;
-        })();
-        UI.SearhBoxController = SearhBoxController;
-        angular.module("app.ui").controller("searhBoxController", ["$scope", "$element", "$attrs", SearhBoxController]);
-    })(UI = App.UI || (App.UI = {}));
-})(App || (App = {}));
 
-//# sourceMappingURL=searchBox.controller.js.map
+
+//# sourceMappingURL=tabContent.controller.js.map
 
 /// <reference path="../../../../typings/typescriptapp.d.ts" />
 var App;
@@ -2969,33 +2583,144 @@ var App;
     (function (UI) {
         "use strict";
         /**
-         * @name SearhBox
+         * @name TabTitle
          * @module App.UI
          */
-        var SearchBox = (function () {
-            function SearchBox() {
+        var TabContent = (function () {
+            function TabContent() {
+                this.restrict = "E";
+                this.replace = true;
+                this.scope = {};
                 this.template = [
-                    "<div class='search-container'>",
-                    "<form name='searchForm'>",
-                    "<input></input>",
-                    "</form>",
+                    "<div>",
                     "</div>"
                 ].join(" ");
-                this.styleUrls = [""];
-                this.replace = true;
-                this.restrict = "E";
-                this.controller = "searchBoxController";
+                this.controller = "tabContentController";
                 this.controllerAs = "vm";
             }
-            SearchBox.createInstance = function () { return new SearchBox(); };
-            return SearchBox;
+            TabContent.createInstance = function () { return new TabContent(); };
+            TabContent.styleUrls = [];
+            return TabContent;
         })();
-        UI.SearchBox = SearchBox;
-        angular.module("app.ui").directive("searchBox", [SearchBox.createInstance]);
+        UI.TabContent = TabContent;
+        angular.module("app.ui").directive("tabContent", [TabContent.createInstance]);
     })(UI = App.UI || (App.UI = {}));
 })(App || (App = {}));
 
-//# sourceMappingURL=searchBox.directive.js.map
+//# sourceMappingURL=tabContent.directive.js.map
+
+/// <reference path="../../../../typings/typescriptapp.d.ts" />
+var App;
+(function (App) {
+    var UI;
+    (function (UI) {
+        "use strict";
+        /**
+         * @name TabsController
+         * @module App.UI
+         */
+        var TabsController = (function () {
+            function TabsController($scope, $transclude, getHtml) {
+                var _this = this;
+                this.$scope = $scope;
+                this.$transclude = $transclude;
+                this.getHtml = getHtml;
+                this.initialRender = function () { };
+                $transclude($scope, function (clone) {
+                    _this.clone = clone;
+                    _this.initialRender();
+                });
+            }
+            Object.defineProperty(TabsController.prototype, "templateRef", {
+                get: function () {
+                    if (this._templateRef)
+                        return this._templateRef;
+                    this._templateRef = angular.element(this.getHtml(this.clone[0].children[0], true));
+                    return this._templateRef;
+                },
+                enumerable: true,
+                configurable: true
+            });
+            return TabsController;
+        })();
+        UI.TabsController = TabsController;
+        angular.module("app.ui").controller("tabsController", ["$scope", "$transclude", TabsController]);
+    })(UI = App.UI || (App.UI = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=tabs.controller.js.map
+
+/// <reference path="../../../../typings/typescriptapp.d.ts" />
+var App;
+(function (App) {
+    var UI;
+    (function (UI) {
+        "use strict";
+        /**
+         * @name Tabs
+         * @module App.UI
+         */
+        var Tabs = (function () {
+            function Tabs() {
+                this.restrict = "E";
+                this.replace = true;
+                this.template = [
+                    "<div>",
+                    "<button>Next Tab</button>",
+                    "</div>"
+                ].join(" ");
+                this.transclude = "element";
+                this.controller = "tabsController";
+                this.controllerAs = "vm";
+            }
+            Tabs.createInstance = function () { return new Tabs(); };
+            Tabs.styleUrls = [];
+            return Tabs;
+        })();
+        UI.Tabs = Tabs;
+        angular.module("app.ui").directive("tabs", [Tabs.createInstance]);
+    })(UI = App.UI || (App.UI = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=tabs.directive.js.map
+
+
+
+//# sourceMappingURL=tabTitle.controller.js.map
+
+/// <reference path="../../../../typings/typescriptapp.d.ts" />
+var App;
+(function (App) {
+    var UI;
+    (function (UI) {
+        "use strict";
+        /**
+         * @name TabTitle
+         * @module App.UI
+         */
+        var TabTitle = (function () {
+            function TabTitle() {
+                this.restrict = "E";
+                this.replace = true;
+                this.scope = {};
+                this.template = [
+                    "<h1>",
+                    "{{ ::vm.title }}",
+                    "</h1>"
+                ].join(" ");
+                this.controller = "tabTitleController";
+                this.controllerAs = "vm";
+            }
+            TabTitle.createInstance = function () { return new TabTitle(); };
+            TabTitle.styleUrls = [];
+            return TabTitle;
+        })();
+        UI.TabTitle = TabTitle;
+        angular.module("app.ui").directive("tabTitle", [TabTitle.createInstance]);
+    })(UI = App.UI || (App.UI = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=tabTitle.directive.js.map
 
 /// <reference path="../../../../typings/typescriptapp.d.ts" />
 var App;
@@ -3063,6 +2788,208 @@ var App;
     var UI;
     (function (UI) {
         "use strict";
+        /**
+         * @name HamburgerButton
+         * @module App.UI
+         */
+        var HamburgerButton = (function () {
+            function HamburgerButton() {
+                this.template = [
+                    "<div class='hamburger-button' data-ng-click='onClick()'>",
+                    "<div></div>",
+                    "<div></div>",
+                    "<div></div>",
+                    "</div>"
+                ].join(" ");
+                this.replace = true;
+                this.restrict = "E";
+                this.scope = { onClick: "&" };
+            }
+            HamburgerButton.createInstance = function () { return new HamburgerButton(); };
+            return HamburgerButton;
+        })();
+        UI.HamburgerButton = HamburgerButton;
+        angular.module("app.ui").directive("hamburgerButton", [HamburgerButton.createInstance]);
+    })(UI = App.UI || (App.UI = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=hamburgerButton.directive.js.map
+
+/// <reference path="../../../../typings/typescriptapp.d.ts" />
+var App;
+(function (App) {
+    var UI;
+    (function (UI) {
+        "use strict";
+        /**
+         * @name FileUploadController
+         * @module App.UI
+         */
+        var FileUploadController = (function () {
+            function FileUploadController($attrs, $element, $http, $scope) {
+                var _this = this;
+                this.$attrs = $attrs;
+                this.$element = $element;
+                this.$http = $http;
+                this.$scope = $scope;
+                this.onDrop = function (dragEvent) {
+                    dragEvent.stopPropagation();
+                    dragEvent.preventDefault();
+                    if (dragEvent.dataTransfer && dragEvent.dataTransfer.files) {
+                        _this.$http({
+                            method: "POST",
+                            url: _this.$attrs["fileUploadUrl"],
+                            data: _this.packageFiles(dragEvent.dataTransfer.files),
+                            headers: { 'Content-Type': undefined }
+                        }).then(function (results) {
+                            _this.$scope.$emit("fileUpload", {
+                                files: results.data,
+                            });
+                        });
+                    }
+                };
+                this.packageFiles = function (fileList) {
+                    var formData = new FormData();
+                    for (var i = 0; i < fileList.length; i++) {
+                        formData.append(fileList[i].name, fileList[i]);
+                    }
+                    return formData;
+                };
+                this.bootstrap = function (options) {
+                    var drop = options.element.find(".drop-zone")[0];
+                    drop.addEventListener("dragover", function (dragEvent) {
+                        dragEvent.stopPropagation();
+                        dragEvent.preventDefault();
+                    }, false);
+                    drop.addEventListener("drop", _this.onDrop, false);
+                };
+                this.bootstrap({ element: $element });
+            }
+            return FileUploadController;
+        })();
+        UI.FileUploadController = FileUploadController;
+        angular.module("app.ui").controller("fileUploadController", [
+            "$attrs",
+            "$element",
+            "$http",
+            "$scope",
+            FileUploadController
+        ]);
+    })(UI = App.UI || (App.UI = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=fileUpload.controller.js.map
+
+/// <reference path="../../../../typings/typescriptapp.d.ts" />
+var App;
+(function (App) {
+    var UI;
+    (function (UI) {
+        "use strict";
+        /**
+         * @name FileUpload
+         * @module App.UI
+         */
+        var FileUpload = (function () {
+            function FileUpload() {
+                this.template = [
+                    "<div>",
+                    '<div class="drop-zone">Drop your files here!</div>',
+                    "</div>"
+                ].join("");
+                this.restrict = "E";
+                this.replace = true;
+                this.scope = {};
+                this.controller = "fileUploadController";
+                this.controllerAs = "vm";
+            }
+            FileUpload.createInstance = function () { return new FileUpload(); };
+            FileUpload.styleUrls = ["/src/app/ui/components/fileUpload/fileUpload.css"];
+            return FileUpload;
+        })();
+        UI.FileUpload = FileUpload;
+        angular.module("app.ui").directive("fileUpload", [FileUpload.createInstance]);
+    })(UI = App.UI || (App.UI = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=fileUpload.directive.js.map
+
+var App;
+(function (App) {
+    var UI;
+    (function (UI) {
+        "use strict";
+        /**
+         * @name Flyout
+         * @description
+         */
+        var Flyout = (function () {
+            function Flyout($q, extendCssAsync) {
+                var _this = this;
+                this.$q = $q;
+                this.extendCssAsync = extendCssAsync;
+                this.createInstance = function (options) {
+                    var instance = new Flyout(_this.$q, _this.extendCssAsync);
+                    return instance;
+                };
+                this.initializeAsync = function () {
+                    var deferred = _this.$q.defer();
+                    _this.augmentedJQuery = angular.element("<div></div>");
+                    _this.extendCssAsync({
+                        nativeHTMLElement: _this.nativeElement,
+                        cssObject: {
+                            "transition": "transform .500s cubic-bezier(.10, .10, .25, .90)",
+                            "opacity": "100",
+                            "position": "fixed",
+                            "top": "0",
+                            "left": "-100",
+                            "height": "100%",
+                            "width": "100%",
+                            "background-color": "rgba(0, 0, 0, .25)",
+                            "display": "block"
+                        }
+                    }).then(function () {
+                        deferred.resolve();
+                    });
+                    return deferred.promise;
+                };
+                this.showAsync = function () {
+                };
+                this.hideAsync = function () {
+                };
+                this.dispose = function () {
+                };
+                this.onClick = function () {
+                };
+                this.isOpen = false;
+                this.isAnimating = false;
+            }
+            Object.defineProperty(Flyout.prototype, "nativeElement", {
+                get: function () { return this.augmentedJQuery[0]; },
+                enumerable: true,
+                configurable: true
+            });
+            return Flyout;
+        })();
+        UI.Flyout = Flyout;
+        App.Component({
+            dynamic: true,
+            module: "app.ui",
+            componentName: "flyout",
+            component: Flyout,
+            providers: ["$q"]
+        });
+    })(UI = App.UI || (App.UI = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=flyout.js.map
+
+/// <reference path="../../../../typings/typescriptapp.d.ts" />
+var App;
+(function (App) {
+    var UI;
+    (function (UI) {
+        "use strict";
         var VirtualForController = (function () {
             function VirtualForController() {
             }
@@ -3099,3 +3026,75 @@ var App;
 })(App || (App = {}));
 
 //# sourceMappingURL=virtualFor.directive.js.map
+
+/// <reference path="../../../../typings/typescriptapp.d.ts" />
+var App;
+(function (App) {
+    var UI;
+    (function (UI) {
+        "use strict";
+        /**
+         * @name modalService
+         * @module App.UI
+         */
+        var ModalService = (function () {
+            function ModalService($q) {
+                this.$q = $q;
+                this.open = function () {
+                };
+                this.close = function () {
+                };
+            }
+            return ModalService;
+        })();
+        UI.ModalService = ModalService;
+        angular.module("app.ui").service("modalService", ["$q", ModalService]);
+    })(UI = App.UI || (App.UI = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=modal.service.js.map
+
+var App;
+(function (App) {
+    var Security;
+    (function (Security) {
+        "use strict";
+        var LoginController = (function () {
+            function LoginController() {
+            }
+            return LoginController;
+        })();
+        Security.LoginController = LoginController;
+        angular.module("app.security").controller("loginController", [LoginController]);
+    })(Security = App.Security || (App.Security = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=login.controller.js.map
+
+var App;
+(function (App) {
+    var Security;
+    (function (Security) {
+        "use strict";
+        /**
+         * @name login
+         * @module App.Security
+         */
+        var Login = (function () {
+            function Login() {
+                this.template = [""].join(" ");
+                this.restrict = "E";
+                this.replace = true;
+                this.controller = "loginController";
+                this.controllerAs = "vm";
+            }
+            Login.createInstance = function () { return new Login(); };
+            Login.styleUrls = [];
+            return Login;
+        })();
+        Security.Login = Login;
+        angular.module("app.security").directive("login", [Login.createInstance]);
+    })(Security = App.Security || (App.Security = {}));
+})(App || (App = {}));
+
+//# sourceMappingURL=login.directive.js.map
