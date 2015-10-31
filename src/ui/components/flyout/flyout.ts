@@ -66,5 +66,11 @@
 
     }
 
-    angular.module("app.ui").service("flyout", ["$q",Flyout]);
+    Component({
+        dynamic: true,
+        module:"app.ui",
+        componentName: "flyout",
+        component: Flyout,
+        providers: ["$q"]
+    });
 } 

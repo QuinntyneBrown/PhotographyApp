@@ -5,10 +5,10 @@ module App.UI {
     "use strict";
 
     /**
-     * @name AppHeaderController
+     * @name AppHeader
      * @module App.UI
      */
-    export class AppHeaderController {
+    export class AppHeader {
         constructor(
             private $injector: ng.auto.IInjectorService,
             private $scope: any,
@@ -40,8 +40,8 @@ module App.UI {
 
     Component({        
         module: "app.ui",
-        component: AppHeaderController,
-        componentName: "appHeaderController",
+        component: AppHeader,
+        componentName: "appHeader",
         selector: "app-header",
         providers: ["$injector", "$scope", "appName", "getFormFactor"],
         template: [
