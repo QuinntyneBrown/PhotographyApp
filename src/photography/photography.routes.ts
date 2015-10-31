@@ -7,20 +7,16 @@ module App.Photography {
     export class PhotographyRoutesRoutes {
         
         public static Configure = ($routeProvider: ng.route.IRouteProvider) => {
-            $routeProvider.when("/", {
-                templateUrl: "src/photography/components/home/home.html",
-                controller: "homeController",
-                controllerAs: "vm",
-                resolve: {
-                    routeData: ["routeResolverService", (routeResolverService: Common.IRouteResolverService) => {
-                        return routeResolverService.resolve("/");                        
-                    }]
-                }
+            Route({
+                when: "/",
+                componentTemplateUrl: "src/photography/components/home.component.html",
+                componentName: "homeComponent",
+                $routeProvider: $routeProvider
             });
 
             $routeProvider.when("/photos", {
-                templateUrl: "src/photography/components/home/home.html",
-                controller: "homeController",
+                templateUrl: "src/photography/components/home.component.html",
+                controller: "homeComponent",
                 controllerAs: "vm",
                 resolve: {
                     routeData: ["routeResolverService", (routeResolverService: Common.IRouteResolverService) => {
@@ -30,8 +26,8 @@ module App.Photography {
             });
 
             $routeProvider.when("/rates", {
-                templateUrl: "src/photography/components/rates/rates.html",
-                controller: "ratesController",
+                templateUrl: "src/photography/components/rates.component.html",
+                controller: "ratesComponent",
                 controllerAs: "vm",
                 resolve: {
                     routeData: ["routeResolverService", (routeResolverService:App.Common.IRouteResolverService) => {

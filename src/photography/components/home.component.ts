@@ -3,10 +3,10 @@
     "use strict";
 
     /**
-     * @name HomeController
+     * @name HomeComponent
      * @module App.Photography
      */
-    export class HomeController implements IHomeController {
+    export class HomeComponent implements IHomeComponent {
         
         constructor(private $q:ng.IQService, private routeData:any) { }
         
@@ -34,8 +34,8 @@
 
     Component({
         module: "app.photography",
-        component: HomeController,
-        componentName: "homeController",
+        component: HomeComponent,
+        componentName: "homeComponent",
         providers: ["$q", "routeData"],
         route: "/",
         key: "photos"

@@ -3,10 +3,10 @@
     "use strict";
 
     /**
-     * @name RatesController
+     * @name RatesComponent
      * @module App.Photography
      */
-    export class RatesController {
+    export class RatesComponent {
 
         constructor(private routeData: any) { }
 
@@ -17,8 +17,8 @@
 
     Component({
         module: "app.photography",
-        component: App.Photography.RatesController,
-        componentName: "ratesController",
+        component: RatesComponent,
+        componentName: "ratesComponent",
         providers: ["routeData"],
         route: "/rates",
         key:"rates"

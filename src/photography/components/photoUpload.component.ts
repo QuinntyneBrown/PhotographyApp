@@ -1,5 +1,4 @@
-﻿/// <reference path="../../../../typings/typescriptapp.d.ts" />
-
+﻿
 module App.Photography {
 
     "use strict";

@@ -78,12 +78,12 @@
     <Content Include="node_modules\rx-angular\dist\rx.angular.js" />
     <Content Include="node_modules\rx\dist\rx.all.js" />
     <Content Include="src\photographer\components\aboutPhotographer\aboutPhotographer.html" />
-    <Content Include="src\photography\components\mobileMenu\mobileMenu.html" />
-    <Content Include="src\photography\components\photoUpload\photoUpload.html" />
-    <Content Include="src\photography\components\rateCalculator\rateCalculator.css">
+    <Content Include="src\photography\components\mobileMenu.component.html" />
+    <Content Include="src\photography\components\photoUpload.component.html" />
+    <Content Include="src\photography\components\rateCalculator.css">
       <DependentUpon>rateCalculator.scss</DependentUpon>
     </Content>
-    <Content Include="src\photography\components\rateCalculator\rateCalculator.min.css">
+    <Content Include="src\photography\components\rateCalculator.min.css">
       <DependentUpon>rateCalculator.css</DependentUpon>
     </Content>
     <Content Include="src\photography\photography.css">
@@ -111,8 +111,8 @@
     <Content Include="src\ui\components\appFooter\appFooter.css.map">
       <DependentUpon>appFooter.css</DependentUpon>
     </Content>
-    <Content Include="src\photography\components\rateCalculator\rateCalculator.scss" />
-    <Content Include="src\photography\components\rateCalculator\rateCalculator.css.map">
+    <Content Include="src\photography\components\rateCalculator.scss" />
+    <Content Include="src\photography\components\rateCalculator.css.map">
       <DependentUpon>rateCalculator.css</DependentUpon>
     </Content>
     <Content Include="npm-debug.log" />
@@ -176,7 +176,7 @@
     <Content Include="index.html" />
     <Content Include="karma.conf.js" />
     <Content Include="node_modules\angular-ui-router\release\angular-ui-router.js" />
-    <Content Include="src\photography\components\home\home.html" />
+    <Content Include="src\photography\components\home.component.html" />
     <Content Include="src\ui\components\appFooter\appFooter.css">
       <DependentUpon>appFooter.scss</DependentUpon>
     </Content>
@@ -223,13 +223,12 @@
     <TypeScriptCompile Include="src\photographer\photographer.module.ts" />
     <TypeScriptCompile Include="src\photographer\photographer.routes.ts" />
     <TypeScriptCompile Include="src\photographer\providers\photographerDataService.ts" />
-    <TypeScriptCompile Include="src\photography\components\home\home.controller.ts" />
-    <TypeScriptCompile Include="src\photography\components\mobileMenu\mobileMenu.controller.ts" />
-    <TypeScriptCompile Include="src\photography\components\photoUpload\photoUpload.controller.ts" />
-    <TypeScriptCompile Include="src\photography\components\rateCalculator\rateCalculator.controller.ts" />
-    <TypeScriptCompile Include="src\photography\components\rateCalculator\rateCalculator.directive.ts" />
-    <Content Include="src\photography\components\rates\rates.html" />
-    <TypeScriptCompile Include="src\photography\components\rates\rates.controller.ts" />
+    <TypeScriptCompile Include="src\photography\components\home.component.ts" />
+    <TypeScriptCompile Include="src\photography\components\mobileMenu.component.ts" />
+    <TypeScriptCompile Include="src\photography\components\photoUpload.component.ts" />
+    <TypeScriptCompile Include="src\photography\components\rateCalculator.component.ts" />
+    <Content Include="src\photography\components\rates.component.html" />
+    <TypeScriptCompile Include="src\photography\components\rates.component.ts" />
     <TypeScriptCompile Include="src\photography\domain\gallery.model.ts" />
     <TypeScriptCompile Include="src\photography\providers\galleryDataService.ts" />
     <TypeScriptCompile Include="src\photography\photography.d.ts" />
@@ -239,6 +238,8 @@
     <TypeScriptCompile Include="src\photography\providers\photographyAppHeaderManager.ts" />
     <TypeScriptCompile Include="src\photography\providers\photoDataService.ts" />
     <TypeScriptCompile Include="src\photography\providers\photographyManager.ts" />
+    <TypeScriptCompile Include="src\pipe.ts" />
+    <TypeScriptCompile Include="src\route.ts" />
     <TypeScriptCompile Include="src\security\components\login\login.controller.ts" />
     <TypeScriptCompile Include="src\security\components\login\login.directive.ts" />
     <TypeScriptCompile Include="src\security\security.d.ts" />

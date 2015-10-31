@@ -10,10 +10,10 @@
     }
 
     /**
-    * @name IHomeController
+    * @name IHomeComponent
     * @module App.Photography
     */
-    export interface IHomeController {
+    export interface IHomeComponent {
         photos: Array<IPhoto>;
     }
 
