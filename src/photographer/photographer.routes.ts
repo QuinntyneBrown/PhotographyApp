@@ -8,12 +8,12 @@ module App.Photographer {
         
         public static Configure = ($routeProvider: ng.route.IRouteProvider) => {
             $routeProvider.when("/about", {
-                templateUrl: "src/photography/components/home/home.html",
-                controller: "homeController",
+                templateUrl: "src/photographer/components/aboutPhotographer/aboutPhotographer.html",
+                controller: "aboutPhotographerController",
                 controllerAs: "vm",
                 resolve: {
                     routeData: ["routeResolverService", (routeResolverService: Common.IRouteResolverService) => {
-                        return routeResolverService.resolve("/");                        
+                        return routeResolverService.resolve("/about");                        
                     }]
                 }
             });

@@ -15,7 +15,7 @@
             return ["$q", "photographerDataService", "photographer", ($q:ng.IQService,photographerDataService: IPhotographerDataService, photographer: IPhotographer) => {
                 var deferred = $q.defer();
                 photographerDataService.getFeaturedPhotographer().then((results) => {
-                    photographer.createInstanceAsync({ data: results.data }).then((results) => {
+                    photographer.createInstanceAsync({ data: results.data }).then((results: any) => {
                         deferred.resolve(results);
                     });
                 });
@@ -25,7 +25,7 @@
     }
 
     angular.module("app.photographer")
-        .controller("aboutPhotographerController", [AboutPhotographerController])
+        .controller("aboutPhotographerController", ["routeData",AboutPhotographerController])
         .config([
         "routeResolverServiceProvider", (routeResolverServiceProvider: Common.IRouteResolverServiceProvider) => {
                 routeResolverServiceProvider.configure({

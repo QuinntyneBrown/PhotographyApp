@@ -11,7 +11,7 @@
           
         public createInstanceAsync = (options:any) => {
             var instance = new Photographer(this.$q);
-            this.fullName = options.data.fullName;
+            instance.fullName = options.data.fullName;
             return this.$q.when(instance);
         }
 

@@ -220,6 +220,7 @@
     <TypeScriptCompile Include="src\photographer\photographer.d.ts" />
     <TypeScriptCompile Include="src\photographer\photographer.module.ts" />
     <TypeScriptCompile Include="src\photographer\photographer.routes.ts" />
+    <TypeScriptCompile Include="src\photographer\providers\photographerDataService.ts" />
     <TypeScriptCompile Include="src\photography\components\home\home.controller.ts" />
     <TypeScriptCompile Include="src\photography\components\mobileMenu\mobileMenu.controller.ts" />
     <TypeScriptCompile Include="src\photography\components\photoUpload\photoUpload.controller.ts" />
@@ -305,7 +306,6 @@
     <TypeScriptCompile Include="typings\typeScriptApp.d.ts" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="src\photographer\providers\" />
     <Folder Include="test\configuration\" />
     <Folder Include="test\photography\" />
     <Folder Include="test\security\" />

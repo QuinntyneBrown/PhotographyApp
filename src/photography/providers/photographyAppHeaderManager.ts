@@ -13,7 +13,8 @@ module App.Photography {
         private _links: Array<any> = [
             { caption: "Home", url: "#/" },
             { caption: "Photos", url: "#/photos" },
-            { caption: "Rates", url: "#/rates" }
+            { caption: "Rates", url: "#/rates" },
+            { caption: "About", url: "#/about" }
         ];
 
         public get links() { return this._links; }
