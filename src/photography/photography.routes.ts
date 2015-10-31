@@ -4,7 +4,7 @@ module App.Photography {
 
     "use strict";
 
-    export class Routes {
+    export class PhotographyRoutesRoutes {
         
         public static Configure = ($routeProvider: ng.route.IRouteProvider) => {
             $routeProvider.when("/", {

@@ -6,6 +6,7 @@ angular.module("app.photography", [
     "app.common",
     "app.configuration",
     "app.data",
+    "app.photographer",
     "app.security",
     "app.ui"
 ]);
@@ -17,8 +18,9 @@ angular.module("photographyApp", [
             $routeProvider: ng.route.IRouteProvider,
             apiEndpointProvider: App.Common.IApiEndpointProvider) => {
 
-            App.Photography.Routes.Configure($routeProvider);
-            App.Security.Routes.Configure($routeProvider);
+            App.Photographer.PhotographerRoutes.Configure($routeProvider);
+            App.Photography.PhotographyRoutesRoutes.Configure($routeProvider);
+            App.Security.SecurityRoutes.Configure($routeProvider);
 
             apiEndpointProvider.configure("http://configurationapi.azurewebsites.net/api", "configuration");
             apiEndpointProvider.configure("http://photographyapi.azurewebsites.net/api", "photography");

@@ -1,6 +1,6 @@
 ﻿module App.Security {
     
-    export class Routes {
+    export class SecurityRoutes {
         
         public static Configure = ($routeProvider: ng.route.IRouteProvider) => {
 

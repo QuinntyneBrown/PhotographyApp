@@ -15,18 +15,16 @@
         public static canActivate = () => {
             return ["$http", "$q", "photo", "photoDataService", ($http: ng.IHttpService, $q: ng.IQService, photo: IPhoto, photoDataService: IPhotoDataService) => {
                 var deferred = $q.defer();
-                var promises = [];
-                var data = [
-                    { url: "assets/images/DSC_1287.JPG" },
-                    { url: "assets/images/DSC_1256.JPG" },
-                    { url: "assets/images/DSC_1245.JPG" }
-                ];
-                for (var i = 0; i < data.length; i++) {
-                    promises.push(photo.createInstanceAsync({ data: data[i] }));
-                }
+                
+                photoDataService.getAllFeaturedPhotos().then((results) => {
+                    var promises = [];
+                    for (var i = 0; i < results.data.length; i++) {
+                        promises.push(photo.createInstanceAsync({ data: results.data[i] }));
+                    }
 
-                $q.all(promises).then((photos: Array<IPhoto>) => {
-                    deferred.resolve(photos);
+                    $q.all(promises).then((photos: Array<IPhoto>) => {
+                        deferred.resolve(photos);
+                    });
                 });
                 
                 return deferred.promise;

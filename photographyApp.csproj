@@ -76,6 +76,7 @@
     <Content Include="node_modules\lovefield\dist\lovefield.js" />
     <Content Include="node_modules\rx-angular\dist\rx.angular.js" />
     <Content Include="node_modules\rx\dist\rx.all.js" />
+    <Content Include="src\photographer\components\aboutPhotographer\aboutPhotographer.html" />
     <Content Include="src\photography\components\mobileMenu\mobileMenu.html" />
     <Content Include="src\photography\components\photoUpload\photoUpload.html" />
     <Content Include="src\photography\components\rateCalculator\rateCalculator.css">
@@ -214,6 +215,11 @@
     <TypeScriptCompile Include="src\data\providers\dataService.ts" />
     <TypeScriptCompile Include="src\data\data.d.ts" />
     <TypeScriptCompile Include="src\data\data.module.ts" />
+    <TypeScriptCompile Include="src\photographer\components\aboutPhotographer\aboutPhotographer.controller.ts" />
+    <TypeScriptCompile Include="src\photographer\domain\photographer.model.ts" />
+    <TypeScriptCompile Include="src\photographer\photographer.d.ts" />
+    <TypeScriptCompile Include="src\photographer\photographer.module.ts" />
+    <TypeScriptCompile Include="src\photographer\photographer.routes.ts" />
     <TypeScriptCompile Include="src\photography\components\home\home.controller.ts" />
     <TypeScriptCompile Include="src\photography\components\mobileMenu\mobileMenu.controller.ts" />
     <TypeScriptCompile Include="src\photography\components\photoUpload\photoUpload.controller.ts" />
@@ -221,12 +227,12 @@
     <TypeScriptCompile Include="src\photography\components\rateCalculator\rateCalculator.directive.ts" />
     <Content Include="src\photography\components\rates\rates.html" />
     <TypeScriptCompile Include="src\photography\components\rates\rates.controller.ts" />
-    <TypeScriptCompile Include="src\photography\providers\gallery.model.ts" />
+    <TypeScriptCompile Include="src\photography\domain\gallery.model.ts" />
     <TypeScriptCompile Include="src\photography\providers\galleryDataService.ts" />
     <TypeScriptCompile Include="src\photography\photography.d.ts" />
     <TypeScriptCompile Include="src\photography\photography.module.ts" />
     <TypeScriptCompile Include="src\photography\photography.routes.ts" />
-    <TypeScriptCompile Include="src\photography\providers\photo.model.ts" />
+    <TypeScriptCompile Include="src\photography\domain\photo.model.ts" />
     <TypeScriptCompile Include="src\photography\providers\photographyAppHeaderManager.ts" />
     <TypeScriptCompile Include="src\photography\providers\photoDataService.ts" />
     <TypeScriptCompile Include="src\photography\providers\photographyManager.ts" />
@@ -299,6 +305,7 @@
     <TypeScriptCompile Include="typings\typeScriptApp.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\photographer\providers\" />
     <Folder Include="test\configuration\" />
     <Folder Include="test\photography\" />
     <Folder Include="test\security\" />

@@ -1,5 +1,9 @@
 ﻿declare module App.Common {
 
+    export interface IRouteData extends Object {
+        
+    }
+
     export interface IGetFormFactor {
         (): formFactor;
     }
