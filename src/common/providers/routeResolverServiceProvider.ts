@@ -2,15 +2,17 @@
     
     export var Component = (options: any) => {
 
+        options.component.$inject = options.providers;
+
         angular.module(options.module)
-            .controller(options.controllerName, [options.controller]);
+            .controller(options.componentName, options.component);
 
         angular.module(options.module)
             .config(["routeResolverServiceProvider", (routeResolverServiceProvider: App.Common.IRouteResolverServiceProvider) => {
                 routeResolverServiceProvider.configure({
                     route: options.key.route,
                     key: options.key,
-                    promise: options.controller.canActivate()
+                    promise: options.component.canActivate()
                 });
             }]);
     }
