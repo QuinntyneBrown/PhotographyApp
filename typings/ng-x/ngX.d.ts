@@ -1,6 +1,8 @@
 ﻿declare module ngX {
  
-    export var Component: any;
+    export var Component: Function;
+
+    export var Configure: Function;
 
     /**
     * @name IRouteResolverServiceProvider

@@ -4,24 +4,16 @@ module App.Photography {
 
     "use strict";
 
-    export class PhotographyRoutesRoutes {
+    export class PhotographyRoutes {
         
         public static Configure = ($routeProvider: any) => {
 
-            $routeProvider.when("/", {
-                componentName: "homeComponent",
-                moduleName:"photography"
-            });
+            ngX.Configure({ appModuleName: "photography" });
 
-            $routeProvider.when("/photos", {                
-                componentName: "homeComponent",
-                moduleName: "photography"
-            });
-
-            $routeProvider.when("/rates", {
-                componentName: "ratesComponent",
-                moduleName: "photography"
-            });
+            $routeProvider
+                .when("/", { componentName: "homeComponent" })
+                .when("/photos", { componentName: "homeComponent" })
+                .when("/rates", { componentName: "ratesComponent" });
         }
     }
 
