@@ -6,30 +6,21 @@ module App.Photography {
 
     export class PhotographyRoutesRoutes {
         
-        public static Configure = ($routeProvider: ng.route.IRouteProvider) => {
-            Route({
-                when: "/",
+        public static Configure = ($routeProvider: any) => {
+
+            $routeProvider.when("/", {
                 componentTemplateUrl: "src/photography/components/home.component.html",
-                componentName: "homeComponent",
-                $routeProvider: $routeProvider
+                componentName: "homeComponent"
             });
 
-            Route({
-                when: "/photos",
+            $routeProvider.when("/photos", {
                 componentTemplateUrl: "src/photography/components/home.component.html",
-                componentName: "homeComponent",
-                $routeProvider: $routeProvider
+                componentName: "homeComponent"
             });
 
             $routeProvider.when("/rates", {
-                templateUrl: "src/photography/components/rates.component.html",
-                controller: "ratesComponent",
-                controllerAs: "vm",
-                resolve: {
-                    routeData: ["routeResolverService", (routeResolverService:App.Common.IRouteResolverService) => {
-                        return routeResolverService.resolve("/rates");
-                    }]
-                }
+                componentTemplateUrl: "src/photography/components/rates.component.html",
+                componentName: "ratesComponent"
             });
         }
     }

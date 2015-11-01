@@ -114,10 +114,25 @@
         }
     }
 
-
-
     angular.module("app.common")
         .provider("routeResolverService", [RouteResolverServiceProvider])
+        .config(["$routeProvider", ($routeProvider: any) => {
+            var whenFn = $routeProvider.when;
+            $routeProvider.when = function () {
+                if (arguments[1] && arguments[0]) {
+                    var path = arguments[0];
+                    arguments[1].templateUrl = arguments[1].componentTemplateUrl || arguments[1].templateUrl;
+                    arguments[1].controller = arguments[1].componentName || arguments[1].controller;
+                    arguments[1].controllerAs = "vm";
+                    arguments[1].resolve = {
+                        routeData: ["routeResolverService", (routeResolverService: App.Common.IRouteResolverService) => {
+                            return routeResolverService.resolve(path);
+                        }]
+                    }
+                }
+                whenFn.apply($routeProvider, arguments);
+            }
+        }])
         .run(["$injector", "$location", "$rootScope", ($injector:ng.auto.IInjectorService, $location: ng.ILocationService,$rootScope: ng.IRootScopeService) => {
             $rootScope.$on("$viewContentLoaded", () => {
                 var $route: any = $injector.get("$route");
