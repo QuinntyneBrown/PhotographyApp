@@ -116,6 +116,11 @@
 
     angular.module("app.common")
         .provider("routeResolverService", [RouteResolverServiceProvider])
+
+        /**
+         * Attach the routeResolverService resolve method to every route
+         * Also enable syntax sugar to ease transition to Angular 2
+         */
         .config(["$routeProvider", ($routeProvider: any) => {
             var whenFn = $routeProvider.when;
             $routeProvider.when = function () {
