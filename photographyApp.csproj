@@ -78,7 +78,6 @@
     <Content Include="node_modules\rx-angular\dist\rx.angular.js" />
     <Content Include="node_modules\rx\dist\rx.all.js" />
     <Content Include="src\photographer\components\aboutPhotographer\aboutPhotographer.html" />
-    <Content Include="src\photography\components\mobileMenu.component.html" />
     <Content Include="src\photography\components\photoUpload.component.html" />
     <Content Include="src\photography\components\rateCalculator.css">
       <DependentUpon>rateCalculator.scss</DependentUpon>

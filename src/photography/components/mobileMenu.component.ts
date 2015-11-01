@@ -1,10 +1,20 @@
 ﻿module App.Photography {
     
-    export class MobileMenuController {
-        constructor(){ }
-
+    export class MobileMenuComponent {
+        
     }
 
-
-    angular.module("app.photography").controller("photographyMobileMenuController", [MobileMenuController]);
+    Component({
+        module:"app.photography",
+        selector: "mobile-menu",
+        component: MobileMenuComponent,
+        template: ["<div class='mobile-menu'>",
+            "<div>",
+            "<a>Home</a>",
+            "<a>Photos</a>",
+            "<a>Rates</a>",
+            "</div>",
+            "</div>"
+        ].join(" ")
+    });
 } 
