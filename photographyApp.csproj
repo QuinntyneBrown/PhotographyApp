@@ -75,6 +75,8 @@
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="node_modules\jquery\dist\jquery.js" />
     <Content Include="node_modules\lovefield\dist\lovefield.js" />
+    <Content Include="node_modules\ng-x\dist\ngX.js" />
+    <Content Include="node_modules\ng-x\dist\ngX.min.js" />
     <Content Include="node_modules\rx-angular\dist\rx.angular.js" />
     <Content Include="node_modules\rx\dist\rx.all.js" />
     <Content Include="src\photographer\components\aboutPhotographer\aboutPhotographer.html" />
@@ -204,10 +206,8 @@
     <TypeScriptCompile Include="src\common\providers\localStorageService.ts" />
     <TypeScriptCompile Include="src\common\providers\parseBoolean.ts" />
     <TypeScriptCompile Include="src\common\providers\requestCounter.ts" />
-    <TypeScriptCompile Include="src\common\providers\routeResolverServiceProvider.ts" />
     <TypeScriptCompile Include="src\common\providers\loadStyleSheet.ts" />
     <TypeScriptCompile Include="src\common\providers\windowResizeEventEmitter.ts" />
-    <TypeScriptCompile Include="src\component.ts" />
     <TypeScriptCompile Include="src\configuration\configuration.d.ts" />
     <TypeScriptCompile Include="src\configuration\configuration.module.ts" />
     <TypeScriptCompile Include="src\configuration\providers\configuration.model.ts" />
@@ -237,8 +237,6 @@
     <TypeScriptCompile Include="src\photography\providers\photographyAppHeaderManager.ts" />
     <TypeScriptCompile Include="src\photography\providers\photoDataService.ts" />
     <TypeScriptCompile Include="src\photography\providers\photographyManager.ts" />
-    <TypeScriptCompile Include="src\pipe.ts" />
-    <TypeScriptCompile Include="src\route.ts" />
     <TypeScriptCompile Include="src\security\components\login\login.controller.ts" />
     <TypeScriptCompile Include="src\security\components\login\login.directive.ts" />
     <TypeScriptCompile Include="src\security\security.d.ts" />
@@ -288,7 +286,6 @@
     <TypeScriptCompile Include="src\ui\providers\translateXYAsync.ts" />
     <TypeScriptCompile Include="src\ui\ui.d.ts" />
     <TypeScriptCompile Include="src\ui\ui.module.ts" />
-    <TypeScriptCompile Include="test\common\routeResolverServiceProvider.spec.ts" />
     <TypeScriptCompile Include="test\ui\callout.controller.spec.ts" />
     <TypeScriptCompile Include="typings\angular-material\angular-material.d.ts" />
     <TypeScriptCompile Include="typings\angular-ui-router\angular-ui-router.d.ts" />
@@ -301,12 +298,14 @@
     <TypeScriptCompile Include="typings\jasmine\jasmine.d.ts" />
     <TypeScriptCompile Include="typings\jquery\jquery.d.ts" />
     <TypeScriptCompile Include="typings\lovefield\lovefield.d.ts" />
+    <TypeScriptCompile Include="typings\ng-x\ngX.d.ts" />
     <TypeScriptCompile Include="typings\rx\rx-lite.d.ts" />
     <TypeScriptCompile Include="typings\rx\rx.d.ts" />
     <TypeScriptCompile Include="typings\tsd.d.ts" />
     <TypeScriptCompile Include="typings\typeScriptApp.d.ts" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="test\common\" />
     <Folder Include="test\configuration\" />
     <Folder Include="test\photography\" />
     <Folder Include="test\security\" />

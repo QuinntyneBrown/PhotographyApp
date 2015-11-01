@@ -2,7 +2,6 @@
 
 angular.module("app.photography", [
     "ngAnimate",
-    "ngRoute",
     "app.common",
     "app.configuration",
     "app.data",

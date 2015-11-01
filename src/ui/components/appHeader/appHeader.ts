@@ -38,7 +38,7 @@ module App.UI {
 
     }
 
-    Component({        
+    ngX.Component({        
         module: "app.ui",
         component: AppHeader,
         componentName: "appHeader",

@@ -46,5 +46,8 @@
     "lovefield": "^2.0.66",
     "rx": "^4.0.6",
     "rx-angular": "^1.0.4"
+  },
+  "dependencies": {
+    "ng-x": "0.0.1"
   }
 }

@@ -9,3 +9,4 @@
 /// <reference path="angularjs/angular-mocks.d.ts" />
 /// <reference path="rx/rx-lite.d.ts" />
 /// <reference path="rx/rx.d.ts" />
+/// <reference path="ng-x/ngx.d.ts" />

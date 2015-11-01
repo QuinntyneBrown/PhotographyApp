@@ -15,7 +15,7 @@
         }
     }
 
-    Component({
+    ngX.Component({
         module: "app.photography",
         component: RatesComponent,
         componentName: "ratesComponent",

@@ -4,7 +4,7 @@
         
     }
 
-    Component({
+    ngX.Component({
         module:"app.photography",
         selector: "mobile-menu",
         component: MobileMenuComponent,

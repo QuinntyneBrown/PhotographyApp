@@ -32,7 +32,7 @@
         }
     }
 
-    Component({
+    ngX.Component({
         module: "app.photography",
         component: HomeComponent,
         componentName: "homeComponent",

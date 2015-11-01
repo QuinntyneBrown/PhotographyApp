@@ -66,7 +66,7 @@
 
     }
 
-    Component({
+    ngX.Component({
         dynamic: true,
         module:"app.ui",
         componentName: "flyout",
