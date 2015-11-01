@@ -9,18 +9,18 @@ module App.Photography {
         public static Configure = ($routeProvider: any) => {
 
             $routeProvider.when("/", {
-                componentTemplateUrl: "src/photography/components/home.component.html",
-                componentName: "homeComponent"
+                componentName: "homeComponent",
+                moduleName:"photography"
             });
 
-            $routeProvider.when("/photos", {
-                componentTemplateUrl: "src/photography/components/home.component.html",
-                componentName: "homeComponent"
+            $routeProvider.when("/photos", {                
+                componentName: "homeComponent",
+                moduleName: "photography"
             });
 
             $routeProvider.when("/rates", {
-                componentTemplateUrl: "src/photography/components/rates.component.html",
-                componentName: "ratesComponent"
+                componentName: "ratesComponent",
+                moduleName: "photography"
             });
         }
     }

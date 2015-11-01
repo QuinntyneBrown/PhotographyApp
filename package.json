@@ -48,6 +48,6 @@
     "rx-angular": "^1.0.4"
   },
   "dependencies": {
-    "ng-x": "0.0.1"
+    "ng-x": "*"
   }
 }
