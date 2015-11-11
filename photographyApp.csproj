@@ -75,6 +75,7 @@
     <Content Include="node_modules\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="node_modules\jquery\dist\jquery.js" />
     <Content Include="node_modules\lovefield\dist\lovefield.js" />
+    <Content Include="node_modules\ng-x-components\dist\ngX.components.js" />
     <Content Include="node_modules\ng-x\dist\ngX.js" />
     <Content Include="node_modules\ng-x\dist\ngX.min.js" />
     <Content Include="node_modules\rx-angular\dist\rx.angular.js" />
@@ -322,7 +323,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>63894</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

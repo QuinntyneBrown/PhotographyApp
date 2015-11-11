@@ -2,6 +2,8 @@
 
 angular.module("app.photography", [
     "ngAnimate",
+    "ngX",
+    "ngX.components",
     "app.common",
     "app.configuration",
     "app.data",

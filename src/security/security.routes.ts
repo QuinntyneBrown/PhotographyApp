@@ -2,7 +2,7 @@
     
     export class SecurityRoutes {
         
-        public static Configure = ($routeProvider: ng.route.IRouteProvider) => {
+        public static Configure = ($routeProvider: any) => {
 
             $routeProvider.when("/login", {
                 templateUrl: "src/security/components/login/login.html",

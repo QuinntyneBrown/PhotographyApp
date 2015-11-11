@@ -48,6 +48,7 @@
     "rx-angular": "^1.0.4"
   },
   "dependencies": {
-    "ng-x": "*"
+    "ng-x": "*",
+    "ng-x-components": "*"
   }
 }
